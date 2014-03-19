@@ -1,5 +1,5 @@
 /**
- * a HUD container
+ * a HUD container kaas
  */
 game.HUD = game.HUD || {};
 
