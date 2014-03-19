@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="16" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="metatiles64x64" tilewidth="64" tileheight="64">
+  <image source="../img/tileset/metatiles64x64.png" width="320" height="64"/>
+  <tile id="0">
+   <properties>
+    <property name="type" value="solid"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="type" value="platform"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="type" value="ladder"/>
+   </properties>
+  </tile>
+ </tileset>
+ <imagelayer name="background" width="20" height="16">
+  <image source="../img/backgrounds/Dressingroom.png"/>
+ </imagelayer>
+ <layer name="collision" width="20" height="16">
+  <data encoding="base64">
+   AQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAABAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAEAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAABAAAAAQAAAAEAAAA=
+  </data>
+ </layer>
+ <objectgroup name="Objectlaag 1" width="20" height="16">
+  <object name="playerObject" x="73" y="901" width="47" height="51">
+   <properties>
+    <property name="friction" value="3"/>
+    <property name="image" value="characterMale"/>
+    <property name="speedX" value="6"/>
+    <property name="speedY" value="6"/>
+    <property name="spriteheight" value="256"/>
+    <property name="spritewidth" value="128"/>
+   </properties>
+  </object>
+  <object name="itemObject" x="654" y="387" width="47" height="51">
+   <properties>
+    <property name="image" value="flappie"/>
+    <property name="spriteheight" value="59"/>
+    <property name="spritewidth" value="85"/>
+   </properties>
+  </object>
+  <object name="LevelSwitch" x="1212" y="513" width="67" height="189">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="duration" value="500"/>
+    <property name="fade" value="FFFFFF"/>
+    <property name="location" value="spawnpoint"/>
+    <property name="to" value="grandhall"/>
+   </properties>
+  </object>
+  <object name="spawnpoint" x="974" y="379" width="35" height="38">
+   <properties>
+    <property name="from" value="grandhall"/>
+   </properties>
+  </object>
+  <object name="QuestNPC" x="329" y="671" width="47" height="51">
+   <properties>
+    <property name="image" value="characterFemale"/>
+    <property name="requires" value="flappie"/>
+    <property name="spriteheight" value="256"/>
+    <property name="spritewidth" value="128"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
