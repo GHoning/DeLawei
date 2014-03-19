@@ -1,9 +1,9 @@
 /**
- *  Player by Gerard soon to be replace by awesome!
+ *  PlayerObject used to control the player
  */
 game.playerObject = me.ObjectEntity.extend({
 		init : function (x, y, settings) {
-			//wtf?
+			//wtf? 
 			this.parent(x, y, settings);
 			//tiled?
 			this.settings = settings;
