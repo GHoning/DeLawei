@@ -46,6 +46,18 @@ game.resources = [
 		name : "gameButton",
 		type : "image",
 		src : "data/img/button/btn_toGame.png"
+	}, {
+		name : "playButton",
+		type : "image",
+		src : "data/img/button/btn_toPlay.png"
+	}, {
+		name : "creditsButton",
+		type : "image",
+		src : "data/img/button/btn_toCredits.png"
+	}, {
+		name : "menuButton",
+		type : "image",
+		src : "data/img/button/btn_toMenu.png"
 	},
 
 	/*
@@ -63,6 +75,10 @@ game.resources = [
 		name : "EndScreen",
 		type : "image",
 		src : "data/img/backgrounds/TheaterFlappieBird.png"
+	}, {
+		name : "credits",
+		type : "image",
+		src : "data/img/backgrounds/credits.png"
 	},
 	
 	/*

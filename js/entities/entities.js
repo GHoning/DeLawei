@@ -1,42 +1,4 @@
 /**
- *  Player by Gerard soon to be replace by awesome!
- */
-/*game.playerObject = me.ObjectEntity.extend({
-		init : function (x, y, settings) {
-			this.parent(x, y, settings);
-			this.settings = settings;
-			me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
-			this.setVelocity(settings.speed, settings.speed);
-			this.setFriction(3, 3);
-			this.gravity = false;
-			this.updateColRect(128 - 114, 100, 256 - 50, 50);
-			this.type = me.game.PLAYER;
-		},
-
-		update : function () {
-			if (me.input.isKeyPressed("Up")) {
-				this.vel.y -= this.accel.y * me.timer.tick;
-			}
-
-			if (me.input.isKeyPressed("Left")) {
-				this.vel.x -= this.accel.x * me.timer.tick;
-			}
-
-			if (me.input.isKeyPressed("Down")) {
-				this.vel.y += this.accel.y * me.timer.tick;
-			}
-
-			if (me.input.isKeyPressed("Right")) {
-				this.vel.x += this.accel.x * me.timer.tick;
-			}
-
-			this.updateMovement();
-			this.parent();
-			return true;
-		}
-	});*/
-
-/**
  *  ItemObject. Specifics are filled in using tiled.
  */
 game.itemObject = me.ObjectEntity.extend({

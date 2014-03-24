@@ -1,16 +1,82 @@
 game.TitleScreen = me.ScreenObject.extend({
-	/**	
-	 *  action to perform on state change
-	 */
-	onResetEvent: function() {	
-		; // TODO
+
+	init: function() {
+		this.parent(true);
 	},
 	
+	onResetEvent: function() {
+		this.alwaysUpdate = true;
+		me.input.bindKey(me.input.KEY.ENTER, "enter");
+		me.game.add(new game.TitleScreen.playButton(100, 100, {image: "playButton", spritewidth: 100,spriteheight: 100}));
+		me.game.add(new game.TitleScreen.creditButton(100, 200, {imgage: "creditButton", spritewidth: 100,spriteheight: 100}));
+		
+	},
 	
-	/**	
-	 *  action to perform when leaving this screen (state change)
-	 */
+	update: function() {
+		
+		return true;
+	},
+	
 	onDestroyEvent: function() {
-		; // TODO
+		
+	},
+	
+	draw: function() {
+		
+	}
+	
+});
+
+game.TitleScreen.playButton = me.ObjectEntity.extend({
+		init : function (x, y, settings) {
+			this.parent(x, y, settings);
+			this.keyLock = true;
+			this.floating = true;
+			this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("playButton"), 256, 128);
+		},
+
+		update : function () {
+			
+			if (this.containsPoint(me.input.mouse.pos.x, me.input.mouse.pos.y) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
+				this.keyLock = true;
+				me.state.change(me.state.PLAY);
+			}
+
+			if (!me.input.isKeyPressed("mouse/touch")) {
+				this.keyLock = false;
+			}
+			
+			return true;
+		},
+
+		draw : function (context) {
+			this.imgButton.draw(context);
+		}
+	});
+	
+game.TitleScreen.creditButton = me.ObjectEntity.extend({
+	init : function (x, y, settings) {
+		this.parent(x, y, settings);
+		this.keyLock = true;
+		this.floating = true;
+		this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("creditsButton"), 256, 128);
+	},
+
+	update : function () {
+			
+		if (this.containsPoint(me.input.mouse.pos.x, me.input.mouse.pos.y) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
+			this.keyLock = true;
+			me.state.change(me.state.CREDITS);
+		}
+
+		if (!me.input.isKeyPressed("mouse/touch")) {
+			this.keyLock = false;
+		}
+			
+		return true;
+	},
+
+	draw : function (context) {
+		this.imgButton.draw(context);
 	}
 });

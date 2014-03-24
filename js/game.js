@@ -34,6 +34,7 @@ var game = {
 		
 		me.state.set(me.state.MENU, new game.TitleScreen());
 		me.state.set(me.state.USER, new game.EndScreen());
+		me.state.set(me.state.CREDITS, new game.CreditsScreen());
 
 		me.entityPool.add("playerObject", game.playerObject);
 		me.entityPool.add("itemObject", game.itemObject);
@@ -56,6 +57,6 @@ var game = {
 		me.input.bindKey(me.input.KEY.X, "mouse/touch");
 		me.input.bindTouch(me.input.KEY.X);
 
-		me.state.change(me.state.PLAY);
+		me.state.change(me.state.MENU);
 	}
 };
