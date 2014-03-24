@@ -7,8 +7,8 @@ game.TitleScreen = me.ScreenObject.extend({
 	onResetEvent: function() {
 		this.alwaysUpdate = true;
 		me.input.bindKey(me.input.KEY.ENTER, "enter");
-		me.game.add(new game.TitleScreen.playButton(100, 100, {image: "playButton", spritewidth: 100,spriteheight: 100}));
-		me.game.add(new game.TitleScreen.creditButton(100, 200, {imgage: "creditButton", spritewidth: 100,spriteheight: 100}));
+		me.game.add(new game.TitleScreen.playButton(100, 100, {image: "playButton", spritewidth: 415,spriteheight: 185}));
+		me.game.add(new game.TitleScreen.creditButton(100, 515, {imgage: "creditButton", spritewidth: 415,spriteheight: 185}));
 		
 	},
 	
@@ -32,7 +32,7 @@ game.TitleScreen.playButton = me.ObjectEntity.extend({
 			this.parent(x, y, settings);
 			this.keyLock = true;
 			this.floating = true;
-			this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("playButton"), 256, 128);
+			this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("playButton"), 415, 185);
 		},
 
 		update : function () {
@@ -59,7 +59,7 @@ game.TitleScreen.creditButton = me.ObjectEntity.extend({
 		this.parent(x, y, settings);
 		this.keyLock = true;
 		this.floating = true;
-		this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("creditsButton"), 256, 128);
+		this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("creditsButton"), 415, 185);
 	},
 
 	update : function () {

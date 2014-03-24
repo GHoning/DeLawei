@@ -29,14 +29,14 @@ game.CreditsScreen.menuButton = me.ObjectEntity.extend({
 		this.parent(x, y, settings);
 		this.keyLock = true;
 		this.floating = true;
-		this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("menuButton"), 1024, 768);
+		this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("menuButton"), 580, 197);
 	},
 
 	update : function () {
 			
 		if (this.containsPoint(me.input.mouse.pos.x, me.input.mouse.pos.y) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
 			this.keyLock = true;
-			me.state.change(me.state.CREDITS);
+			me.state.change(me.state.MENU);
 		}
 
 		if (!me.input.isKeyPressed("mouse/touch")) {
