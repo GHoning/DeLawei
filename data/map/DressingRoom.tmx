@@ -61,6 +61,7 @@
   <object name="QuestNPC" x="329" y="671" width="47" height="51">
    <properties>
     <property name="image" value="characterFemale"/>
+    <property name="questname" value="To Flap or not to Flap"/>
     <property name="requires" value="flappie"/>
     <property name="spriteheight" value="256"/>
     <property name="spritewidth" value="128"/>

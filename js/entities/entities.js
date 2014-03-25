@@ -40,15 +40,33 @@ game.QuestNPCObject = me.ObjectEntity.extend({
 			this.settings = settings;
 			this.requires = settings.requires;
 			this.image = settings.image;
+			this.questName = settings.questname;
 			this.setVelocity(6, 6);
 			this.setFriction(3, 3);
 			this.gravity = false;
 			this.keyLock = false;
+			
+			this.questReaction;
+			this.addQuestReaction("!");
 		},
 
 		update : function () {
 			this.updateMovement();
-			this.parent
+			this.parent();
+			/*
+				Most disgusting piece of crap ever written by mankind...
+			*/
+			if(game.data.currentQuestState == "accept") {
+				this.questReaction.change("!");
+			} 
+			
+			if(game.data.currentQuestState == "accepted") {
+				this.questReaction.change("?");
+			}
+			
+			if(game.data.currentQuestState == "done") {
+				this.questReaction.change("$");
+			}
 
 			var res = me.game.collide(this);
 
@@ -56,14 +74,13 @@ game.QuestNPCObject = me.ObjectEntity.extend({
 				if (res.obj.type == me.game.PLAYER) {
 					if (me.input.isKeyPressed("Use") && !this.keyLock) {
 						if(game.data.inventory[0] != this.requires) {
-							console.log("I WANT! " + this.requires);
 							game.data.drawText = "I WOULD LIKE A " + this.requires.toUpperCase() + "\n ,PLEASE?";
-							game.play.HUD.addTextfield();
 							game.data.questItems.push(this.requires);
+							game.data.quests.push(this.questName);
+							game.data.currentQuestState = "accepted";
 						} else {
-							console.log("Thanks for " + this.requires);
 							game.data.drawText = "THANKS FOR " + this.requires.toUpperCase();
-							game.play.HUD.addTextfield();
+							game.data.currentQuestState = "done";
 						}
 						this.keyLock = true;
 					}
@@ -75,6 +92,11 @@ game.QuestNPCObject = me.ObjectEntity.extend({
 			}
 
 			return true;
+		},
+		
+		addQuestReaction : function (txt) {
+			this.questReaction = new game.HUD.Questfield(this.pos.x + 96 , this.pos.y - 32 , txt);
+			me.game.add(this.questReaction, 1002);
 		}
 	});
 

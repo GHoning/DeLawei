@@ -4,13 +4,14 @@
 game.PlayScreen = me.ScreenObject.extend({
 		
 		onResetEvent : function () {
-			me.levelDirector.loadLevel("grandhall");
+			me.levelDirector.loadLevel(game.data.currentLevel);
 			game.data.score = 0;
 			this.HUD;
 			this.Inventory;
 			this.addHUD();
 			this.checkQuestItems();
 			this.checkItems();
+			this.placePlayer(game.data.playerPosX, game.data.playerPosY);
 		},
 		
 		addInventory : function () {
@@ -21,6 +22,12 @@ game.PlayScreen = me.ScreenObject.extend({
 		addHUD :  function () {
 			this.HUD = new game.HUD.Container();
 			me.game.add(this.HUD);
+		},
+		
+		placePlayer : function (x, y) {
+			var player = me.game.getEntityByName("playerObject");
+			player[0].pos.x = x;
+			player[0].pos.y = y;
 		},
 		
 		checkItems : function () {
@@ -38,11 +45,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		checkQuestItems : function () {
 			var itemInArea = me.game.getEntityByName("itemObject");
 			
-			console.log("itemInArea " + itemInArea[0].image);
-			console.log("questItems " + game.data.questItems);
-			
 			for (i = 0; i < itemInArea.length; i++) {
-				console.log("1");
 				if(itemInArea[0].image != game.data.questItems[i]) {
 					me.game.remove(itemInArea[i]);
 				}
@@ -66,17 +69,9 @@ game.PlayScreen = me.ScreenObject.extend({
 			for (var i = 0; i < spawnList.length; i++) {
 				spawn = spawnList[i];
 				if (spawn.from == previousLevel) {
-					player[0].pos.x = spawn.pos.x;
-					player[0].pos.y = spawn.pos.y;
+					this.placePlayer(spawn.pos.x, spawn.pos.y);
 				}
 			}
-
-			//face player the right way
-			/*if (settings.direction == "left") {
-			player[0].flipX(true);
-			} else {
-			player[0].flipX(false);
-			}*/
 
 			me.game.viewport.fadeOut(settings.fade, settings.duration);
 

@@ -7,7 +7,12 @@ var game = {
 		score : 0,
 		inventory : [],
 		questItems : [],
-		drawText : ""//Temporary for arbitrary bullshit MOB.
+		drawText : "",//Temporary for arbitrary bullshit MOB
+		currentLevel: "GrandHall", //set Starting Level
+		playerPosX: 600, //player Start Location
+		playerPosY: 600,
+		quests : [],
+		currentQuestState : "accept" //very dirty fix
 	},
 
 	"onload" : function () {
@@ -36,6 +41,7 @@ var game = {
 		me.state.set(me.state.USER, new game.EndScreen());
 		me.state.set(me.state.CREDITS, new game.CreditsScreen());
 		me.state.set(me.state.INSTRUCTIONS, new game.InstructionsScreen());
+		me.state.set(me.state.QUESTS, new game.Questlog());
 
 		me.entityPool.add("playerObject", game.playerObject);
 		me.entityPool.add("itemObject", game.itemObject);
