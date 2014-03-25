@@ -35,6 +35,7 @@ var game = {
 		me.state.set(me.state.MENU, new game.TitleScreen());
 		me.state.set(me.state.USER, new game.EndScreen());
 		me.state.set(me.state.CREDITS, new game.CreditsScreen());
+		me.state.set(me.state.INSTRUCTIONS, new game.InstructionsScreen());
 
 		me.entityPool.add("playerObject", game.playerObject);
 		me.entityPool.add("itemObject", game.itemObject);

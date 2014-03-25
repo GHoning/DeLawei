@@ -58,6 +58,10 @@ game.resources = [
 		name : "menuButton",
 		type : "image",
 		src : "data/img/button/btn_toMenu.png"
+	}, {
+		name : "instructionsButton",
+		type : "image",
+		src : "data/img/button/btn_toInstructions.png"
 	},
 
 	/*
