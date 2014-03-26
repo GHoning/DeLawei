@@ -20,11 +20,20 @@ game.resources = [
 		name : "pipe1",
 		type : "image",
 		src : "data/img/sprite/Pipe1.png"
-	}, {	
+	}, {
+		// Tilesets
 		name : "metatiles64x64",
 		type : "image",
 		src : "data/img/tileset/metatiles64x64.png"
 	}, {
+		name : "Tileset1",
+		type : "image",
+		src : "data/img/tileset/Tileset1.png"
+	},{
+		name : "Tileset2",
+		type : "image",
+		src : "data/img/tileset/Tileset2.png"
+	},{
 		name : "inventorySlot",
 		type : "image",
 		src : "data/img/sprite/Inventory.png"
@@ -122,6 +131,10 @@ game.resources = [
 		name : "dressingroom",
 		type : "tmx",
 		src : "data/map/DressingRoom.tmx"
+	}, {
+		name : "test",
+		type : "tmx",
+		src : "data/map/Test1.tmx"
 	}
 
 	/* Background music.

@@ -23,19 +23,24 @@ game.playerObject = me.ObjectEntity.extend({
 
 		update : function () {
 			if (me.input.isKeyPressed("Up")) {
+				this.vel.x += this.accel.x * me.timer.tick;
 				this.vel.y -= this.accel.y * me.timer.tick;
 			}
 
 			if (me.input.isKeyPressed("Left")) {
 				this.vel.x -= this.accel.x * me.timer.tick;
+				this.vel.y -= this.accel.y * me.timer.tick;
 			}
 
 			if (me.input.isKeyPressed("Down")) {
+				
+				this.vel.x -= this.accel.x * me.timer.tick;
 				this.vel.y += this.accel.y * me.timer.tick;
 			}
 
 			if (me.input.isKeyPressed("Right")) {
 				this.vel.x += this.accel.x * me.timer.tick;
+				this.vel.y += this.accel.y * me.timer.tick;
 			}
 
 			this.updateMovement();

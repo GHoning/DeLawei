@@ -8,7 +8,7 @@ var game = {
 		inventory : [],
 		questItems : [],
 		drawText : "",//Temporary for arbitrary bullshit MOB
-		currentLevel: "GrandHall", //set Starting Level
+		currentLevel: "test", //set Starting Level
 		playerPosX: 600, //player Start Location
 		playerPosY: 600,
 		quests : [],
@@ -16,7 +16,7 @@ var game = {
 	},
 
 	"onload" : function () {
-		if (!me.video.init("screen", 1024, 768, true, 'auto')) {
+		if (!me.video.init("screen", 1024 *4, 768*4, true, 'auto')) {
 			alert("Your browser does not support HTML5 canvas.");
 			return;
 		}
