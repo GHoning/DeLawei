@@ -9,14 +9,14 @@ var game = {
 		questItems : [],
 		drawText : "",//Temporary for arbitrary bullshit MOB
 		currentLevel: "test", //set Starting Level
-		playerPosX: 600, //player Start Location
-		playerPosY: 600,
+		playerPosX: 5400, //player Start Location
+		playerPosY: 1600,
 		quests : [],
 		currentQuestState : "accept" //very dirty fix
 	},
 
 	"onload" : function () {
-		if (!me.video.init("screen", 1024 *4, 768*4, true, 'auto')) {
+		if (!me.video.init("screen", 1024*2 , 768 *2, true, 'auto')) {
 			alert("Your browser does not support HTML5 canvas.");
 			return;
 		}

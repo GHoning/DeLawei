@@ -19,8 +19,8 @@ game.HUD.Container = me.ObjectContainer.extend({
 		},
 		
 		addButton : function () {
-			this.addChild(new game.HUD.InventoryButton(1024 - 256 , 768 - 128, {spritewidth: 256,spriteheight: 128}));
-			this.addChild(new game.HUD.QuestsButton(1024 - 256 , 768 - 256, {spritewidth: 256,spriteheight: 128}));
+			this.addChild(new game.HUD.InventoryButton(1024*2 - 256 , 768*2 - 128, {spritewidth: 256,spriteheight: 128}));
+			this.addChild(new game.HUD.QuestsButton(1024*2 - 256 , 768*2 - 256, {spritewidth: 256,spriteheight: 128}));
 		},
 		
 		addTextfield : function () {

@@ -22,9 +22,9 @@ game.resources = [
 		src : "data/img/sprite/Pipe1.png"
 	}, {
 		// Tilesets
-		name : "metatiles64x64",
+		name : "metatiles_iso256x256",
 		type : "image",
-		src : "data/img/tileset/metatiles64x64.png"
+		src : "data/img/tileset/metatiles_iso256x256.png"
 	}, {
 		name : "Tileset1",
 		type : "image",
