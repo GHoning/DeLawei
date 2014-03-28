@@ -6,7 +6,7 @@ game.CreditsScreen = me.ScreenObject.extend({
 	
 	onResetEvent: function() {
 		this.alwaysUpdate = true;
-		me.game.add(new game.CreditsScreen.menuButton(100, 100, {imgage: "menuButton", spritewidth: 580,spriteheight: 197}));
+		me.game.add(new game.CreditsScreen.menuButton(100, 100, {imgage: "menuButton", spritewidth: 256,spriteheight: 128}));
 	},
 	
 	update: function() {
@@ -29,7 +29,7 @@ game.CreditsScreen.menuButton = me.ObjectEntity.extend({
 		this.parent(x, y, settings);
 		this.keyLock = true;
 		this.floating = true;
-		this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("menuButton"), 580, 197);
+		this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("menuButton"), 256, 128);
 	},
 
 	update : function () {

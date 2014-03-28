@@ -50,31 +50,31 @@ game.resources = [
 	{
 		name : "inventoryButton",
 		type : "image",
-		src : "data/img/button/btn_toInv.png"
+		src : "data/img/button/ToInventory.png"
 	}, {
 		name : "gameButton",
 		type : "image",
-		src : "data/img/button/btn_toGame.png"
+		src : "data/img/button/ToGame.png"
 	}, {
 		name : "playButton",
 		type : "image",
-		src : "data/img/button/btn_toPlay.png"
+		src : "data/img/button/Start.png"
 	}, {
 		name : "creditsButton",
 		type : "image",
-		src : "data/img/button/btn_toCredits.png"
+		src : "data/img/button/ToCredits.png"
 	}, {
 		name : "menuButton",
 		type : "image",
-		src : "data/img/button/btn_toMenu.png"
+		src : "data/img/button/ToMenu.png"
 	}, {
 		name : "instructionsButton",
 		type : "image",
-		src : "data/img/button/btn_toInstructions.png"
+		src : "data/img/button/ToInstructies.png"
 	}, {
 		name : "questButton",
 		type : "image",
-		src : "data/img/button/btn_toQuests.png"
+		src : "data/img/button/ToQuestlog.png"
 	},
 
 	/*
