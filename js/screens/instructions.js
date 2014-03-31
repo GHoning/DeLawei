@@ -1,27 +1,9 @@
 game.InstructionsScreen = me.ScreenObject.extend({
-
-	init: function() {
-		this.parent(true);
-	},
-	
 	onResetEvent: function() {
 		this.alwaysUpdate = true;
-		me.game.add(new game.InstructionsScreen.menuButton(100, 100, {imgage: "menuButton", spritewidth: 580,spriteheight: 197}));
-	},
-	
-	update: function() {
-		
-		return true;
-	},
-	
-	onDestroyEvent: function() {
-		
-	},
-	
-	draw: function() {
-		
+		//me.game.world is the main container for the game. And the 'add' is replaced by addChild
+		me.game.world.addChild(new game.InstructionsScreen.menuButton(100, 100, {imgage: "menuButton", spritewidth: 580,spriteheight: 197}));
 	}
-	
 });
 
 game.InstructionsScreen.menuButton = me.ObjectEntity.extend({
@@ -30,11 +12,14 @@ game.InstructionsScreen.menuButton = me.ObjectEntity.extend({
 		this.keyLock = true;
 		this.floating = true;
 		this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("menuButton"), 580, 197);
+		//add Shape in MelonJS 1.0.0 for the collision box
+		this.rect = new me.Rect(this.pos, 580, 197);
+		this.addShape(this.rect);
 	},
 
 	update : function () {
 			
-		if (this.containsPoint(me.input.mouse.pos.x, me.input.mouse.pos.y) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
+		if (this.getShape().containsPointV(me.input.mouse.pos) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
 			this.keyLock = true;
 			me.state.change(me.state.MENU);
 		}

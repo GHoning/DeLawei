@@ -15,7 +15,7 @@ game.HUD.Container = me.ObjectContainer.extend({
 		},
 		
 		remove :  function () {
-			me.game.remove(this);
+			me.game.world.removeChild(this);
 		},
 		
 		addButton : function () {
@@ -37,17 +37,20 @@ game.HUD.InventoryButton = me.ObjectEntity.extend({
 			this.keyLock = true;
 			this.floating = true;
 			this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("inventoryButton"), 256, 128);
+			//add Shape in MelonJS 1.0.0 for the collision box
+			this.rect = new me.Rect(this.pos, 256, 128);
+			this.addShape(this.rect);
 		},
 
 		update : function () {
 			this.imgButton.setAnimationFrame(0);
 			
-			if (this.containsPoint(me.input.mouse.pos.x, me.input.mouse.pos.y) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
+			if (this.getShape().containsPointV(me.input.mouse.pos) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
 				this.keyLock = true;
 				
 				game.play.HUD.remove();
 				game.play.addInventory();
-				me.game.remove(this);
+				me.game.world.removeChild(this);
 			}
 
 			if (!me.input.isKeyPressed("mouse/touch")) {
@@ -71,15 +74,18 @@ game.HUD.QuestsButton = me.ObjectEntity.extend({
 			this.keyLock = true;
 			this.floating = true;
 			this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("questButton"), 256, 128);
+			//add Shape in MelonJS 1.0.0 for the collision box
+			this.rect = new me.Rect(this.pos, 256, 128);
+			this.addShape(this.rect);
 		},
 
 		update : function () {
 			this.imgButton.setAnimationFrame(0);
 			
-			if (this.containsPoint(me.input.mouse.pos.x, me.input.mouse.pos.y) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
+			if (this.getShape().containsPointV(me.input.mouse.pos) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
 				this.keyLock = true;
 				game.data.currentLevel = me.levelDirector.getCurrentLevelId();
-				var player = me.game.getEntityByName("playerObject");
+				var player = me.game.world.getChildByName("playerObject");
 				game.data.playerPosX = player[0].pos.x;
 				game.data.playerPosY = player[0].pos.y;
 				me.state.change(me.state.QUESTS);

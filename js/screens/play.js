@@ -16,22 +16,22 @@ game.PlayScreen = me.ScreenObject.extend({
 		
 		addInventory : function () {
 			this.Inventory = new game.Inventory.Container();
-			me.game.add(this.Inventory);
+			me.game.world.addChild(this.Inventory);
 		},
 		
 		addHUD :  function () {
 			this.HUD = new game.HUD.Container();
-			me.game.add(this.HUD);
+			me.game.world.addChild(this.HUD);
 		},
 		
 		placePlayer : function (x, y) {
-			var player = me.game.getEntityByName("playerObject");
+			var player = me.game.world.getChildByName("playerObject");
 			player[0].pos.x = x;
 			player[0].pos.y = y;
 		},
 		
 		checkItems : function () {
-			var itemInArea = me.game.getEntityByName("itemObject");
+			var itemInArea = me.game.world.getChildByName("itemObject");
 			
 			for (i = 0; i < game.data.inventory.length; i++) {
 				if(itemInArea.length > 0){
@@ -43,7 +43,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		},
 		
 		checkQuestItems : function () {
-			var itemInArea = me.game.getEntityByName("itemObject");
+			var itemInArea = me.game.world.getChildByName("itemObject");
 			
 			for (i = 0; i < itemInArea.length; i++) {
 				if(itemInArea[0].image != game.data.questItems[i]) {
@@ -53,7 +53,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		},
 		
 		onDestroyEvent : function () {
-			me.game.world.removeChild(me.game.world.getEntityByProp("name", "HUD")[0]);
+			me.game.world.removeChild(me.game.world.getChildByName("HUD")[0]);
 		},
 
 		loadLevel : function (settings) {

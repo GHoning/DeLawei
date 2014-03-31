@@ -15,8 +15,8 @@ game.playerObject = me.ObjectEntity.extend({
 			this.setFriction(settings.friction, settings.friction);
 			//turn gravity off
 			this.gravity = false;
-			//sladoos
-			this.updateColRect(128 - 114, 100, 256 - 50, 50);
+			//collisionbox
+			
 			//tag as player
 			this.type = me.game.PLAYER;
 		},

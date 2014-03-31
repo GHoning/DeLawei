@@ -38,16 +38,19 @@ var game = {
 		me.state.set(me.state.PLAY, game.play);
 		
 		me.state.set(me.state.MENU, new game.TitleScreen());
-		me.state.set(me.state.USER, new game.EndScreen());
 		me.state.set(me.state.CREDITS, new game.CreditsScreen());
 		me.state.set(me.state.INSTRUCTIONS, new game.InstructionsScreen());
 		me.state.set(me.state.QUESTS, new game.Questlog());
+		
+		
+		me.pool.register("playerObject", game.playerObject);
+		me.pool.register("itemObject", game.itemObject);
 
-		me.entityPool.add("playerObject", game.playerObject);
+		/*me.entityPool.add("playerObject", game.playerObject);
 		me.entityPool.add("itemObject", game.itemObject);
 		me.entityPool.add("QuestNPC", game.QuestNPCObject);
 		me.entityPool.add("spawnpoint", game.Spawnpoint);
-		me.entityPool.add("LevelSwitch", game.LevelSwitch);
+		me.entityPool.add("LevelSwitch", game.LevelSwitch);*/
 
 		me.input.bindKey(me.input.KEY.W, "Up");
 		me.input.bindKey(me.input.KEY.A, "Left");
@@ -62,7 +65,7 @@ var game = {
 		me.input.bindKey(me.input.KEY.E, "Use");
 		
 		me.input.bindKey(me.input.KEY.X, "mouse/touch");
-		me.input.bindTouch(me.input.KEY.X);
+		me.input.bindPointer(me.input.KEY.X);
 
 		me.state.change(me.state.MENU);
 	}
