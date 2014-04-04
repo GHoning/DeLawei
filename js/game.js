@@ -45,12 +45,10 @@ var game = {
 		
 		me.pool.register("playerObject", game.playerObject);
 		me.pool.register("itemObject", game.itemObject);
-
-		/*me.entityPool.add("playerObject", game.playerObject);
-		me.entityPool.add("itemObject", game.itemObject);
-		me.entityPool.add("QuestNPC", game.QuestNPCObject);
-		me.entityPool.add("spawnpoint", game.Spawnpoint);
-		me.entityPool.add("LevelSwitch", game.LevelSwitch);*/
+		me.pool.register("wall", game.Wall);
+		me.pool.register("QuestNPC", game.QuestNPCObject);
+		me.pool.register("spawnpoint", game.Spawnpoint);
+		me.pool.register("LevelSwitch", game.LevelSwitch);
 
 		me.input.bindKey(me.input.KEY.W, "Up");
 		me.input.bindKey(me.input.KEY.A, "Left");

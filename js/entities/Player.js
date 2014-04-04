@@ -18,7 +18,7 @@ game.playerObject = me.ObjectEntity.extend({
 			//collisionbox
 			
 			//tag as player
-			this.type = me.game.PLAYER;
+			this.type = me.game.world.PLAYER;
 		},
 
 		update : function () {

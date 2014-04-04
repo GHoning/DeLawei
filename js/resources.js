@@ -89,10 +89,6 @@ game.resources = [
 		type : "image",
 		src : "data/img/backgrounds/Grandhall.png"
 	}, {
-		name : "EndScreen",
-		type : "image",
-		src : "data/img/backgrounds/TheaterFlappieBird.png"
-	}, {
 		name : "credits",
 		type : "image",
 		src : "data/img/backgrounds/credits.png"
