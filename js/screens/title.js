@@ -3,8 +3,9 @@ game.TitleScreen = me.ScreenObject.extend({
 		this.alwaysUpdate = true;
 		//me.game.world is the main container for the game. And the 'add' is replaced by addChild
 		me.game.world.addChild(new game.TitleScreen.playButton(100, 100, {image: "playButton", spritewidth: 256,spriteheight: 128}));
-		me.game.world.addChild(new game.TitleScreen.creditButton(100, 515, {imgage: "creditButton", spritewidth: 256,spriteheight: 128}));
-		me.game.world.addChild(new game.TitleScreen.instructionsButton(515, 100, {imgage: "InstructionsButton", spritewidth: 256,spriteheight: 128}));
+		me.game.world.addChild(new game.TitleScreen.creditButton(100, 515, {image: "creditsButton", spritewidth: 256,spriteheight: 128}));
+		me.game.world.addChild(new game.TitleScreen.instructionsButton(515, 100, {image: "instructionsButton", spritewidth: 256,spriteheight: 128}));
+		
 	}
 });
 
@@ -83,7 +84,7 @@ game.TitleScreen.instructionsButton = me.ObjectEntity.extend({
 			
 		if (this.getShape().containsPointV(me.input.mouse.pos) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
 			this.keyLock = true;
-			me.state.change(me.state.INSTRUCTIONS);
+			me.state.change(me.state.SETTINGS);
 		}
 
 		if (!me.input.isKeyPressed("mouse/touch")) {

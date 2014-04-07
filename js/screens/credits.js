@@ -2,14 +2,14 @@ game.CreditsScreen = me.ScreenObject.extend({
 	onResetEvent: function() {
 		this.alwaysUpdate = true;
 		//me.game.world is the main container for the game. And the 'add' is replaced by addChild
-		me.game.world.addChild(new game.CreditsScreen.menuButton(100, 100, {imgage: "menuButton", spritewidth: 256,spriteheight: 128}));
+		me.game.world.addChild(new game.CreditsScreen.menuButton(100, 100, {image: "menuButton", spritewidth: 256,spriteheight: 128}));
 	}
 });
 
 game.CreditsScreen.menuButton = me.ObjectEntity.extend({
 	init : function (x, y, settings) {
 		this.parent(x, y, settings);
-		this.keyLock = true;
+		this.keyLock = false;
 		this.floating = true;
 		this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("menuButton"), 256, 128);
 		//add Shape in MelonJS 1.0.0 for the collision box

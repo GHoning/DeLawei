@@ -5,6 +5,7 @@ game.Questlog = me.ScreenObject.extend({
 		
 		onResetEvent : function () {
 			me.game.world.addChild(new game.Questlog.gameButton(1024 - 256 , 768 - 128, {spritewidth: 256,spriteheight: 128}));
+			console.log(1);
 			//place DisplayQuests foreach quest in game.data.quests
 			for (var i = 0; i < game.data.quests.length; i++) {
 				me.game.world.addChild(new game.Questlog.DisplayQuest(960 , 64 * i, game.data.quests[0].toUpperCase() + "\n"));
@@ -19,7 +20,7 @@ game.Questlog.gameButton = me.ObjectEntity.extend({
 			this.floating = true;
 			this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("gameButton"), 256, 128);
 			//add Shape in MelonJS 1.0.0 for the collision box
-			this.rect = new me.Rect(this.pos, 580, 197);
+			this.rect = new me.Rect(this.pos, 256, 128);
 			this.addShape(this.rect);
 		},
 

@@ -14,6 +14,8 @@ var game = {
 		quests : [],
 		currentQuestState : "accept" //very dirty fix
 	},
+	
+	
 
 	"onload" : function () {
 		if (!me.video.init("screen", 1024*2 , 768 *2, true, 'auto')) {
@@ -32,6 +34,8 @@ var game = {
 		me.loader.preload(game.resources);
 		me.state.change(me.state.LOADING);
 	},
+	
+	
 
 	"loaded" : function () {
 		game.play = new game.PlayScreen(true, true);
@@ -39,8 +43,8 @@ var game = {
 		
 		me.state.set(me.state.MENU, new game.TitleScreen());
 		me.state.set(me.state.CREDITS, new game.CreditsScreen());
-		me.state.set(me.state.INSTRUCTIONS, new game.InstructionsScreen());
-		me.state.set(me.state.QUESTS, new game.Questlog());
+		me.state.set(me.state.SETTINGS, new game.InstructionsScreen());
+		me.state.set(me.state.USER, new game.Questlog());
 		
 		
 		me.pool.register("playerObject", game.playerObject);

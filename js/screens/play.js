@@ -12,6 +12,7 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.checkQuestItems();
 			this.checkItems();
 			this.placePlayer(game.data.playerPosX, game.data.playerPosY);
+			
 		},
 		
 		addInventory : function () {

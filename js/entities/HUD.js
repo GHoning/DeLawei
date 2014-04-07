@@ -88,7 +88,7 @@ game.HUD.QuestsButton = me.ObjectEntity.extend({
 				var player = me.game.world.getChildByName("playerObject");
 				game.data.playerPosX = player[0].pos.x;
 				game.data.playerPosY = player[0].pos.y;
-				me.state.change(me.state.QUESTS);
+				me.state.change(me.state.USER);
 			}
 
 			if (!me.input.isKeyPressed("mouse/touch")) {
