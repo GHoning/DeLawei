@@ -45,6 +45,8 @@ var game = {
 		me.state.set(me.state.CREDITS, new game.CreditsScreen());
 		me.state.set(me.state.SETTINGS, new game.InstructionsScreen());
 		me.state.set(me.state.USER, new game.Questlog());
+		game.speech = new game.SpeechScreen(true, true);
+		me.state.set(me.state.READY, game.speech);
 		
 		
 		me.pool.register("playerObject", game.playerObject);
@@ -69,6 +71,6 @@ var game = {
 		me.input.bindKey(me.input.KEY.X, "mouse/touch");
 		me.input.bindPointer(me.input.KEY.X);
 
-		me.state.change(me.state.MENU);
+		me.state.change(me.state.READY);
 	}
 };

@@ -75,6 +75,10 @@ game.resources = [
 		name : "questButton",
 		type : "image",
 		src : "data/img/button/ToQuestlog.png"
+	}, {
+		name : "nextButton",
+		type : "image",
+		src : "data/img/button/btn_toNexttext.png"
 	},
 
 	/*
@@ -92,6 +96,18 @@ game.resources = [
 		name : "credits",
 		type : "image",
 		src : "data/img/backgrounds/credits.png"
+	}, {
+		name : "maincharacter",
+		type : "image",
+		src : "data/img/backgrounds/maincharacter.png"
+	}, {
+		name : "speechcharacter",
+		type : "image",
+		src : "data/img/backgrounds/speechcharacter.png"
+	}, {
+		name : "textbackground",
+		type : "image",
+		src : "data/img/backgrounds/textbackground.png"
 	},
 	
 	/*
