@@ -5,7 +5,6 @@ game.Questlog = me.ScreenObject.extend({
 		
 		onResetEvent : function () {
 			me.game.world.addChild(new game.Questlog.gameButton(1024 - 256 , 768 - 128, {spritewidth: 256,spriteheight: 128}));
-			console.log(1);
 			//place DisplayQuests foreach quest in game.data.quests
 			for (var i = 0; i < game.data.quests.length; i++) {
 				me.game.world.addChild(new game.Questlog.DisplayQuest(960 , 64 * i, game.data.quests[0].toUpperCase() + "\n"));

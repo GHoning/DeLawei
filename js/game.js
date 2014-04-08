@@ -71,6 +71,6 @@ var game = {
 		me.input.bindKey(me.input.KEY.X, "mouse/touch");
 		me.input.bindPointer(me.input.KEY.X);
 
-		me.state.change(me.state.READY);
+		me.state.change(me.state.MENU);
 	}
 };
