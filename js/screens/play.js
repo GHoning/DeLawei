@@ -11,8 +11,7 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.addHUD();
 			this.checkQuestItems();
 			this.checkItems();
-			this.placePlayer(game.data.playerPosX, game.data.playerPosY);
-			
+			this.placePlayer(game.data.playerPos);
 		},
 		
 		addInventory : function () {
@@ -25,10 +24,10 @@ game.PlayScreen = me.ScreenObject.extend({
 			me.game.world.addChild(this.HUD);
 		},
 		
-		placePlayer : function (x, y) {
+		placePlayer : function (pos) {
 			var player = me.game.world.getChildByName("playerObject");
-			player[0].pos.x = x;
-			player[0].pos.y = y;
+			player[0].pos.x = pos.x;
+			player[0].pos.y = pos.y;
 		},
 		
 		checkItems : function () {
@@ -54,6 +53,8 @@ game.PlayScreen = me.ScreenObject.extend({
 		},
 		
 		onDestroyEvent : function () {
+			var player = me.game.world.getChildByName("playerObject");
+			game.data.playerPos = new me.Vector2d(player[0].pos.x, player[0].pos.y);
 			me.game.world.removeChild(me.game.world.getChildByName("HUD")[0]);
 		},
 
