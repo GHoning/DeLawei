@@ -9,8 +9,7 @@ var game = {
 		questItems : [],
 		drawText : "",//Temporary for arbitrary bullshit MOB
 		currentLevel: "test", //set Starting Level
-		playerPosX: 5400, //player Start Location
-		playerPosY: 1600,
+		playerPos: new me.Vector2d(5400, 1600),//player Start Location
 		quests : [],
 		currentQuestState : "accept" //very dirty fix
 	},
@@ -67,10 +66,11 @@ var game = {
 		me.input.bindKey(me.input.KEY.RIGHT, "Right");
 
 		me.input.bindKey(me.input.KEY.E, "Use");
+		me.input.bindKey(me.input.KEY.T, "Talk");//Tijdelijke toest om te babbelen met je slachtoffer. "E" toets is waarschijnlijk logischer.
 		
 		me.input.bindKey(me.input.KEY.X, "mouse/touch");
 		me.input.bindPointer(me.input.KEY.X);
 
-		me.state.change(me.state.MENU);
+		me.state.change(me.state.READY);
 	}
 };
