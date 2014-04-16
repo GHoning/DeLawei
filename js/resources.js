@@ -5,6 +5,10 @@ game.resources = [
 	 * {name: "example", type:"image", src: "data/img/example.png"},
 	 */
 	{
+		name : "alex",
+		type : "image",
+		src : "data/img/sprite/AlexAnimationSheet.png"
+	}, {
 		name : "characterMale",
 		type : "image",
 		src : "data/img/sprite/CharacterMale.png"
@@ -41,6 +45,11 @@ game.resources = [
 		name : "font",
 		type : "image",
 		src : "data/img/sprite/32x32_font.png"
+	}, //tilesettests :D 
+	{
+		name : "GridTile",
+		type : "image",
+		src : "data/img/tileset/GridTile.png"
 	},
 	
 	/*	Buttons.

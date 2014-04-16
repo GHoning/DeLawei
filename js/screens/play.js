@@ -12,6 +12,11 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.checkQuestItems();
 			this.checkItems();
 			this.placePlayer(game.data.playerPos);
+			this.collisionMap = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData;
+			console.log(me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER));
+			console.log("mapWidth = " + me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).rows * me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).tilewidth);
+			console.log("mapHeight = " + me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).cols * me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).tileheight);
+			this.placePlayer(new me.Vector2d((me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).rows * me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).tilewidth/2 -64),-128));
 		},
 		
 		addInventory : function () {
