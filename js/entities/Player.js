@@ -3,15 +3,13 @@ game.playerObject = me.ObjectEntity.extend({
 			this.parent(x, y, settings);
 			this.settings = settings;
 			me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
-			this.setVelocity(settings.speedX, settings.speedY);
-			this.setFriction(settings.friction, settings.friction);
+			this.setMaxVelocity(256, 128);
+			this.setFriction(0, 0);
 			this.gravity = false;
 			this.alwaysUpdate = true;
 			
 			this.type = me.game.world.PLAYER;
 			
-			
-			//set collisionBox
 			this.shapes[0].height = 64;
 			this.shapes[0].width = 128;
 			this.shapes[0].pos = new me.Vector2d(32,256-64);
@@ -24,10 +22,10 @@ game.playerObject = me.ObjectEntity.extend({
 			this.keylock = false;
 			
 			this.renderable = new me.AnimationSheet(0, 0, me.loader.getImage("alex"), 128, 256);
-			this.renderable.addAnimation("downLeft",[0,1,2,3]);
-			this.renderable.addAnimation("downRight",[4,5,6,7]);
-			this.renderable.addAnimation("upRight",[8,9,10,11]);
-			this.renderable.addAnimation("upLeft",[12,13,14,15]);
+			this.renderable.addAnimation("downLeft",[0,1,2,3],60);
+			this.renderable.addAnimation("downRight",[4,5,6,7],60);
+			this.renderable.addAnimation("upRight",[8,9,10,11],60);
+			this.renderable.addAnimation("upLeft",[12,13,14,15],60);
 		},
 		
 		update : function () {
@@ -69,6 +67,8 @@ game.playerObject = me.ObjectEntity.extend({
 					this.renderable.setCurrentAnimation("downLeft");
 					this.pos.x -= 128;
 					this.pos.y += 64;
+					//this.vel.x -= this.accel.x * me.timer.tick;
+					//this.vel.y += this.accel.y * me.timer.tick;
 					this.mapPos.y += 1;
 				}
 			
@@ -93,6 +93,11 @@ game.playerObject = me.ObjectEntity.extend({
 			if(!me.input.isKeyPressed("Down")&&!me.input.isKeyPressed("Right")&&!me.input.isKeyPressed("Left")&&!me.input.isKeyPressed("Up")){
 				this.keylock = false;
 			}
+			
+			/*if(this.vel.x && this.vel.y) {
+				this.keylock = false;
+			}*/
+			
 
 			this.updateMovement();
 			this.parent();

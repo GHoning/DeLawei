@@ -12,6 +12,7 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.checkQuestItems();
 			this.checkItems();
 			this.placePlayer(game.data.playerPos);
+			me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).alpha = 0;
 			this.collisionMap = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData;
 			console.log(me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER));
 			console.log("mapWidth = " + me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).rows * me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).tilewidth);
