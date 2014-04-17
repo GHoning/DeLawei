@@ -11,7 +11,8 @@ var game = {
 		currentLevel: "test", //set Starting Level
 		playerPos: new me.Vector2d(5400, 1600),//player Start Location
 		quests : [],
-		currentQuestState : "accept" //very dirty fix
+		currentQuestState : "accept", //very dirty fix
+		lastSpokenPerson : "",
 	},
 	
 	
@@ -71,6 +72,6 @@ var game = {
 		me.input.bindKey(me.input.KEY.X, "mouse/touch");
 		me.input.bindPointer(me.input.KEY.X);
 
-		me.state.change(me.state.READY);
+		me.state.change(me.state.MENU);
 	}
 };

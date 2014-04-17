@@ -1,19 +1,37 @@
 game.SpeechScreen = me.ScreenObject.extend({
 
-	init: function() {
-		
-	},
-	
-	onResetEvent: function() {
-		this.alwaysUpdate = true;
-		this.textfield = new game.SpeechScreen.Textfield(0,0);
-		me.game.world.addChild(this.textfield, Infinity);
-		me.game.world.addChild(new game.SpeechScreen.nextButton(1400, 1400, {image: "nextButton", spritewidth: 80, spriteheight: 20}));
-		me.game.world.addChild(new game.SpeechScreen.textBackground(0, 0, {image: "textbackground", spritewidth: 1024*2, spriteheight: 768*2}));
-		me.game.world.addChild(new game.SpeechScreen.mainCharacter(0, 0, {image: "maincharacter", spritewidth: 1024*2, spriteheight: 768*2}));
-		me.game.world.addChild(new game.SpeechScreen.speechCharacter(0, 0, {image: "speechcharacter", spritewidth: 1024*2, spriteheight: 768*2}));
-	}
-});
+		init : function () {
+			
+		},
+
+		onResetEvent : function () {
+			this.alwaysUpdate = true;
+			this.textfield = new game.SpeechScreen.Textfield(0, 0);
+			me.game.world.addChild(this.textfield, Infinity);
+			me.game.world.addChild(new game.SpeechScreen.nextButton(1400, 1400, {
+					image : "nextButton",
+					spritewidth : 80,
+					spriteheight : 20
+				}));
+			me.game.world.addChild(new game.SpeechScreen.textBackground(0, 0, {
+					image : "textbackground",
+					spritewidth : 1024 * 2,
+					spriteheight : 768 * 2
+				}));
+			me.game.world.addChild(new game.SpeechScreen.mainCharacter(0, 0, {
+					image : "maincharacter",
+					spritewidth : 1024 * 2,
+					spriteheight : 768 * 2
+				}));
+			me.game.world.addChild(new game.SpeechScreen.speechCharacter(0, 0, {
+					image : "speechcharacter",
+					spritewidth : 1024 * 2,
+					spriteheight : 768 * 2
+				}));
+				
+			
+		}
+	});
 
 game.SpeechScreen.nextButton = me.ObjectEntity.extend({
 		init : function (x, y, settings) {
@@ -29,13 +47,10 @@ game.SpeechScreen.nextButton = me.ObjectEntity.extend({
 		update : function () {
 			if (this.getShape().containsPointV(me.input.mouse.pos) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
 				this.keyLock = true;
-				if(game.speech.textfield.index == game.dialog.length - 1) {
-					console.log(game.speech.textfield.index);
+				if (game.speech.textfield.index == game.dialog.length - 1) {
 					me.state.change(me.state.PLAY);
 				} else {
 					game.speech.textfield.switchIndex();
-					console.log(game.speech.textfield.index);
-					console.log(game.dialog.length);
 				}
 			}
 
@@ -49,7 +64,7 @@ game.SpeechScreen.nextButton = me.ObjectEntity.extend({
 			this.imgButton.draw(context);
 		}
 	});
-	
+
 game.SpeechScreen.Textfield = me.Renderable.extend({
 		init : function (x, y) {
 			this.parent(new me.Vector2d(x, y), 10, 10);
@@ -57,21 +72,19 @@ game.SpeechScreen.Textfield = me.Renderable.extend({
 			this.font.set("left");
 			this.index = 0;
 			this.floating = true;
-			this.width = 10;
-			this.height = 9000;
 		},
-		
+
 		switchIndex : function () {
 			this.textDisplay = "";
 			this.index++;
 		},
-		
+
 		update : function () {
 			this.textDisplay = game.dialog[this.index];
 			return true;
 		},
-		
-		draw : function (context){
+
+		draw : function (context) {
 			this.font.draw(context, this.textDisplay, 450, 1100);
 		}
 	});
@@ -82,7 +95,7 @@ game.SpeechScreen.textBackground = me.ObjectEntity.extend({
 			this.keyLock = true;
 			this.floating = true;
 			this.collidable = true;
-			this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("textbackground"), 1024*2, 768*2);
+			this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("textbackground"), 1024 * 2, 768 * 2);
 		},
 
 		update : function () {
@@ -100,7 +113,7 @@ game.SpeechScreen.speechCharacter = me.ObjectEntity.extend({
 			this.keyLock = true;
 			this.floating = true;
 			this.collidable = true;
-			this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("speechcharacter"), 1024*2, 768*2);
+			this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("speechcharacter"), 1024 * 2, 768 * 2);
 		},
 
 		update : function () {
@@ -118,7 +131,7 @@ game.SpeechScreen.mainCharacter = me.ObjectEntity.extend({
 			this.keyLock = true;
 			this.floating = true;
 			this.collidable = true;
-			this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("maincharacter"), 1024*2, 768*2);
+			this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("maincharacter"), 1024 * 2, 768 * 2);
 		},
 
 		update : function () {

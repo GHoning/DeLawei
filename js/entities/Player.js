@@ -16,6 +16,7 @@ game.playerObject = me.ObjectEntity.extend({
 		
 			if (me.input.isKeyPressed("Talk")) {
 				me.state.change(me.state.READY);
+				game.data.lastSpokenPerson = "Henk";
 			}
 			
 			if (me.input.isKeyPressed("Up")) {
@@ -41,9 +42,9 @@ game.playerObject = me.ObjectEntity.extend({
 			
 			//console.log("fps:" +me.sys.fps);
 			//console.log("collsionMap: "+me.game.collisionMap.orientation);
-			console.log(me.game.currentLevel.getLayerByName("Drawthisplease"));
-			console.log("collsionMapTile: "+me.game.currentLevel.getLayerByName("Drawthisplease").getTileId(this.pos.x,this.pos.y));
-			console.log("collsionTileShape: "+me.game.currentLevel.getLayerByName("Drawthisplease").shapeType);
+			//console.log(me.game.currentLevel.getLayerByName("Drawthisplease"));
+			//console.log("collsionMapTile: "+me.game.currentLevel.getLayerByName("Drawthisplease").getTileId(this.pos.x,this.pos.y));
+			//console.log("collsionTileShape: "+me.game.currentLevel.getLayerByName("Drawthisplease").shapeType);
 			this.updateMovement();
 			this.parent();
 			return true;
