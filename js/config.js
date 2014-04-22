@@ -1,5 +1,6 @@
 /*store constants used in the game*/
 var constants = {
-	"WIDTH"			: 1024*2,
-	"HEIGHT"		: 768 *2
+	"SCREENWIDTH"			: 2048,
+	"SCREENHEIGHT"		: 768 *2,
+	"ISOCOLL_LAYER"	: "isoColl"
 };
