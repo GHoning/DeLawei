@@ -7,22 +7,17 @@ game.PlayScreen = me.ScreenObject.extend({
 			me.levelDirector.loadLevel(game.data.currentLevel);
 			game.data.score = 0;
 			this.HUD;
-			this.Inventory;
+			this.NotebookScreen;
 			this.addHUD();
 			this.checkQuestItems();
 			this.checkItems();
-			this.placePlayer(game.data.playerPos);
 			me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).alpha = 0;
 			this.collisionMap = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData;
-			console.log(me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER));
-			console.log("mapWidth = " + me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).rows * me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).tilewidth);
-			console.log("mapHeight = " + me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).cols * me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).tileheight);
-			this.placePlayer(new me.Vector2d((me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).rows * me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).tilewidth/2 -64),-128));
 		},
 		
 		addInventory : function () {
-			this.Inventory = new game.Inventory.Container();
-			me.game.world.addChild(this.Inventory);
+			this.NotebookScreen = new game.NotebookScreen();
+			me.game.world.addChild(this.NotebookScreen);
 		},
 		
 		addHUD :  function () {
@@ -31,7 +26,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		},
 		
 		placePlayer : function (pos) {
-			var player = me.game.world.getChildByName("playerObject");
+			var player = me.game.world.getChildByName("player");
 			player[0].pos.x = pos.x;
 			player[0].pos.y = pos.y;
 		},
@@ -59,7 +54,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		},
 		
 		onDestroyEvent : function () {
-			var player = me.game.world.getChildByName("playerObject");
+			var player = me.game.world.getChildByName("player");
 			
 			game.data.playerPos = new me.Vector2d(player[0].pos.x, player[0].pos.y);
 			me.game.world.removeChild(me.game.world.getChildByName("HUD")[0]);

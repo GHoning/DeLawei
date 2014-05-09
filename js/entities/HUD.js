@@ -19,8 +19,9 @@ game.HUD.Container = me.ObjectContainer.extend({
 		},
 		
 		addButton : function () {
-			this.addChild(new game.HUD.InventoryButton(1024*2 - 256 , 768*2 - 128, {spritewidth: 256,spriteheight: 128}));
-			this.addChild(new game.HUD.QuestsButton(1024*2 - 256 , 768*2 - 256, {spritewidth: 256,spriteheight: 128}));
+			//TODO make hard numbers disappear.
+			//this.addChild(new game.HUD.InventoryButton(1024 - 256 , 768 - 128, {spritewidth: 256,spriteheight: 128}));
+			//this.addChild(new game.HUD.QuestsButton(1024 - 256 , 768 - 256, {spritewidth: 256,spriteheight: 128}));
 		},
 		
 		addTextfield : function () {
@@ -85,7 +86,7 @@ game.HUD.QuestsButton = me.ObjectEntity.extend({
 			if (this.getShape().containsPointV(me.input.mouse.pos) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
 				this.keyLock = true;
 				game.data.currentLevel = me.levelDirector.getCurrentLevelId();
-				var player = me.game.world.getChildByName("playerObject");
+				var player = me.game.world.getChildByName("player");
 				game.data.playerPosX = player[0].pos.x;
 				game.data.playerPosY = player[0].pos.y;
 				me.state.change(me.state.USER);

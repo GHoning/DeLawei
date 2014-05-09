@@ -1,18 +1,18 @@
 /**
  *  The games play screen. Used too handle level switches and inventory guffins
  */
-game.Questlog = me.ScreenObject.extend({
+game.NotebookScreen = me.ScreenObject.extend({
 		
 		onResetEvent : function () {
-			me.game.world.addChild(new game.Questlog.gameButton(1024 - 256 , 768 - 128, {spritewidth: 256,spriteheight: 128}));
+			me.game.world.addChild(new game.NotebookScreen.gameButton(1024 - 256 , 768 - 128, {spritewidth: 256,spriteheight: 128}));
 			//place DisplayQuests foreach quest in game.data.quests
 			for (var i = 0; i < game.data.quests.length; i++) {
-				me.game.world.addChild(new game.Questlog.DisplayQuest(960 , 64 * i, game.data.quests[0].toUpperCase() + "\n"));
+				me.game.world.addChild(new game.NotebookScreen.DisplayQuest(960 , 64 * i, game.data.quests[0].toUpperCase() + "\n"));
 			}
 		}
 	});
 	
-game.Questlog.gameButton = me.ObjectEntity.extend({
+game.NotebookScreen.gameButton = me.ObjectEntity.extend({
 		init : function (x, y, settings) {
 			this.parent(x, y, settings);
 			this.keyLock = true;
@@ -42,7 +42,7 @@ game.Questlog.gameButton = me.ObjectEntity.extend({
 		}
 	});
 	
-game.Questlog.DisplayQuest = me.Renderable.extend({
+game.NotebookScreen.DisplayQuest = me.Renderable.extend({
 		init : function (x, y, drawtext) {
 			this.parent(new me.Vector2d(x, y), 10, 10 );
 			this.font = new me.BitmapFont("font", 32);
