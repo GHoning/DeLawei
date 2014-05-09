@@ -9,35 +9,6 @@ game.resources = [
 		type : "image",
 		src : "data/img/sprite/AlexAnimationSheet.png"
 	}, {
-		name : "characterMale",
-		type : "image",
-		src : "data/img/sprite/CharacterMale.png"
-	}, {
-		name : "characterFemale",
-		type : "image",
-		src : "data/img/sprite/CharacterFemale.png"
-	}, {
-		name : "flappie",
-		type : "image",
-		src : "data/img/sprite/Flappie2.png"
-	}, {
-		name : "pipe1",
-		type : "image",
-		src : "data/img/sprite/Pipe1.png"
-	}, {
-		// Tilesets
-		name : "metatiles_iso256x256",
-		type : "image",
-		src : "data/img/tileset/metatiles_iso256x256.png"
-	}, {
-		name : "Tileset1",
-		type : "image",
-		src : "data/img/tileset/Tileset1.png"
-	},{
-		name : "Tileset2",
-		type : "image",
-		src : "data/img/tileset/Tileset2.png"
-	},{
 		name : "inventorySlot",
 		type : "image",
 		src : "data/img/sprite/Inventory.png"
@@ -45,17 +16,36 @@ game.resources = [
 		name : "font",
 		type : "image",
 		src : "data/img/sprite/32x32_font.png"
-	}, //tilesettests :D 
-	{
-		name : "GridTile",
-		type : "image",
-		src : "data/img/tileset/GridTile.png"
 	},
 	
-	/*	Buttons.
-	 *
-	 *
+	/*	Tilesets.
 	 */
+
+	{
+		name : "FloorSet",
+		type : "image",
+		src : "data/img/tileset/FloorSet.png"
+	}, {
+		name : "Glassset2",
+		type : "image",
+		src : "data/img/tileset/Glassset2.png"
+	}, {
+		name : "MetaTiles",
+		type : "image",
+		src : "data/img/tileset/MetaTiles.png"
+	}, {
+		name : "Stairset",
+		type : "image",
+		src : "data/img/tileset/Stairset.png"
+	}, {
+		name : "WallSet2",
+		type : "image",
+		src : "data/img/tileset/WallSet2.png"
+	}, 
+	 
+	/*	Buttons.
+	 */
+	 
 	{
 		name : "inventoryButton",
 		type : "image",
@@ -145,17 +135,9 @@ game.resources = [
 	 */
 
 	{
-		name : "grandhall",
+		name : "Entree",
 		type : "tmx",
-		src : "data/map/Grandhall.tmx"
-	}, {
-		name : "dressingroom",
-		type : "tmx",
-		src : "data/map/DressingRoom.tmx"
-	}, {
-		name : "test",
-		type : "tmx",
-		src : "data/map/Test1.tmx"
+		src : "data/map/Entree.tmx"
 	}
 
 	/* Background music.

@@ -1,15 +1,15 @@
-game.TitleScreen = me.ScreenObject.extend({
+game.MenuScreen = me.ScreenObject.extend({
 	onResetEvent: function() {
 		this.alwaysUpdate = true;
 		//me.game.world is the main container for the game. And the 'add' is replaced by addChild
-		me.game.world.addChild(new game.TitleScreen.playButton(100, 100, {image: "playButton", spritewidth: 256,spriteheight: 128}));
-		me.game.world.addChild(new game.TitleScreen.creditButton(100, 515, {image: "creditsButton", spritewidth: 256,spriteheight: 128}));
-		me.game.world.addChild(new game.TitleScreen.instructionsButton(515, 100, {image: "instructionsButton", spritewidth: 256,spriteheight: 128}));
+		me.game.world.addChild(new game.MenuScreen.playButton(100, 100, {image: "playButton", spritewidth: 256,spriteheight: 128}));
+		me.game.world.addChild(new game.MenuScreen.creditButton(100, 515, {image: "creditsButton", spritewidth: 256,spriteheight: 128}));
+		me.game.world.addChild(new game.MenuScreen.instructionsButton(515, 100, {image: "instructionsButton", spritewidth: 256,spriteheight: 128}));
 		
 	}
 });
 
-game.TitleScreen.playButton = me.ObjectEntity.extend({
+game.MenuScreen.playButton = me.ObjectEntity.extend({
 		init : function (x, y, settings) {
 			this.parent(x, y, settings);
 			this.keyLock = true;
@@ -39,7 +39,7 @@ game.TitleScreen.playButton = me.ObjectEntity.extend({
 		}
 	});
 	
-game.TitleScreen.creditButton = me.ObjectEntity.extend({
+game.MenuScreen.creditButton = me.ObjectEntity.extend({
 	init : function (x, y, settings) {
 		this.parent(x, y, settings);
 		this.keyLock = true;
@@ -69,18 +69,48 @@ game.TitleScreen.creditButton = me.ObjectEntity.extend({
 	}
 });
 
-game.TitleScreen.instructionsButton = me.ObjectEntity.extend({
+game.Button = me.ObjectEntity.extend({
 	init : function (x, y, settings) {
 		this.parent(x, y, settings);
 		this.keyLock = true;
 		this.floating = true;
+		//this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("instructionsButton"), 256, 128);
+		//add Shape in MelonJS 1.0.0 for the collision box
+		//this.rect = new me.Rect(this.pos, 256, 128);
+		//this.addShape(this.rect);
+	},
+
+	update : function () {
+			
+		if (this.getShape().containsPointV(me.input.mouse.pos) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
+			/*this.keyLock = true;
+			me.state.change(me.state.SETTINGS);*/
+			this.click();
+		}
+
+		if (!me.input.isKeyPressed("mouse/touch")) {
+			this.keyLock = false;
+		}
+			
+		return true;
+	},
+
+	draw : function (context) {
+		this.imgButton.draw(context);
+	}
+});
+
+
+game.MenuScreen.instructionsButton = game.Button.extend({
+	init : function (x, y, settings) {
+		this.parent(x, y, settings);
 		this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("instructionsButton"), 256, 128);
 		//add Shape in MelonJS 1.0.0 for the collision box
 		this.rect = new me.Rect(this.pos, 256, 128);
 		this.addShape(this.rect);
 	},
 
-	update : function () {
+/*update : function () {
 			
 		if (this.getShape().containsPointV(me.input.mouse.pos) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
 			this.keyLock = true;
@@ -96,5 +126,10 @@ game.TitleScreen.instructionsButton = me.ObjectEntity.extend({
 
 	draw : function (context) {
 		this.imgButton.draw(context);
+	}*/
+	click : function () {
+		this.keyLock = true;
+		//me.state.change(me.state.INSTRUCTIONS);
+		console.log("works");
 	}
 });

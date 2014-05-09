@@ -18,6 +18,7 @@ game.SpeechScreen = me.ScreenObject.extend({
 					spritewidth : 1024 * 2,
 					spriteheight : 768 * 2
 				}));
+				//why are these so big?
 			me.game.world.addChild(new game.SpeechScreen.mainCharacter(0, 0, {
 					image : "maincharacter",
 					spritewidth : 1024 * 2,
@@ -79,7 +80,7 @@ game.SpeechScreen.Textfield = me.Renderable.extend({
 		},
 
 		update : function () {
-			this.textDisplay = Henk[this.index];
+			//gives errors this.textDisplay = game.dialog[this.index];
 			return true;
 		},
 

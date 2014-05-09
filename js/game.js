@@ -3,21 +3,20 @@
  */
 var game = {
 
+	//global game data
 	data : {
-		score : 0,
-		inventory : [],
-		questItems : [],
-		drawText : "",//Temporary for arbitrary bullshit MOB
-		currentLevel: "test", //set Starting Level
-		playerPos: new me.Vector2d(0, 0),//player Start Location
-		quests : [],
-		currentQuestState : "accept", //very dirty fix
+		currentLevel: constants.STARTING_LEVEL, 
+		playerPos: constants.PLAYER_STARTLOCATION,
+		currentQuestState : constants.STARTING_QUESTSTATE,
 		lastSpokenPerson : "",
+		inventory : [],
+		questItems : []
 	},
 	
-	
-
-	"onload" : function () {
+	/*
+	 *	Checks if the user uses a html 5 compatible browser and if the user tries to use the debugger.
+	 */
+	onload : function () {
 		if (!me.video.init("screen", constants.SCREENWIDTH, constants.SCREENHEIGHT, true, 'auto')) {
 			alert("Your browser does not support HTML5 canvas.");
 			return;
@@ -35,23 +34,34 @@ var game = {
 		me.state.change(me.state.LOADING);
 	},
 	
-	
-
-	"loaded" : function () {
-		game.play = new game.PlayScreen(true, true);
+	/*
+	 *	Called when loading is finished. Creates all the screen objects en registers objects to their respective entity pool.
+	 */
+	loaded : function () {
+		game.play = new game.PlayScreen();
 		me.state.set(me.state.PLAY, game.play);
 		
-		me.state.set(me.state.MENU, new game.TitleScreen());
-		me.state.set(me.state.CREDITS, new game.CreditsScreen());
-		me.state.set(me.state.SETTINGS, new game.InstructionsScreen());
-		me.state.set(me.state.USER, new game.Questlog());
-		game.speech = new game.SpeechScreen(true, true);
-		me.state.set(me.state.READY, game.speech);
+		game.menu = new game.MenuScreen();
+		me.state.set(me.state.MENU, game.menu);
+		
+		game.credits = new game.CreditsScreen();
+		me.state.set(me.state.CREDITS, game.credits);
+		
+		var INSTRUCTIONS = me.state.USER + 0;
+		game.instructions = new game.InstructionsScreen();
+		me.state.set(me.state.INSTRUCTIONS, game.instructions);
+		
+		var NOTEBOOK = me.state.USER + 1;
+		game.notebook = new game.NotebookScreen();
+		me.state.set(me.state.NOTEBOOK, game.notebook);
+		
+		var SPEECH = me.state.USER + 2;
+		game.speech = new game.SpeechScreen();
+		me.state.set(me.state.SPEECH, game.speech);
 		
 		
-		me.pool.register("playerObject", game.playerObject);
+		me.pool.register("player", game.player);
 		me.pool.register("itemObject", game.itemObject);
-		me.pool.register("wall", game.Wall);
 		me.pool.register("QuestNPC", game.QuestNPCObject);
 		me.pool.register("spawnpoint", game.Spawnpoint);
 		me.pool.register("LevelSwitch", game.LevelSwitch);
