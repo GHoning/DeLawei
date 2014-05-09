@@ -10,5 +10,3 @@ var constants = {
 	"ITEM_TILEID"			: 60,
 	"DOOR_TILEID"			: 68
 };
-
->>>>>>> fe14ebf113beb378a46f14833f3c97f0b2de377e
