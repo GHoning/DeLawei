@@ -47,10 +47,10 @@ game.SpeechScreen.nextButton = me.ObjectEntity.extend({
 		update : function () {
 			if (this.getShape().containsPointV(me.input.mouse.pos) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
 				this.keyLock = true;
-				if (game.speech.textfield.index == game.dialog.length - 1) {
+				if (game.speech.textfield.index == Henk.length - 1) {
 					me.state.change(me.state.PLAY);
 				} else {
-					game.speech.textfield.switchIndex();
+					game.speech.textfield.switchIndex(1);
 				}
 			}
 
@@ -74,13 +74,12 @@ game.SpeechScreen.Textfield = me.Renderable.extend({
 			this.floating = true;
 		},
 
-		switchIndex : function () {
-			this.textDisplay = "";
-			this.index++;
+		switchIndex : function (amount) {
+			this.index += amount;
 		},
 
 		update : function () {
-			this.textDisplay = game.dialog[this.index];
+			this.textDisplay = Henk[this.index];
 			return true;
 		},
 

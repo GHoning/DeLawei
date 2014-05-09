@@ -67,7 +67,7 @@ var game = {
 		me.input.bindKey(me.input.KEY.RIGHT, "Right");
 
 		me.input.bindKey(me.input.KEY.E, "Use");
-		me.input.bindKey(me.input.KEY.T, "Talk");//Tijdelijke toest om te babbelen met je slachtoffer. "E" toets is waarschijnlijk logischer.
+		me.input.bindKey(me.input.KEY.T, "Talk");//Tijdelijke toest om te spreken met je slachtoffer. "E" toets is waarschijnlijk logischer.
 		
 		me.input.bindKey(me.input.KEY.X, "mouse/touch");
 		me.input.bindPointer(me.input.KEY.X);
