@@ -4,25 +4,18 @@ game.MenuScreen = me.ScreenObject.extend({
 		me.game.world.addChild(new game.MenuScreen.playButton(100, 100, {image: "playButton", spriteWidth: 256,spriteHeight: 128}));
 		me.game.world.addChild(new game.MenuScreen.creditButton(100, 515, {image: "creditsButton", spriteWidth: 256,spriteHeight: 128}));
 		me.game.world.addChild(new game.MenuScreen.instructionsButton(515, 100, {image: "instructionsButton", spriteWidth: 256,spriteHeight: 128}));
-		//me.game.world.addChild(new game.MenuScreen.imageTest(515, 515, "playButton", 256, 128));
 	}
 });
 
 game.MenuScreen.playButton = game.UIButton.extend({
-		init : function (x, y, settings) {
-			this.parent(x, y, settings);
-		},
+	init : function (x, y, settings) {
+		this.parent(x, y, settings);
+	},
 
-		onClick : function () {
-			me.state.change(me.state.PLAY);
-		}
-	});
-	
-/*game.MenuScreen.imageTest = game.UIImage.extend({
-	init : function (x, y, image, spriteWidth, spriteHeight) {
-		this.parent(x, y, image, spriteWidth, spriteHeight);
+	onClick : function () {
+		me.state.change(me.state.PLAY);
 	}
-});*/
+});
 	
 game.MenuScreen.creditButton = game.UIButton.extend({
 	init : function (x, y, settings) {

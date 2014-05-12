@@ -9,10 +9,13 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.HUD;
 			this.NotebookScreen;
 			this.addHUD();
-			//this.checkQuestItems();
-			//this.checkItems();
+			this.collisionMap = this.getCollisionMap();
+		},
+		
+		getCollisionMap : function () {
 			me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).alpha = 0;
-			this.collisionMap = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData;
+			var collisionMap = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData;
+			return collisionMap;
 		},
 		
 		addInventory : function () {
@@ -31,55 +34,50 @@ game.PlayScreen = me.ScreenObject.extend({
 			player[0].pos.y = pos.y;
 		},
 		
-		/*checkItems : function () {
-			var itemInArea = me.game.world.getChildByName("itemObject");
-			
-			for (i = 0; i < game.data.inventory.length; i++) {
-				if(itemInArea.length > 0){
-					if(game.data.inventory[i] == itemInArea[0].image){
-						me.game.remove(itemInArea[0]);
-					}
-				}
-			}
-		},
-		
-		checkQuestItems : function () {
-			var itemInArea = me.game.world.getChildByName("itemObject");
-			
-			for (i = 0; i < itemInArea.length; i++) {
-				if(itemInArea[0].image != game.data.questItems[i]) {
-					me.game.remove(itemInArea[i]);
-				}
-			}
-		},*/
-		
 		onDestroyEvent : function () {
 			var player = me.game.world.getChildByName("player");
 			game.data.playerPos = new me.Vector2d(player[0].pos.x, player[0].pos.y);
 			me.game.world.removeChild(me.game.world.getChildByName("HUD")[0]);
 		},
-
-		loadLevel : function (settings) {
-			this.settings = settings;
-			me.game.viewport.fadeIn(settings.fade, settings.duration);
-			var previousLevel = me.levelDirector.getCurrentLevelId();
-			me.levelDirector.loadLevel(settings.to);
-
-			var spawnList = me.game.getEntityByName("Spawnpoint");
-			var player = me.game.getEntityByName("playerObject");
-			var spawn;
-
-			for (var i = 0; i < spawnList.length; i++) {
-				spawn = spawnList[i];
-				if (spawn.from == previousLevel) {
-					this.placePlayer(spawn.pos.x, spawn.pos.y);
+		
+		checkInventory : function (item) {
+			for( var i = 0; i <= game.data.inventory.length; i++) {
+				if(game.data.inventory[i] == item) {
+					return false;
 				}
 			}
+			
+			return true;
+		},
+		
+		//if Items is in inventory remove from world
+		itemOnReset : function (item) {
+			
+		},
+		
+		getFucked : function (name) {
+			console.log(name + " got Fucked!");
+		},
+		
+		addItemToInventory : function (item) {
+			if(this.checkInventory(item)){
+				game.data.inventory.push(item);
+				
+				//go over list and find the right item through name
+				var items = me.game.world.getChildByName("item");
+				
+				me.game.world.removeChild(items[0]);
+				
+				console.log(game.data.inventory);
+			}
+		},
 
-			me.game.viewport.fadeOut(settings.fade, settings.duration);
-
-			this.checkQuestItems();
-			this.checkItems();
-			game.data.drawText = "";
+		loadLevel : function (level, x, y, mapX, mapY) {
+			me.levelDirector.loadLevel(level);
+			var player = me.game.world.getChildByName("player");
+			player[0].mapPos.x = mapX;
+			player[0].mapPos.y = mapY;
+			this.collisionMap = this.getCollisionMap();
+			//TODO add x,y to player.pos
 		}
 	});

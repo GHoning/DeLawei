@@ -1,40 +1,22 @@
 /**
  *  ItemObject. Specifics are filled in using tiled.
  */
-game.itemObject = me.ObjectEntity.extend({
+game.item = me.ObjectEntity.extend({
 		init : function (x, y, settings) {
 			this.parent(x, y, settings);
 			this.settings = settings;
 			this.image = settings.image;
-			this.setVelocity(6, 6);
-			this.setFriction(3, 3);
+			this.name = settings.name;
+			this.spritewidth = settings.spriteWidth;
+			this.spriteheight = settings.spriteHeight;
 			this.gravity = false;
-			this.collidable = true;
-		},
-
-		update : function () {
-			this.updateMovement();
-			this.parent();
-
-			var res = me.game.collide(this);
-
-			if (res) {
-				if (res.obj.type == me.game.PLAYER) {
-					if (me.input.isKeyPressed("Use")) {
-						game.data.inventory.push(this.image);
-						me.game.remove(this);
-					}
-				}
-			}
-			
-			return true;
 		}
 	});
 
 /**
  *  The QuestNPCObject specifics are filled using tiled.
  */
-game.QuestNPCObject = me.ObjectEntity.extend({
+/*game.QuestNPCObject = me.ObjectEntity.extend({
 		init : function (x, y, settings) {
 			this.parent(x, y, settings);
 			this.settings = settings;
@@ -56,7 +38,7 @@ game.QuestNPCObject = me.ObjectEntity.extend({
 			/*
 				Most disgusting piece of crap ever written by mankind...
 			*/
-			if(game.data.currentQuestState == "accept") {
+			/*if(game.data.currentQuestState == "accept") {
 				this.questReaction.change("!");
 			} 
 			
@@ -98,38 +80,4 @@ game.QuestNPCObject = me.ObjectEntity.extend({
 			this.questReaction = new game.HUD.Questfield(this.pos.x + 96 , this.pos.y - 32 , txt);
 			me.game.add(this.questReaction, 1002);
 		}
-	});
-
-/**
- *  Spawnpoint x,y are used for player placement
- */
-game.Spawnpoint = me.ObjectEntity.extend({
-		init : function (x, y, settings) {
-			this.parent(x, y, settings);
-			this.settings = settings;
-			this.from = settings.from;
-		}
-	});
-
-/**
- *  LevelSwitch if hit by player switch level
- */
-game.LevelSwitch = me.LevelEntity.extend({
-		init : function (x, y, settings) {
-			this.parent(x, y, settings);
-			this.settings = settings;
-		},
-
-		update : function () {
-			this.updateMovement();
-			this.parent();
-			var res = me.game.collide(this);
-
-			if (res) {
-				if (res.obj.type == me.game.PLAYER) {
-					game.play.loadLevel(this.settings);
-				}
-			}
-			return true;
-		}
-	});
+	});*/

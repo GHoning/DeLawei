@@ -1,3 +1,5 @@
+//TODO clean this up
+
 game.player = me.ObjectEntity.extend({
 		init : function (x, y, settings) {
 			this.parent(x, y, settings);
@@ -85,11 +87,13 @@ game.player = me.ObjectEntity.extend({
 				game.data.lastSpokenPerson = "Henk";
 			}*/
 			
+			//TODO itemtileID look at the possibilities again.
 			if(game.play.collisionMap[this.mapPos.x][this.mapPos.y] != null){			
-				if (me.input.isKeyPressed("Use") && game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileId == constants.ITEM_TILEID) {
-					console.log("picked up " + game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileset.TileProperties[constants.ITEM_TILEID].name);
+				if (me.input.isKeyPressed("Use") && game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileId == constants.BRIEF_TILEID || me.input.isKeyPressed("Use") && game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileId == constants.KNIFE_TILEID) {
+					game.play.addItemToInventory(game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileset.TileProperties[game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileId].name);
 				} else if (game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileId == constants.DOOR_TILEID) {
-					console.log("move to new area");
+					var tile = game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileset.TileProperties[constants.DOOR_TILEID];
+					game.play.loadLevel(tile.level, tile.playerX, tile.playerY, tile.mapX, tile.mapY);
 				}
 			}
 					
@@ -111,7 +115,7 @@ game.player = me.ObjectEntity.extend({
 					this.walkUp();
 				}
 			}
-
+			
 			if (me.input.isKeyPressed("Left") && !this.keylock) {
 				this.keylock = true;
 				this.renderable.setCurrentAnimation("upLeft");

@@ -13,6 +13,10 @@ game.resources = [
 		type : "image",
 		src : "data/img/sprite/Inventory.png"
 	}, {
+		name : "brief",
+		type : "image",
+		src : "data/img/sprite/brief.png"
+	}, {
 		name : "font",
 		type : "image",
 		src : "data/img/sprite/32x32_font.png"
@@ -84,14 +88,6 @@ game.resources = [
 	 * Background
 	 */
 	{
-		name : "DressingRoom",
-		type : "image",
-		src : "data/img/backgrounds/Dressingroom.png"
-	}, {
-		name : "GrandHall",
-		type : "image",
-		src : "data/img/backgrounds/Grandhall.png"
-	}, {
 		name : "credits",
 		type : "image",
 		src : "data/img/backgrounds/credits.png"
@@ -138,6 +134,10 @@ game.resources = [
 		name : "Entree",
 		type : "tmx",
 		src : "data/map/Entree.tmx"
+	}, {
+		name : "Hal",
+		type : "tmx",
+		src : "data/map/Hal.tmx"
 	}
 
 	/* Background music.
