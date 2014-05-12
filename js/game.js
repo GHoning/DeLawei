@@ -60,6 +60,8 @@ var game = {
 		me.state.set(me.state.SPEECH, game.speech);
 		
 		
+		
+		
 		me.pool.register("player", game.player);
 		me.pool.register("itemObject", game.itemObject);
 		me.pool.register("QuestNPC", game.QuestNPCObject);

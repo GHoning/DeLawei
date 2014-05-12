@@ -133,31 +133,3 @@ game.LevelSwitch = me.LevelEntity.extend({
 			return true;
 		}
 	});
-	
-game.Wall = me.ObjectEntity.extend({
-		init : function (x, y, settings) {
-			this.parent(x, y, settings);
-			this.settings = settings;
-			this.collidable = true;
-			this.gravity = false;
-			this.polons = [new me.Vector2d(this.x, this.y), new me.Vector2d(this.x +200, this.y -200),new me.Vector2d(this.x, this.y -200)]
-			this.poly = new me.PolyShape(new me.Vector2d(this.x, this.y), this.polons, true);
-			//this.setShape(this.poly);
-			console.log(this.getBounds());
-		},
-		
-		onCollision : function (res, obj) {
-			console.log("stuff");
-		},
-
-		update : function () {
-			/*var res = me.game.world.collide(this);
-			if (res.obj.type == me.game.world.PLAYER) {
-				console.log("toho");
-			}
-		
-			this.updateMovement();
-			this.parent();
-			return true;*/
-		}
-	});
