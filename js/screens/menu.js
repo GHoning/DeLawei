@@ -14,8 +14,7 @@ game.MenuScreen.playButton = game.UIButton.extend({
 		},
 
 		onClick : function () {
-			//TODO addStateChange
-			console.log("start");
+			me.state.change(me.state.PLAY);
 		}
 	});
 	

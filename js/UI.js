@@ -1,3 +1,6 @@
+/*
+ *	Button to make buttons
+ */
 game.UIButton = me.ObjectEntity.extend({
 	init : function(x, y, settings) {
 		this.parent(x, y, settings);
@@ -7,7 +10,6 @@ game.UIButton = me.ObjectEntity.extend({
 		//add Shape in MelonJS 1.0.0 for the collision box
 		this.rect = new me.Rect(this.pos, settings.spriteWidth, settings.spriteHeight);
 		this.addShape(this.rect);
-		
 	},
 	
 	update : function () {
@@ -28,6 +30,9 @@ game.UIButton = me.ObjectEntity.extend({
 	}
 });
 
+/*
+ *	Text to display text
+ */
 game.UIText = me.Renderable.extend({
 	init : function (x, y, font, text) {
 		//the 10's are irrelevant
@@ -47,7 +52,9 @@ game.UIText = me.Renderable.extend({
 	}
 });
 
-
+/*
+ *	Image to display images
+ */
 game.UIImage = me.Renderable.extend({
 	init : function (x, y, image, spriteWidth, spriteHeight) {
 		this.parent(x, y, image, spriteWidth, spriteHeight);

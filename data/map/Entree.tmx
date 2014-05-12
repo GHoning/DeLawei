@@ -19,6 +19,11 @@
     <property name="item_name" value="KNOIVE"/>
    </properties>
   </tile>
+  <tile id="2">
+   <properties>
+    <property name="name" value="brief"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="object" width="30" height="30">
   <data encoding="base64">

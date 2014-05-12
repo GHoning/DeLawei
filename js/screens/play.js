@@ -9,8 +9,8 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.HUD;
 			this.NotebookScreen;
 			this.addHUD();
-			this.checkQuestItems();
-			this.checkItems();
+			//this.checkQuestItems();
+			//this.checkItems();
 			me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).alpha = 0;
 			this.collisionMap = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData;
 		},
@@ -31,7 +31,7 @@ game.PlayScreen = me.ScreenObject.extend({
 			player[0].pos.y = pos.y;
 		},
 		
-		checkItems : function () {
+		/*checkItems : function () {
 			var itemInArea = me.game.world.getChildByName("itemObject");
 			
 			for (i = 0; i < game.data.inventory.length; i++) {
@@ -51,11 +51,10 @@ game.PlayScreen = me.ScreenObject.extend({
 					me.game.remove(itemInArea[i]);
 				}
 			}
-		},
+		},*/
 		
 		onDestroyEvent : function () {
 			var player = me.game.world.getChildByName("player");
-			
 			game.data.playerPos = new me.Vector2d(player[0].pos.x, player[0].pos.y);
 			me.game.world.removeChild(me.game.world.getChildByName("HUD")[0]);
 		},

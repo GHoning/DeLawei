@@ -3,8 +3,6 @@ game.player = me.ObjectEntity.extend({
 			this.parent(x, y, settings);
 			this.settings = settings;
 			me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
-			this.setMaxVelocity(256, 128);
-			this.setFriction(0, 0);
 			this.gravity = false;
 			this.alwaysUpdate = true;
 			
@@ -82,14 +80,14 @@ game.player = me.ObjectEntity.extend({
 		
 		update : function () {
 		
-			if (me.input.isKeyPressed("Talk")) {
+			/*if (me.input.isKeyPressed("Talk")) {
 				me.state.change(me.state.READY);
 				game.data.lastSpokenPerson = "Henk";
-			}
+			}*/
 			
 			if(game.play.collisionMap[this.mapPos.x][this.mapPos.y] != null){			
 				if (me.input.isKeyPressed("Use") && game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileId == constants.ITEM_TILEID) {
-					console.log("picked up " + game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileset.TileProperties[constants.ITEM_TILEID].item_name);
+					console.log("picked up " + game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileset.TileProperties[constants.ITEM_TILEID].name);
 				} else if (game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileId == constants.DOOR_TILEID) {
 					console.log("move to new area");
 				}
