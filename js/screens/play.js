@@ -18,11 +18,6 @@ game.PlayScreen = me.ScreenObject.extend({
 			return collisionMap;
 		},
 		
-		addInventory : function () {
-			this.NotebookScreen = new game.NotebookScreen();
-			me.game.world.addChild(this.NotebookScreen);
-		},
-		
 		addHUD :  function () {
 			this.HUD = new game.HUD.Container();
 			me.game.world.addChild(this.HUD);

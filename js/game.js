@@ -9,7 +9,7 @@ var game = {
 		playerPos: constants.PLAYER_STARTLOCATION,
 		currentQuestState : constants.STARTING_QUESTSTATE,
 		lastSpokenPerson : "",
-		inventory : [],
+		inventory : ["flappie", "pipe1", "koekje"],
 		questItems : []
 	},
 	
