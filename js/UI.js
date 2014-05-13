@@ -47,6 +47,10 @@ game.UIText = me.Renderable.extend({
 		return true;
 	},
 	
+	replaceText : function (txt) {
+		this.text = txt;
+	},
+	
 	draw : function (context) {
 		this.font.draw(context, this.text, this.pos.x, this.pos.y);
 	}

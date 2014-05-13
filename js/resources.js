@@ -4,11 +4,21 @@ game.resources = [
 	 * @example
 	 * {name: "example", type:"image", src: "data/img/example.png"},
 	 */
+	 
+	 
+	/*
+     * Animation-sheets;
+	 */	
+	
 	{
 		name : "alex",
 		type : "image",
 		src : "data/img/sprite/AlexAnimationSheet.png"
-	}, {
+	}, { 
+		name : "roel",
+		type : "image",
+		src : "data/img/sprite/RoelAssets.png"
+	} ,{
 		name : "inventorySlot",
 		type : "image",
 		src : "data/img/sprite/Inventory.png"
@@ -22,7 +32,23 @@ game.resources = [
 		src : "data/img/sprite/32x32_font.png"
 	},
 	
-	/*	Tilesets.
+	/*
+     * Sprites-Speech;
+	 */	
+	 
+	{
+		name : "alex_convo",
+		type : "image",
+		src : "data/img/sprite/AlexConvo.png"
+	}, {
+		name : "roel_convo",
+		type : "image",
+		src : "data/img/sprite/RoelConvo.png"
+	},
+	
+	
+	/*	
+	 * Tile-sets.
 	 */
 
 	{
@@ -47,7 +73,8 @@ game.resources = [
 		src : "data/img/tileset/WallSet2.png"
 	}, 
 	 
-	/*	Buttons.
+	/*	
+	 * Buttons.
 	 */
 	 
 	{
@@ -91,18 +118,6 @@ game.resources = [
 		name : "credits",
 		type : "image",
 		src : "data/img/backgrounds/credits.png"
-	}, {
-		name : "maincharacter",
-		type : "image",
-		src : "data/img/backgrounds/maincharacter.png"
-	}, {
-		name : "speechcharacter",
-		type : "image",
-		src : "data/img/backgrounds/speechcharacter.png"
-	}, {
-		name : "textbackground",
-		type : "image",
-		src : "data/img/backgrounds/textbackground.png"
 	},
 	
 	/*

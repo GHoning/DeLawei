@@ -6,11 +6,13 @@ var game = {
 	//global game data
 	data : {
 		currentLevel: constants.STARTING_LEVEL, 
-		playerPos: constants.PLAYER_STARTLOCATION,
+		playerMapPos: constants.PLAYER_STARTLOCATION,
 		currentQuestState : constants.STARTING_QUESTSTATE,
+		playerPos: new me.Vector2d(2602,705),//hard coded for now needed for initialization of player
 		lastSpokenPerson : "",
 		inventory : ["flappie", "pipe1", "koekje"],
-		questItems : []
+		questItems : [],
+		lastspokenNPC : ""
 	},
 	
 	/*
@@ -60,8 +62,9 @@ var game = {
 		me.state.set(me.state.SPEECH, game.speech);
 		
 		
-		me.pool.register("player", game.player);
-		me.pool.register("item", game.item);
+		me.pool.register("player", game.Player);
+		me.pool.register("item", game.Item);
+		me.pool.register("npc", game.QuestNPC);
 
 		me.input.bindKey(me.input.KEY.W, "Up");
 		me.input.bindKey(me.input.KEY.A, "Left");
@@ -74,7 +77,6 @@ var game = {
 		me.input.bindKey(me.input.KEY.RIGHT, "Right");
 
 		me.input.bindKey(me.input.KEY.E, "Use");
-		me.input.bindKey(me.input.KEY.T, "Talk");//Tijdelijke toest om te spreken met je slachtoffer. "E" toets is waarschijnlijk logischer.
 		
 		me.input.bindKey(me.input.KEY.X, "mouse/touch");
 		me.input.bindPointer(me.input.KEY.X);

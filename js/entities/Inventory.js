@@ -7,7 +7,7 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 
 		init : function () {
 			this.parent();
-			this.isPersistent = true;
+			//this.isPersistent = true;
 			this.collidable = false;
 			this.z = Infinity;
 			this.name = "Inventory";

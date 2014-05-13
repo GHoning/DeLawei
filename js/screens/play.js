@@ -10,6 +10,7 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.NotebookScreen;
 			this.addHUD();
 			this.collisionMap = this.getCollisionMap();
+			this.placePlayer(game.data.playerPos);
 		},
 		
 		getCollisionMap : function () {
@@ -31,8 +32,14 @@ game.PlayScreen = me.ScreenObject.extend({
 		
 		onDestroyEvent : function () {
 			var player = me.game.world.getChildByName("player");
-			game.data.playerPos = new me.Vector2d(player[0].pos.x, player[0].pos.y);
+			game.data.playerPos = player[0].pos;
+			//TODO clean up
+			/*try {
 			me.game.world.removeChild(me.game.world.getChildByName("HUD")[0]);
+			} catch (e) {
+				console.log(this);
+				console.log(e);
+			}*/
 		},
 		
 		checkInventory : function (item) {
