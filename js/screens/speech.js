@@ -22,7 +22,6 @@ game.SpeechScreen = me.ScreenObject.extend({
 			me.game.world.addChild(new game.UIImage(1024-276, 768-571, "alex_convo", 276, 571));
 			me.game.world.addChild(new game.UIImage(0, 768-638, game.data.lastspokenNPC + "_convo", 376, 638));
 			console.log("speechscreen_build");
-			me.state.change(me.state.PLAY);
 		},
 		
 		changeLines : function(){

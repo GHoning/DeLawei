@@ -64,7 +64,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		addItemToInventory : function (item) {
 			if(this.checkInventory(item)){
 				game.data.inventory.push(item);
-				
+				this.HUD.inventory.addItem(item);
 				//go over list and find the right item through name
 				var items = me.game.world.getChildByName("item");
 				

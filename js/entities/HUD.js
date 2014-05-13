@@ -16,7 +16,7 @@ game.HUD.Container = me.ObjectContainer.extend({
 		},
 		
 		addInventory : function() {
-			this.inventory = new game.HUD.Inventory.Container();
+			this.inventory = new game.HUD.Inventory.Container(game.data.inventory);
 			me.game.world.addChild(this.inventory);
 		},
 		
