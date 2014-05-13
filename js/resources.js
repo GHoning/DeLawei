@@ -121,6 +121,10 @@ game.resources = [
 		name : "koekje_inv",
 		type : "image",
 		src : "data/img/sprite/koekje_inv.png"
+	}, {
+		name : "brief_inv",
+		type : "image",
+		src : "data/img/sprite/koekje_inv.png"
 	},
 
 	/* Atlases

@@ -9,5 +9,6 @@ var constants = {
 	"COLLISION_TILEID"		: 59,
 	"BRIEF_TILEID"			: 61,
 	"KNIFE_TILEID"			: 60,
-	"DOOR_TILEID"			: 68
+	"DOOR_TILEID"			: 68,
+	"INVENTORY_SLOTS"		: 8,
 };
