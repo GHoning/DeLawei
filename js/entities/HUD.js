@@ -12,6 +12,7 @@ game.HUD.Container = me.ObjectContainer.extend({
 			this.z = Infinity;
 			this.name = "HUD";
 			this.addButton();
+			this.inventory;
 			this.addInventory();
 		},
 		
