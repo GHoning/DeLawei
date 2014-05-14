@@ -57,21 +57,21 @@ game.PlayScreen = me.ScreenObject.extend({
 			
 		},
 		
-		getFucked : function (name) {
-			console.log(name + " got Fucked!");
-		},
-		
 		addItemToInventory : function (item) {
 			if(this.checkInventory(item)){
 				game.data.inventory.push(item);
 				this.HUD.inventory.addItem(item);
-				//go over list and find the right item through name
+				//TODO go over list and find the right item through name
 				var items = me.game.world.getChildByName("item");
-				
 				me.game.world.removeChild(items[0]);
-				
-				console.log(game.data.inventory);
 			}
+		},
+		
+		removeItemFromInventory : function(item) {
+			var index = game.data.inventory.indexOf(item);
+			game.data.inventory.splice(index, 1);
+			console.log("Too much snow eh");
+			this.HUD.inventory.removeItem(item+"_inv");
 		},
 
 		loadLevel : function (level, x, y, mapX, mapY) {
@@ -81,5 +81,17 @@ game.PlayScreen = me.ScreenObject.extend({
 			player[0].mapPos.y = mapY;
 			this.collisionMap = this.getCollisionMap();
 			//TODO add x,y to player.pos
+		},
+		
+		getFucked : function (name) {
+			console.log(name + " got Fucked!");
+		},
+		
+		appologize : function (problem) {
+			console.log("sorry");
+		},
+		
+		translateToCanadian : function(string) {
+			console.log(string + " eh");
 		}
 	});

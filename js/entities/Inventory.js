@@ -33,6 +33,11 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 			this.addChild(new game.HUD.Inventory.InventoryItem(128 * this.invLength, constants.SCREENHEIGHT - 128, item));
 			this.invLength++;
 		},
+		
+		removeItem : function(item) {
+			//var items = this.getChildByName(item);
+			//this.removeChild(items[0]);
+		},
 
 		remove : function () {
 			me.game.world.removeChild(this);
@@ -68,6 +73,7 @@ game.HUD.Inventory.InventoryItem = me.Renderable.extend({
 			this.floating = true;
 			this.inventoryItems = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage(image + "_inv"), 128, 128);
 			this.z = 1;
+			this.name = image;
 		},
 
 		draw : function (context) {
