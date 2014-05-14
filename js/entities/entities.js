@@ -3,15 +3,41 @@
  */
 game.Item = me.ObjectEntity.extend({
 		init : function (x, y, settings) {
-			console.log("item");
 			this.parent(x, y, settings);
 			this.settings = settings;
-			this.image = settings.image;
-			this.name = settings.name;
+			this.mapPosX = settings.mapPosX;
+			this.mapPosY = settings.mapPosY;
 			this.spritewidth = settings.spritewidth;
 			this.spriteheight = settings.spriteheight;
 			this.gravity = false;
-			console.log("item_build");
+		}
+	});
+	
+/**
+ *  DoorObject. Specifics are filled in using tiled.
+ */
+game.Door = me.ObjectEntity.extend({
+		init : function (x, y, settings) {
+			this.parent(x, y, settings);
+			this.settings = settings;
+			
+			this.level = settings.level;
+			this.mapX = settings.mapX;
+			this.mapY = settings.mapY;
+			this.playerX = settings.playerX;
+			this.playerY = settings.playerY;
+			
+			this.mapPosX1 = settings.tile1x;
+			this.mapPosX2 = settings.tile2x;
+			this.mapPosX3 = settings.tile3x;
+			this.mapPosX4 = settings.tile4x;
+			
+			this.mapPosY1 = settings.tile1y;
+			this.mapPosY2 = settings.tile2y;
+			this.mapPosY3 = settings.tile3y;
+			this.mapPosY4 = settings.tile4y;
+			
+			this.gravity = false;
 		}
 	});
 
@@ -20,18 +46,15 @@ game.Item = me.ObjectEntity.extend({
  */
 game.QuestNPC = me.ObjectEntity.extend({
 		init : function (x, y, settings) {
-			console.log("npc");
 			this.parent(x, y, settings);
 			this.settings = settings;
-			this.image = settings.npc_name;
-			this.questName = settings.questname;
-			this.requires = settings.requires;
+			this.mapPosX = settings.mapPosX;
+			this.mapPosY = settings.mapPosY;
 			this.gravity = false;
-			console.log("npc_build");
 		},
 
 		update : function () {
-			
+			return false;
 		},
 		
 		addQuestReaction : function (txt) {

@@ -158,9 +158,21 @@ game.resources = [
 		type : "tmx",
 		src : "data/map/Entree.tmx"
 	}, {
-		name : "Hal",
+		name : "Gang",
 		type : "tmx",
-		src : "data/map/Hal.tmx"
+		src : "data/map/Gang.tmx"
+	}, {
+		name : "Foyer",
+		type : "tmx",
+		src : "data/map/Foyer.tmx"
+	}, {
+		name : "Theater",
+		type : "tmx",
+		src : "data/map/Theater.tmx"
+	}, {
+		name : "Kleedkamer",
+		type : "tmx",
+		src : "data/map/Kleedkamer.tmx"
 	}
 
 	/* Background music.

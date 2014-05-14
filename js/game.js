@@ -65,6 +65,7 @@ var game = {
 		me.pool.register("player", game.Player);
 		me.pool.register("item", game.Item);
 		me.pool.register("npc", game.QuestNPC);
+		me.pool.register("door", game.Door);
 
 		me.input.bindKey(me.input.KEY.W, "Up");
 		me.input.bindKey(me.input.KEY.A, "Left");

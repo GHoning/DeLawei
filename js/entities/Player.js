@@ -30,6 +30,7 @@ game.Player = me.ObjectEntity.extend({
 			this.animate = false;
 			this.index = 0;
 			this.deltaTime = 0;
+			console.log(this.pos);
 		},
 		
 		animations : function () {
@@ -68,6 +69,7 @@ game.Player = me.ObjectEntity.extend({
 			this.mapPos.x -= 1;
 			this.pos.x -= 64;
 			this.pos.y -= 32;
+			console.log(this.pos);
 		},
 		
 		walkRight : function () {
@@ -80,8 +82,8 @@ game.Player = me.ObjectEntity.extend({
 		nextToNPC : function () {
 			//TODO make it shorter
 			if(game.play.collisionMap[this.mapPos.x][this.mapPos.y-1] != null) {
-				if(game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].tileId == constants.NPC_TILEID) {
-					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].tileset.TileProperties[game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].tileId].npc_name;
+				if(game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].type == "npc") {
+					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].name;
 					return true;
 				} else {
 					return false;
@@ -89,8 +91,8 @@ game.Player = me.ObjectEntity.extend({
 			}
 			
 			if (game.play.collisionMap[this.mapPos.x-1][this.mapPos.y] != null) {
-				if(game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].tileId == constants.NPC_TILEID) {
-					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].tileset.TileProperties[game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].tileId].npc_name;
+				if(game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].type == "npc") {
+					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].name;
 					return true;
 				} else {
 					return false;
@@ -98,8 +100,8 @@ game.Player = me.ObjectEntity.extend({
 			}
 			
 			if(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1] != null) {
-				if(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].tileId == constants.NPC_TILEID) {
-					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].tileset.TileProperties[game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].tileId].npc_name;
+				if(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].type == "npc") {
+					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].name;
 					return true;
 				} else {
 					return false;
@@ -107,8 +109,8 @@ game.Player = me.ObjectEntity.extend({
 			}
 		
 			if(game.play.collisionMap[this.mapPos.x+1][this.mapPos.y] != null) {
-				if(game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].tileId == constants.NPC_TILEID) {
-					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].tileset.TileProperties[game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].tileId].npc_name;
+				if(game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].type == "npc") {
+					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].name;
 					return true;
 				} else {
 					return false;
@@ -121,10 +123,10 @@ game.Player = me.ObjectEntity.extend({
 		update : function () {
 			//TODO itemtileID look at the possibilities again.
 			if(game.play.collisionMap[this.mapPos.x][this.mapPos.y] != null) {			
-				if (me.input.isKeyPressed("Use") && game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileId == constants.BRIEF_TILEID || me.input.isKeyPressed("Use") && game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileId == constants.KNIFE_TILEID) {
-					game.play.addItemToInventory(game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileset.TileProperties[game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileId].name);
-				} else if (game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileId == constants.DOOR_TILEID) {
-					var tile = game.play.collisionMap[this.mapPos.x][this.mapPos.y].tileset.TileProperties[constants.DOOR_TILEID];
+				if (me.input.isKeyPressed("Use") && game.play.collisionMap[this.mapPos.x][this.mapPos.y].type == "item") {
+					game.play.addItemToInventory(game.play.collisionMap[this.mapPos.x][this.mapPos.y].name);
+				} else if (game.play.collisionMap[this.mapPos.x][this.mapPos.y].type == "door") {
+					var tile = game.play.collisionMap[this.mapPos.x][this.mapPos.y];
 					game.play.loadLevel(tile.level, tile.playerX, tile.playerY, tile.mapX, tile.mapY);
 				}
 			}
@@ -139,14 +141,19 @@ game.Player = me.ObjectEntity.extend({
 				this.animations();
 			}
 			
+			//TODO make type only contain solid or not no stupid stuff with npc/item/door and stuff
 			if (me.input.isKeyPressed("Up") && !this.keylock) {
 				this.keylock = true;
 				this.renderable.setCurrentAnimation("upRight");
 				if(this.mapPos.y-1 >= 0 && game.play.collisionMap[this.mapPos.x][this.mapPos.y-1] != null) {
-					console.log(game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].tileId);
-					if (game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].tileId == constants.COLLISION_TILEID || game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].tileId == constants.NPC_TILEID) {
+				//TODO reconsider the options about this system
+					if (game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].type == "item" || game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].type == "door") {
+						this.walkUp();
+					} else if(game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].type == "npc") {
 						this.keylock = false;
-					} else {
+					} else if (game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].tileset.TileProperties[game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].tileId].type == constants.COLLISION_TYPE) {
+						this.keylock = false;
+					}else {
 						this.walkUp();
 					}
 				} else {
@@ -158,8 +165,11 @@ game.Player = me.ObjectEntity.extend({
 				this.keylock = true;
 				this.renderable.setCurrentAnimation("upLeft");
 				if(this.mapPos.x-1 >= 0 && game.play.collisionMap[this.mapPos.x-1][this.mapPos.y] != null){
-					console.log(game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].tileId);
-					if(game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].tileId == constants.COLLISION_TILEID || game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].tileId == constants.NPC_TILEID){
+					if(game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].type == "item" || game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].type == "door") {
+						this.walkLeft();
+					} else if(game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].type == "npc") {
+						this.keylock = false;
+					} else if (game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].tileset.TileProperties[game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].tileId].type == constants.COLLISION_TYPE){
 						this.keylock = false;
 					} else {
 						this.walkLeft();
@@ -173,8 +183,11 @@ game.Player = me.ObjectEntity.extend({
 				this.keylock = true;
 				this.renderable.setCurrentAnimation("downLeft");
 				if(this.mapPos.y < this.maxMapHeight && game.play.collisionMap[this.mapPos.x][this.mapPos.y+1] != null){
-					console.log(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].tileId);
-					if(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].tileId == constants.COLLISION_TILEID || game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].tileId == constants.NPC_TILEID){
+					if(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].type == "item" || game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].type == "door"){
+						this.walkDown();
+					} else if(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].type == "npc"){
+						this.keylock = false;
+					} else if(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].tileset.TileProperties[game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].tileId].type == constants.COLLISION_TYPE){
 						this.keylock = false;
 					} else {
 						this.walkDown();
@@ -188,12 +201,15 @@ game.Player = me.ObjectEntity.extend({
 				this.keylock = true;
 				this.renderable.setCurrentAnimation("downRight");
 				if(this.mapPos.x < this.maxMapWidth && game.play.collisionMap[this.mapPos.x+1][this.mapPos.y] != null){
-					console.log(game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].tileId);
-					if(game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].tileId == constants.COLLISION_TILEID || game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].tileId == constants.NPC_TILEID){	
+					if(game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].type == "item" || game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].type == "door"){	
+						this.walkRight();
+					} else if (game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].type == "npc") {
+						this.keylock = false;
+					} else if (game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].tileset.TileProperties[game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].tileId].type == constants.COLLISION_TYPE){
 						this.keylock = false;
 					} else {
 						this.walkRight();
-					}	
+					}
 				} else {
 					this.walkRight();
 				}
