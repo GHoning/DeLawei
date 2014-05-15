@@ -57,5 +57,73 @@
  </layer>
  <objectgroup name="Objectlaag 1" width="30" height="50">
   <object name="player" x="1631" y="1501" width="64" height="64"/>
+  <object name="door" x="1729" y="1411" width="64" height="256">
+   <properties>
+    <property name="level" value="Gang"/>
+    <property name="mapX" value="2"/>
+    <property name="mapY" value="11"/>
+    <property name="playerX" value="678"/>
+    <property name="playerY" value="314"/>
+    <property name="tile1x" value="27"/>
+    <property name="tile1y" value="22"/>
+    <property name="tile2x" value="27"/>
+    <property name="tile2y" value="23"/>
+    <property name="tile3x" value="27"/>
+    <property name="tile3y" value="24"/>
+    <property name="tile4x" value="27"/>
+    <property name="tile4y" value="25"/>
+   </properties>
+  </object>
+  <object name="door" x="896" y="1985" width="64" height="256">
+   <properties>
+    <property name="level" value="Theater"/>
+    <property name="mapX" value="13"/>
+    <property name="mapY" value="13"/>
+    <property name="playerX" value="3168"/>
+    <property name="playerY" value="736"/>
+    <property name="tile1x" value="14"/>
+    <property name="tile1y" value="31"/>
+    <property name="tile2x" value="14"/>
+    <property name="tile2y" value="32"/>
+    <property name="tile3x" value="14"/>
+    <property name="tile3y" value="33"/>
+    <property name="tile4x" value="14"/>
+    <property name="tile4y" value="36"/>
+   </properties>
+  </object>
+  <object name="door" x="1280" y="1986" width="64" height="256">
+   <properties>
+    <property name="level" value="Theater"/>
+    <property name="mapX" value="36"/>
+    <property name="mapY" value="13"/>
+    <property name="playerX" value="4640"/>
+    <property name="playerY" value="1472"/>
+    <property name="tile1x" value="20"/>
+    <property name="tile1y" value="31"/>
+    <property name="tile2x" value="20"/>
+    <property name="tile2y" value="32"/>
+    <property name="tile3x" value="20"/>
+    <property name="tile3y" value="33"/>
+    <property name="tile4x" value="20"/>
+    <property name="tile4y" value="35"/>
+   </properties>
+  </object>
+  <object name="door" x="1409" y="2239" width="256" height="64">
+   <properties>
+    <property name="level" value="Kleedkamer"/>
+    <property name="mapX" value="8"/>
+    <property name="mapY" value="6"/>
+    <property name="playerX" value="1376"/>
+    <property name="playerY" value="352"/>
+    <property name="tile1x" value="22"/>
+    <property name="tile1y" value="35"/>
+    <property name="tile2x" value="23"/>
+    <property name="tile2y" value="35"/>
+    <property name="tile3x" value="24"/>
+    <property name="tile3y" value="35"/>
+    <property name="tile4x" value="25"/>
+    <property name="tile4y" value="35"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
