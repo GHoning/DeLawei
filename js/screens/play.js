@@ -116,8 +116,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		removeItemFromInventory : function(item) {
 			var index = game.data.inventory.indexOf(item);
 			game.data.inventory.splice(index, 1);
-			console.log("Too much snow eh");
-			this.HUD.inventory.removeItem(item+"_inv");
+			this.HUD.inventory.removeItem(item);
 		},
 
 		loadLevel : function (level, x, y, mapX, mapY) {

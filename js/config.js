@@ -11,6 +11,7 @@ const constants = {
 	"KNIFE_TILEID"				: 60,
 	"DOOR_TILEID"				: 68,
 	"INVENTORY_SLOTS"			: 8,
+	"INVENTORY_SLOT_SIZE"		: 128,
 	//Temporary for NPCs
-	"NPC_TILEID"				: 67
+	"NPC_TILEID"				: 67,
 };

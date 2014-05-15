@@ -8,6 +8,7 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 		init : function (items) {
 			this.parent();
 			//this.isPersistent = true;
+			this.items = [];
 			this.collidable = false;
 			this.z = Infinity;
 			this.name = "Inventory";
@@ -17,26 +18,41 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 		},
 		
 		addInventorySlots : function () {
-			for (i = 0; i < constants.INVENTORY_SLOTS; i++) {
-				this.addChild(new game.HUD.Inventory.InventorySlot(128 * i, constants.SCREENHEIGHT - 128));
+			for (var i = 0; i < constants.INVENTORY_SLOTS; i++) {
+				this.addChild(new game.HUD.Inventory.InventorySlot(constants.INVENTORY_SLOT_SIZE * i,
+																   constants.SCREENHEIGHT - constants.INVENTORY_SLOT_SIZE));
 			}
 		},
 
 		addItems : function (items) {
-			for (i = 0; i < items.length; i++) {
+			for (var i = 0; i < items.length; i++) {
 				this.addItem(items[i]);
 			}
 		},
 		
 		addItem : function(item) {
-			console.log(this.invLength);
-			this.addChild(new game.HUD.Inventory.InventoryItem(128 * this.invLength, constants.SCREENHEIGHT - 128, item));
-			this.invLength++;
+			var gui_item = new game.HUD.Inventory.InventoryItem(constants.INVENTORY_SLOT_SIZE * this.items.length,
+																constants.SCREENHEIGHT - constants.INVENTORY_SLOT_SIZE, item);
+			this.addChild(gui_item);
+			this.items.push(gui_item);
 		},
 		
 		removeItem : function(item) {
-			//var items = this.getChildByName(item);
-			//this.removeChild(items[0]);
+			for (var i = 0; i < this.items.length; i++) {
+				if (this.items[i].name === item) {
+					var gui_item = this.items.splice(i, 1)[0];
+					this.removeChild(gui_item);
+					this.fixItemPositions(i);
+					return;
+				}
+			}
+		},
+		
+		fixItemPositions : function (index) {
+			for (var i = index; i < this.items.length; i++) {
+				this.items[i].pos.x = i * constants.INVENTORY_SLOT_SIZE;
+				console.log(this.items[i]);
+			}
 		},
 
 		remove : function () {
@@ -67,16 +83,11 @@ game.HUD.Inventory.InventorySlot = me.Renderable.extend({
 /**
  *  Inventory Items. Displays the Item. Has no further use.
  */
-game.HUD.Inventory.InventoryItem = me.Renderable.extend({
+game.HUD.Inventory.InventoryItem = me.AnimationSheet.extend({
 		init : function (x, y, image) {
-			this.parent(new me.Vector2d(x, y), 128, 128);
+			this.parent(x, y, me.loader.getImage(image + "_inv"), 128, 128);
 			this.floating = true;
-			this.inventoryItems = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage(image + "_inv"), 128, 128);
 			this.z = 1;
 			this.name = image;
 		},
-
-		draw : function (context) {
-			this.inventoryItems.draw(context);
-		}
 	});
