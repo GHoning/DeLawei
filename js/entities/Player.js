@@ -5,11 +5,16 @@ game.Player = me.ObjectEntity.extend({
 			this.parent(x, y, settings);
 			this.settings = settings;
 			me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+			
+			this.maxMapHeight = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).rows;
+			this.maxMapWidth = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).cols;
+			//TODO figure out why this works
+			me.game.viewport.setBounds(/*constants.SCREENWIDTH*/0,/*constants.SCREENHEIGHT*/0,this.maxMapWidth * 256,this.maxMapHeight * 128);
 			this.gravity = false;
 			this.alwaysUpdate = true;
 			
-			this.maxMapHeight = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).cols;
-			this.maxMapWidth = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).rows;
+		
+
 			
 			this.type = me.game.world.PLAYER;
 			
@@ -30,7 +35,6 @@ game.Player = me.ObjectEntity.extend({
 			this.animate = false;
 			this.index = 0;
 			this.deltaTime = 0;
-			console.log(this.pos);
 		},
 		
 		animations : function () {
@@ -69,7 +73,6 @@ game.Player = me.ObjectEntity.extend({
 			this.mapPos.x -= 1;
 			this.pos.x -= 64;
 			this.pos.y -= 32;
-			console.log(this.pos);
 		},
 		
 		walkRight : function () {

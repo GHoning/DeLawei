@@ -11,6 +11,7 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.addHUD();
 			this.collisionMap = this.getCollisionMap();
 			this.placePlayer(game.data.playerPos);
+			this.itemOnReset();
 		},
 		
 		addNPCToCollision : function(collisionMap) {
@@ -41,13 +42,11 @@ game.PlayScreen = me.ScreenObject.extend({
 			var doors = me.game.world.getChildByName("door");
 
 			if(doors.length > 0) {
-				//TODO AddItemtoo collision
 				for (var i = 0; i < doors.length; i++) {	
 					collisionMap[doors[i].mapPosX1][doors[i].mapPosY1] = {type: doors[i].name, level: doors[i].level, mapX: doors[i].mapX, mapY: doors[i].mapY, playerX: doors[i].playerX, playerY: doors[i].playerY};
 					collisionMap[doors[i].mapPosX2][doors[i].mapPosY2] = {type: doors[i].name, level: doors[i].level, mapX: doors[i].mapX, mapY: doors[i].mapY, playerX: doors[i].playerX, playerY: doors[i].playerY};
 					collisionMap[doors[i].mapPosX3][doors[i].mapPosY3] = {type: doors[i].name, level: doors[i].level, mapX: doors[i].mapX, mapY: doors[i].mapY, playerX: doors[i].playerX, playerY: doors[i].playerY};
 					collisionMap[doors[i].mapPosX4][doors[i].mapPosY4] = {type: doors[i].name, level: doors[i].level, mapX: doors[i].mapX, mapY: doors[i].mapY, playerX: doors[i].playerX, playerY: doors[i].playerY};
-					console.log(collisionMap[doors[i].mapPosX1][doors[i].mapPosY1]);
 				}
 			}
 			
@@ -55,7 +54,6 @@ game.PlayScreen = me.ScreenObject.extend({
 		},
 		
 		getCollisionMap : function () {
-			//TODO add the object Items and doors and NPCs
 			me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).alpha = 0;
 			var collisionMap = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData;
 			collisionMap = this.addNPCToCollision(collisionMap);
@@ -98,9 +96,19 @@ game.PlayScreen = me.ScreenObject.extend({
 			return true;
 		},
 		
-		//if Items is in inventory remove from world
-		itemOnReset : function (item) {
+		//TODO if Items is in inventory remove from world
+		itemOnReset : function () {
+			var items = me.game.world.getChildByName("item");
 			
+			for(var i = 0; i < items.length; i++) {
+				console.log(items[i].image);
+				for (var j = 0; j < game.data.inventory.length; j++) {
+					console.log(game.data.inventory[j]);
+					if(items[i].image == game.data.inventory[j]) {
+						me.game.world.removeChild(items[i]);
+					}
+				}
+			}
 		},
 		
 		addItemToInventory : function (item) {
@@ -128,5 +136,6 @@ game.PlayScreen = me.ScreenObject.extend({
 			player[0].pos.x = x;
 			player[0].pos.y = y;
 			this.collisionMap = this.getCollisionMap();
+			this.itemOnReset();
 		}
 	});
