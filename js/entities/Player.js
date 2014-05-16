@@ -30,7 +30,7 @@ game.Player = me.ObjectEntity.extend({
 			this.animate = false;
 			this.index = 0;
 			this.deltaTime = 0;
-			console.log(this.pos);
+			//console.log(this.pos);
 		},
 		
 		animations : function () {
@@ -69,7 +69,7 @@ game.Player = me.ObjectEntity.extend({
 			this.mapPos.x -= 1;
 			this.pos.x -= 64;
 			this.pos.y -= 32;
-			console.log(this.pos);
+			//console.log(this.pos);
 		},
 		
 		walkRight : function () {
@@ -133,7 +133,8 @@ game.Player = me.ObjectEntity.extend({
 			
 			//talk to NPC
 			if(this.nextToNPC() && me.input.isKeyPressed("Use")){
-				console.log("talk to: " + game.data.lastspokenNPC);
+				//console.log("talk to: " + game.data.lastspokenNPC);
+				game.play.HUD.remove();
 				me.state.change(me.state.SPEECH);
 			}
 			
