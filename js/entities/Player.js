@@ -73,6 +73,10 @@ game.Player = me.ObjectEntity.extend({
 			this.mapPos.x -= 1;
 			this.pos.x -= 64;
 			this.pos.y -= 32;
+<<<<<<< HEAD
+=======
+			//console.log(this.pos);
+>>>>>>> 4439685afe3205734ff20a0de6d6db6e7a12b322
 		},
 		
 		walkRight : function () {
@@ -136,7 +140,8 @@ game.Player = me.ObjectEntity.extend({
 			
 			//talk to NPC
 			if(this.nextToNPC() && me.input.isKeyPressed("Use")){
-				console.log("talk to: " + game.data.lastspokenNPC);
+				//console.log("talk to: " + game.data.lastspokenNPC);
+				game.play.HUD.remove();
 				me.state.change(me.state.SPEECH);
 			}
 			

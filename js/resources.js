@@ -36,7 +36,11 @@ game.resources = [
      * Sprites-Speech;
 	 */	
 	 
-	{
+	 {
+		name : "speechbalk",
+		type : "image",
+		src : "data/img/sprite/SpeechBalk.png"
+	},{
 		name : "alex_convo",
 		type : "image",
 		src : "data/img/sprite/AlexConvo.png"
