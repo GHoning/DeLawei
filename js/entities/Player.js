@@ -39,7 +39,7 @@ game.Player = me.ObjectEntity.extend({
 		
 		animations : function () {
 			this.deltaTime = this.deltaTime + me.timer.tick;			
-			//time step
+			//TODO time step
 			if(this.deltaTime >= 2) {
 				this.renderable.setAnimationFrame(this.index);
 				this.index++;

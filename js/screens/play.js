@@ -131,15 +131,12 @@ game.PlayScreen = me.ScreenObject.extend({
 			return true;
 		},
 		
-		//TODO if Items is in inventory remove from world
 		itemOnReset : function () {
 			var items = me.game.world.getChildByName("item");
 			
 			for(var i = 0; i < items.length; i++) {
-				console.log(items[i].image);
 				for (var j = 0; j < game.data.inventory.length; j++) {
-					console.log(game.data.inventory[j]);
-					if(items[i].image == game.data.inventory[j]) {
+					if(items[i].settings.image == game.data.inventory[j]) {
 						me.game.world.removeChild(items[i]);
 					}
 				}
@@ -150,7 +147,7 @@ game.PlayScreen = me.ScreenObject.extend({
 			if (this.checkInventory(item)) {
 				game.data.inventory.push(item);
 				this.HUD.inventory.addItem(item);
-				//TODO go over list and find the right item through name
+				//TODO go over list and find the right item through name and destroy the instance
 				var items = me.game.world.getChildByName("item");
 				me.game.world.removeChild(items[0]);
 			}
@@ -170,8 +167,8 @@ game.PlayScreen = me.ScreenObject.extend({
 			player[0].mapPos.y = mapY;
 			player[0].pos.x = x;
 			player[0].pos.y = y;
-			this.collisionMap = this.getCollisionMap();
 			this.itemOnReset();
+			this.collisionMap = this.getCollisionMap();
 			//TODO find a better way to reload the HUD
 			this.addHUD();
 		}
