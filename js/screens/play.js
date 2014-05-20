@@ -112,13 +112,6 @@ game.PlayScreen = me.ScreenObject.extend({
 		onDestroyEvent : function () {
 			var player = me.game.world.getChildByName("player");
 			game.data.playerPos = player[0].pos;
-			//TODO clean up
-			/*try {
-			me.game.world.removeChild(me.game.world.getChildByName("HUD")[0]);
-			} catch (e) {
-			console.log(this);
-			console.log(e);
-			}*/
 		},
 
 		checkInventory : function (item) {
@@ -132,6 +125,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		},
 		
 		itemOnReset : function () {
+		//TODO fix this with quest-states 
 			var items = me.game.world.getChildByName("item");
 			
 			for(var i = 0; i < items.length; i++) {

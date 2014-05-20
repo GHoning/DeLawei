@@ -82,6 +82,22 @@ game.Player = me.ObjectEntity.extend({
 			this.pos.y += 32;
 		},
 		
+		checkNPCZ : function () {
+			var npc = me.game.world.getChildByName("npc");
+
+			if(npc.length > 0) {
+				for( var i = 0; i < npc.length; i++ ) {
+					if(npc[i].pos.y > this.pos.y) {
+						npc[i].setZ(15);
+					} else if (npc[0].pos.y < this.pos.y) {
+						npc[i].setZ(13);
+					}
+				}
+				
+				me.game.world.sort();				
+			}
+		},
+		
 		nextToNPC : function () {
 			//TODO make it shorter
 			if(game.play.collisionMap[this.mapPos.x][this.mapPos.y-1] != null) {
@@ -124,6 +140,7 @@ game.Player = me.ObjectEntity.extend({
 		},
 		
 		update : function () {
+			this.checkNPCZ();
 			//TODO itemtileID look at the possibilities again.
 			if(game.play.collisionMap[this.mapPos.x][this.mapPos.y] != null) {			
 				if (me.input.isKeyPressed("Use") && game.play.collisionMap[this.mapPos.x][this.mapPos.y].type == "item") {
@@ -134,9 +151,11 @@ game.Player = me.ObjectEntity.extend({
 				}
 			}
 			
+			
+			
 			//talk to NPC
 			if(this.nextToNPC() && me.input.isKeyPressed("Use")){
-				//console.log("talk to: " + game.data.lastspokenNPC);
+				game.play.removeItemFromInventory("koekje");
 				game.play.HUD.remove();
 				me.state.change(me.state.SPEECH);
 			}

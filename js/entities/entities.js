@@ -57,6 +57,10 @@ game.QuestNPC = me.ObjectEntity.extend({
 			return false;
 		},
 		
+		setZ : function (num) {
+			this.z = num;
+		},
+		
 		addQuestReaction : function (txt) {
 			this.questReaction = new game.HUD.Questfield(this.pos.x + 96 , this.pos.y - 32 , txt);
 			me.game.add(this.questReaction, 1002);
