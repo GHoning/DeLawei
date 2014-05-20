@@ -73,10 +73,6 @@ game.Player = me.ObjectEntity.extend({
 			this.mapPos.x -= 1;
 			this.pos.x -= 64;
 			this.pos.y -= 32;
-<<<<<<< HEAD
-=======
-			//console.log(this.pos);
->>>>>>> 4439685afe3205734ff20a0de6d6db6e7a12b322
 		},
 		
 		walkRight : function () {

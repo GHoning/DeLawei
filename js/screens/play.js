@@ -130,7 +130,6 @@ game.PlayScreen = me.ScreenObject.extend({
 
 			return true;
 		},
-<<<<<<< HEAD
 		
 		//TODO if Items is in inventory remove from world
 		itemOnReset : function () {
@@ -146,13 +145,7 @@ game.PlayScreen = me.ScreenObject.extend({
 				}
 			}
 		},
-		
-=======
 
-		//if Items is in inventory remove from world
-		itemOnReset : function (item) {},
-
->>>>>>> 4439685afe3205734ff20a0de6d6db6e7a12b322
 		addItemToInventory : function (item) {
 			if (this.checkInventory(item)) {
 				game.data.inventory.push(item);
@@ -178,11 +171,8 @@ game.PlayScreen = me.ScreenObject.extend({
 			player[0].pos.x = x;
 			player[0].pos.y = y;
 			this.collisionMap = this.getCollisionMap();
-<<<<<<< HEAD
 			this.itemOnReset();
-=======
 			//TODO find a better way to reload the HUD
 			this.addHUD();
->>>>>>> 4439685afe3205734ff20a0de6d6db6e7a12b322
 		}
 	});
