@@ -10,7 +10,7 @@ var game = {
 		currentQuestState : constants.STARTING_QUESTSTATE,
 		playerPos: new me.Vector2d(2602,705),//hard coded for now needed for initialization of player
 		lastSpokenPerson : "",
-		inventory : ["flappie", "pipe1", "koekje"],
+		inventory : ["note", "brief", "zakmes", "notenschrift"],
 		questItems : [],
 		lastspokenNPC : ""
 	},

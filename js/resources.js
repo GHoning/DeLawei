@@ -21,11 +21,7 @@ game.resources = [
 	} ,{
 		name : "inventorySlot",
 		type : "image",
-		src : "data/img/sprite/Inventory.png"
-	}, {
-		name : "brief",
-		type : "image",
-		src : "data/img/sprite/brief.png"
+		src : "data/img/sprite/InventorySlot.png"
 	}, {
 		name : "font",
 		type : "image",
@@ -129,21 +125,25 @@ game.resources = [
 	 */
 	 
 	{
-		name : "flappie_inv",
-		type : "image",
-		src : "data/img/sprite/Flappie2_inv.png"
-	}, {
-		name : "pipe1_inv",
-		type : "image",
-		src : "data/img/sprite/Pipe1_inv.png"
-	}, {
-		name : "koekje_inv",
-		type : "image",
-		src : "data/img/sprite/koekje_inv.png"
-	}, {
 		name : "brief_inv",
 		type : "image",
-		src : "data/img/sprite/koekje_inv.png"
+		src : "data/img/sprite/brief_inv.png"
+	}, {
+		name : "note_inv",
+		type : "image",
+		src : "data/img/sprite/note_inv.png"
+	}, {
+		name : "notenschrift_inv",
+		type : "image",
+		src : "data/img/sprite/notenschrift_inv.png"
+	}, {
+		name : "zakmes_inv",
+		type : "image",
+		src : "data/img/sprite/zakmes_inv.png"
+	}, {
+		name : "inventorybalk",
+		type : "image",
+		src : "data/img/sprite/InventoryBalk.png"
 	},
 
 	/* Atlases
