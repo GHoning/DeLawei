@@ -12,16 +12,22 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 			this.collidable = false;
 			this.z = Infinity;
 			this.name = "Inventory";
+			this.margin = 14;
 			this.invLength = 0;
 			this.addInventorySlots();
 			this.addItems(items);
+			this.addInventoryBalk();
 		},
 
 		addInventorySlots : function () {
 			for (var i = 0; i < constants.INVENTORY_SLOTS; i++) {
-				this.addChild(new game.HUD.Inventory.InventorySlot(constants.INVENTORY_SLOT_SIZE * i,
-						constants.SCREENHEIGHT - constants.INVENTORY_SLOT_SIZE));
+				this.addChild(new game.HUD.Inventory.InventorySlot((constants.INVENTORY_SLOT_SIZE + this.margin) * i + 128,
+																   constants.SCREENHEIGHT - (constants.INVENTORY_SLOT_SIZE + 17)));
 			}
+		},
+		
+		addInventoryBalk : function() {
+			this.addChild(new game.HUD.Inventory.InventoryBalk(0, constants.SCREENHEIGHT - 128));
 		},
 
 		addItems : function (items) {
@@ -32,7 +38,7 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 
 		addItem : function (item) {
 			//Put the items in an array to access them later
-			var gui_item = new game.HUD.Inventory.InventoryItem(constants.INVENTORY_SLOT_SIZE * this.items.length,
+			var gui_item = new game.HUD.Inventory.InventoryItem((constants.INVENTORY_SLOT_SIZE + this.margin) * this.items.length + 145,
 					constants.SCREENHEIGHT - constants.INVENTORY_SLOT_SIZE, item);
 			this.addChild(gui_item);
 			this.items.push(gui_item);
@@ -66,17 +72,17 @@ game.HUD.Inventory.InventorySlot = me.Renderable.extend({
 		init : function (x, y) {
 			this.parent(new me.Vector2d(x, y), 0, 0);
 			this.floating = true;
-			this.inventryslotsprite = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("inventorySlot"), 128, 128);
+			this.inventoryslotsprite = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("inventorySlot"), 96, 96);
 		},
 
 		update : function () {
-			this.inventryslotsprite.setAnimationFrame(0);
+			this.inventoryslotsprite.setAnimationFrame(0);
 			return true;
 		},
 
 		draw : function (context) {
 
-			this.inventryslotsprite.draw(context);
+			this.inventoryslotsprite.draw(context);
 		}
 	});
 
@@ -85,9 +91,22 @@ game.HUD.Inventory.InventorySlot = me.Renderable.extend({
  */
 game.HUD.Inventory.InventoryItem = me.AnimationSheet.extend({
 		init : function (x, y, image) {
-			this.parent(x, y, me.loader.getImage(image + "_inv"), 128, 128);
+			this.parent(x, y, me.loader.getImage(image + "_inv"), 64, 64);
 			this.floating = true;
 			this.z = 1;
 			this.name = image;
 		},
+	});
+//TODO use a UI object instead of making a completely new class like a retard
+game.HUD.Inventory.InventoryBalk = me.Renderable.extend({
+		init : function (x, y) {
+			this.parent(new me.Vector2d(x, y), 0, 0);
+			this.floating = true;
+			this.inventorybalksprite = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("inventorybalk"), 1024, 128);
+		},
+		
+		draw : function (context) {
+
+			this.inventorybalksprite.draw(context);
+		}
 	});

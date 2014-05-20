@@ -72,15 +72,6 @@
  </layer>
  <objectgroup name="Objectlaag 1" width="30" height="30">
   <object name="player" x="1126" y="412" width="64" height="64"/>
-  <object name="item" x="1152" y="1086" width="64" height="64">
-   <properties>
-    <property name="image" value="brief"/>
-    <property name="mapPosX" value="17"/>
-    <property name="mapPosY" value="16"/>
-    <property name="spriteheight" value="64"/>
-    <property name="spritewidth" value="128"/>
-   </properties>
-  </object>
   <object name="npc" x="861" y="925" width="64" height="64">
    <properties>
     <property name="image" value="roel"/>
