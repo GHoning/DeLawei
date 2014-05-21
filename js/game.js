@@ -31,7 +31,7 @@ var game = {
 			});
 		}
 
-		me.audio.init("mp3,ogg");
+		me.audio.init("ogg,mp3");
 		me.loader.onload = this.loaded.bind(this);
 		me.loader.preload(game.resources);
 		me.state.change(me.state.LOADING);

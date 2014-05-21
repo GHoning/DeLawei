@@ -177,15 +177,28 @@ game.resources = [
 		name : "Kleedkamer",
 		type : "tmx",
 		src : "data/map/Kleedkamer.tmx"
-	}
+	},
 
 	/* Background music.
 	 * @example
 	 * {name: "example_bgm", type: "audio", src: "data/bgm/", channel : 1},
 	 */
 
-	/* Sound effects.
-	 * @example
-	 * {name: "example_sfx", type: "audio", src: "data/sfx/", channel : 2}
-	 */
+	{
+		name : "click_sfx",
+		type : "audio",
+		src : "data/sfx/"
+	}, {
+		name : "crowd_sfx",
+		type : "audio",
+		src : "data/sfx/"
+	}, {
+		name : "footstep_sfx",
+		type : "audio",
+		src : "data/sfx/"
+	}, {
+		name : "itempickup_sfx",
+		type : "audio",
+		src : "data/sfx/"
+	},
 ];
