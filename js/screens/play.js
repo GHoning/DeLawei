@@ -12,6 +12,7 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.collisionMap = this.getCollisionMap();
 			this.placePlayer(game.data.playerPos);
 			this.itemOnReset();
+			me.audio.play("crowd_sfx", true);
 		},
 
 		addNPCToCollision : function (collisionMap) {
@@ -144,6 +145,7 @@ game.PlayScreen = me.ScreenObject.extend({
 				//TODO go over list and find the right item through name and destroy the instance
 				var items = me.game.world.getChildByName("item");
 				me.game.world.removeChild(items[0]);
+				me.audio.play("itempickup_sfx");
 			}
 		},
 
