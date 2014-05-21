@@ -2,9 +2,9 @@
  *  The game contains the data and resources loaded.
  */
 var game = {
-
 	//global game data
 	data : {
+		//TODO clean this stuff up
 		currentLevel: constants.STARTING_LEVEL, 
 		playerMapPos: constants.PLAYER_STARTLOCATION,
 		currentQuestState : constants.STARTING_QUESTSTATE,
@@ -12,7 +12,8 @@ var game = {
 		lastSpokenPerson : "",
 		inventory : ["note", "brief", "zakmes", "notenschrift"],
 		questItems : [],
-		lastspokenNPC : ""
+		lastspokenNPC : "",
+		questStateMachine : new StateMachine(QuestStates)
 	},
 	
 	/*
