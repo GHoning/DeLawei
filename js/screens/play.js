@@ -12,15 +12,12 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.collisionMap = this.getCollisionMap();
 			this.placePlayer(game.data.playerPos);
 			this.itemOnReset();
-<<<<<<< HEAD
 			
 			if(game.data.questStateMachine.getStatus() == "brief"){
 				me.state.change(me.state.SPEECH);
 			}
 			
-=======
 			me.audio.play("crowd_sfx", true);
->>>>>>> 29bf1fb00d3b8ca6d7e342d1476ea9b7cecb448a
 		},
 
 		addNPCToCollision : function (collisionMap) {
