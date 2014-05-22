@@ -60,11 +60,11 @@ game.UIText = me.Renderable.extend({
  *	Image to display images
  */
 game.UIImage = me.Renderable.extend({
-	init : function (x, y, image, spriteWidth, spriteHeight) {
-		this.parent(x, y, image, spriteWidth, spriteHeight);
+	init : function (x, y, image) {
+		this.parent(x, y, image);
 		this.pos.x = x;
 		this.pos.y = y;
-		this.image = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage(image), spriteWidth, spriteHeight);
+		this.image = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage(image));
 		this.floating =  true;
 	},
 	

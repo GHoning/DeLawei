@@ -51,6 +51,8 @@ game.QuestNPC = me.ObjectEntity.extend({
 			this.mapPosX = settings.mapPosX;
 			this.mapPosY = settings.mapPosY;
 			this.gravity = false;
+			this.z = 20;
+			me.game.world.sort();
 		},
 
 		update : function () {

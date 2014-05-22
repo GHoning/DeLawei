@@ -8,7 +8,22 @@ QuestStates = [
 	},{
 		'name' : "roel",
 		'events' : {
-			'get_item': 'end'
+			'get_brief': 'brief'
+		}
+	},{
+		'name' : "brief",
+		'events' : {
+			'read_letter': 'brief_gelezen'
+		}
+	},{
+		'name' : "brief_gelezen",
+		'events' : {
+			'get_quest_chair': 'quest_chair'
+		}
+	},{
+		'name' : "quest_chair",
+		'events' : {
+			'so_cool': 'end'
 		}
 	}
 ];

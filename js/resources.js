@@ -18,14 +18,31 @@ game.resources = [
 		name : "roel",
 		type : "image",
 		src : "data/img/sprite/RoelAssets.png"
-	} ,{
-		name : "inventorySlot",
+	}, { 
+		name : "kim",
 		type : "image",
-		src : "data/img/sprite/InventorySlot.png"
+		src : "data/img/sprite/KimAssets.png"
+	}, { 
+		name : "sam",
+		type : "image",
+		src : "data/img/sprite/SamAssets.png"
+	}, { 
+		name : "tim",
+		type : "image",
+		src : "data/img/sprite/TimAssets.png"
 	}, {
+		name : "notenschrift",
+		type : "image",
+		src : "data/img/sprite/notenschrift.png"
+	},
+		
+	/*
+	 * Fonts
+	 */
+	{
 		name : "font",
 		type : "image",
-		src : "data/img/sprite/32x32_font.png"
+		src : "data/img/sprite/Font.png"
 	},
 	
 	/*
@@ -36,7 +53,11 @@ game.resources = [
 		name : "speechbalk",
 		type : "image",
 		src : "data/img/sprite/SpeechBalk.png"
-	},{
+	}, {
+		name : "inventorySlot",
+		type : "image",
+		src : "data/img/sprite/InventorySlot.png"
+	}, {
 		name : "alex_convo",
 		type : "image",
 		src : "data/img/sprite/AlexConvo.png"
@@ -44,6 +65,18 @@ game.resources = [
 		name : "roel_convo",
 		type : "image",
 		src : "data/img/sprite/RoelConvo.png"
+	}, {
+		name : "kim_convo",
+		type : "image",
+		src : "data/img/sprite/KimConvo.png"
+	}, {
+		name : "sam_convo",
+		type : "image",
+		src : "data/img/sprite/SamConvo.png"
+	}, {
+		name : "tim_convo",
+		type : "image",
+		src : "data/img/sprite/TimConvo.png"
 	},
 	
 	
@@ -55,6 +88,10 @@ game.resources = [
 		name : "FloorSet",
 		type : "image",
 		src : "data/img/tileset/FloorSet.png"
+	}, {
+		name : "Furniture",
+		type : "image",
+		src : "data/img/tileset/Furniture.png"
 	}, {
 		name : "Glassset2",
 		type : "image",

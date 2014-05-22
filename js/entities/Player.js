@@ -88,9 +88,9 @@ game.Player = me.ObjectEntity.extend({
 			if(npc.length > 0) {
 				for( var i = 0; i < npc.length; i++ ) {
 					if(npc[i].pos.y > this.pos.y) {
-						npc[i].setZ(15);
+						npc[i].setZ(20);
 					} else if (npc[0].pos.y < this.pos.y) {
-						npc[i].setZ(13);
+						npc[i].setZ(14);
 					}
 				}
 				
@@ -140,6 +140,7 @@ game.Player = me.ObjectEntity.extend({
 		},
 		
 		update : function () {
+			
 			this.checkNPCZ();
 			//TODO itemtileID look at the possibilities again.
 			if(game.play.collisionMap[this.mapPos.x][this.mapPos.y] != null) {			
@@ -154,8 +155,9 @@ game.Player = me.ObjectEntity.extend({
 			
 			
 			//talk to NPC
-			if(this.nextToNPC() && me.input.isKeyPressed("Use")){
-				game.play.removeItemFromInventory("koekje");
+			if(this.nextToNPC() && me.input.isKeyPressed("Use") && !this.keylock){
+				this.keylock = true;
+				//game.play.removeItemFromInventory("koekje");
 				game.play.HUD.remove();
 				me.state.change(me.state.SPEECH);
 			}
@@ -164,7 +166,7 @@ game.Player = me.ObjectEntity.extend({
 				this.animations();
 			}
 			
-			//TODO make type only contain solid or not no stupid stuff with npc/item/door and stuff
+			//TODO make type only contain solid or not no stupid stuff with npc/item/door and stuff check cords function
 			if (me.input.isKeyPressed("Up") && !this.keylock) {
 				this.keylock = true;
 				this.renderable.setCurrentAnimation("upRight");

@@ -12,6 +12,11 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.collisionMap = this.getCollisionMap();
 			this.placePlayer(game.data.playerPos);
 			this.itemOnReset();
+			
+			if(game.data.questStateMachine.getStatus() == "brief"){
+				me.state.change(me.state.SPEECH);
+			}
+			
 		},
 
 		addNPCToCollision : function (collisionMap) {
@@ -112,6 +117,7 @@ game.PlayScreen = me.ScreenObject.extend({
 		onDestroyEvent : function () {
 			var player = me.game.world.getChildByName("player");
 			game.data.playerPos = player[0].pos;
+			game.data.currentLevel = me.levelDirector.getCurrentLevelId();
 		},
 
 		checkInventory : function (item) {

@@ -8,9 +8,9 @@ var game = {
 		currentLevel: constants.STARTING_LEVEL, 
 		playerMapPos: constants.PLAYER_STARTLOCATION,
 		currentQuestState : constants.STARTING_QUESTSTATE,
-		playerPos: new me.Vector2d(2602,705),//hard coded for now needed for initialization of player
+		playerPos: new me.Vector2d(2602,705),//hard coded for now needed for initialization of player 
 		lastSpokenPerson : "",
-		inventory : ["note", "brief", "zakmes", "notenschrift"],
+		inventory : [],
 		questItems : [],
 		lastspokenNPC : "",
 		questStateMachine : new StateMachine(QuestStates)
@@ -79,6 +79,8 @@ var game = {
 		me.input.bindKey(me.input.KEY.RIGHT, "Right");
 
 		me.input.bindKey(me.input.KEY.E, "Use");
+		me.input.bindKey(me.input.KEY.ENTER, "Use");
+		me.input.bindKey(me.input.KEY.SPACE, "Uses");
 		
 		me.input.bindKey(me.input.KEY.X, "mouse/touch");
 		me.input.bindPointer(me.input.KEY.X);
