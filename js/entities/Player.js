@@ -59,6 +59,7 @@ game.Player = me.ObjectEntity.extend({
 			this.mapPos.y -= 1;
 			this.pos.x += 64;
 			this.pos.y -= 32;
+			me.audio.play("footstep_sfx");
 		},
 		
 		walkDown : function () {
@@ -66,6 +67,7 @@ game.Player = me.ObjectEntity.extend({
 			this.mapPos.y += 1;
 			this.pos.x -= 64;
 			this.pos.y += 32;
+			me.audio.play("footstep_sfx");
 		},
 		
 		walkLeft : function () {
@@ -73,6 +75,7 @@ game.Player = me.ObjectEntity.extend({
 			this.mapPos.x -= 1;
 			this.pos.x -= 64;
 			this.pos.y -= 32;
+			me.audio.play("footstep_sfx");
 		},
 		
 		walkRight : function () {
@@ -80,6 +83,7 @@ game.Player = me.ObjectEntity.extend({
 			this.mapPos.x += 1;
 			this.pos.x += 64;
 			this.pos.y += 32;
+			me.audio.play("footstep_sfx");
 		},
 		
 		checkNPCZ : function () {

@@ -12,11 +12,15 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.collisionMap = this.getCollisionMap();
 			this.placePlayer(game.data.playerPos);
 			this.itemOnReset();
+<<<<<<< HEAD
 			
 			if(game.data.questStateMachine.getStatus() == "brief"){
 				me.state.change(me.state.SPEECH);
 			}
 			
+=======
+			me.audio.play("crowd_sfx", true);
+>>>>>>> 29bf1fb00d3b8ca6d7e342d1476ea9b7cecb448a
 		},
 
 		addNPCToCollision : function (collisionMap) {
@@ -150,6 +154,7 @@ game.PlayScreen = me.ScreenObject.extend({
 				//TODO go over list and find the right item through name and destroy the instance
 				var items = me.game.world.getChildByName("item");
 				me.game.world.removeChild(items[0]);
+				me.audio.play("itempickup_sfx");
 			}
 		},
 
