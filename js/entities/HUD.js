@@ -1,6 +1,8 @@
 /**
  * a HUD container
  */
+ 
+//TODO clean up this mess
 game.HUD = game.HUD || {};
 
 game.HUD.Container = me.ObjectContainer.extend({
@@ -11,6 +13,7 @@ game.HUD.Container = me.ObjectContainer.extend({
 			this.collidable = false;
 			this.z = Infinity;
 			this.name = "HUD";
+			this.addMuteButton();
 			this.addButton();
 			this.inventory;
 			this.addInventory();
@@ -33,6 +36,10 @@ game.HUD.Container = me.ObjectContainer.extend({
 		
 		addTextfield : function () {
 			this.addChild(new game.HUD.Textfield(1000, 440));
+		},
+		
+		addMuteButton : function () {
+			this.addChild(new game.HUD.MuteButton(0, 0, "muteIcon", "unmuteIcon"));
 		}
 	});
 /**
@@ -118,3 +125,26 @@ game.HUD.Textfield = me.Renderable.extend({
 			this.font.draw(context, game.data.drawText, this.pos.x , this.pos.y);
 		}
 	});
+	
+game.HUD.MuteButton = game.UIButton.extend({
+	init : function(x, y, image1, image2) {
+		this.muted = true;
+		this.imgMuted = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage(image1), 64, 64);
+		this.imgUnmuted = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage(image2), 64, 64);
+		//TODO fix this isue or i kill ya
+		//this.parent(x, y, this.imgMuted);
+		
+	},
+	
+	onClick : function() {
+		if(muted){
+			me.audio.muteAll();
+			this.image = imgMuted;
+		} else {
+			me.audio.unmuteAll();
+			this.image = imgUnmuted;
+		}
+	},
+	
+	
+});

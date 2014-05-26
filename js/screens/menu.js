@@ -4,6 +4,7 @@ game.MenuScreen = me.ScreenObject.extend({
 		me.game.world.addChild(new game.MenuScreen.playButton(100, 100, {image: "playButton", spriteWidth: 256,spriteHeight: 128}));
 		me.game.world.addChild(new game.MenuScreen.creditButton(100, 515, {image: "creditsButton", spriteWidth: 256,spriteHeight: 128}));
 		me.game.world.addChild(new game.MenuScreen.instructionsButton(515, 100, {image: "instructionsButton", spriteWidth: 256,spriteHeight: 128}));
+		me.game.world.addChild(new game.MenuScreen.nhllogo(0, 0, "nhllogo"));
 	}
 });
 
@@ -37,4 +38,10 @@ game.MenuScreen.instructionsButton = game.UIButton.extend({
 		//TODO addStateChange
 		console.log("instructions");
 	}
+});
+
+game.MenuScreen.nhllogo = game.UIImage.extend({
+	init : function(x, y, image) {
+		this.parent(x, y, image);
+	},
 });
