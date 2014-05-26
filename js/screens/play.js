@@ -1,5 +1,5 @@
 /**
- *  The games play screen. Used too handle level switches and inventory guffins
+ *  The games play screen. Used too handle level switches and inventory
  */
 game.PlayScreen = me.ScreenObject.extend({
 
@@ -12,15 +12,12 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.collisionMap = this.getCollisionMap();
 			this.placePlayer(game.data.playerPos);
 			this.itemOnReset();
-<<<<<<< HEAD
 			
 			if(game.data.questStateMachine.getStatus() == "brief"){
 				me.state.change(me.state.SPEECH);
 			}
 			
-=======
-			me.audio.play("crowd_sfx", true);
->>>>>>> 29bf1fb00d3b8ca6d7e342d1476ea9b7cecb448a
+			//TODO enable audio. me.audio.play("crowd_sfx", true);
 		},
 
 		addNPCToCollision : function (collisionMap) {
@@ -57,7 +54,6 @@ game.PlayScreen = me.ScreenObject.extend({
 			var doors = me.game.world.getChildByName("door");
 
 			if (doors.length > 0) {
-				//TODO AddItemtoo collision
 				for (var i = 0; i < doors.length; i++) {
 					collisionMap[doors[i].mapPosX1][doors[i].mapPosY1] = {
 						type : doors[i].name,
@@ -154,7 +150,7 @@ game.PlayScreen = me.ScreenObject.extend({
 				//TODO go over list and find the right item through name and destroy the instance
 				var items = me.game.world.getChildByName("item");
 				me.game.world.removeChild(items[0]);
-				me.audio.play("itempickup_sfx");
+				//TODO enable audio.me.audio.play("itempickup_sfx");
 			}
 		},
 

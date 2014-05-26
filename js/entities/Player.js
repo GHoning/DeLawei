@@ -5,25 +5,15 @@ game.Player = me.ObjectEntity.extend({
 			this.parent(x, y, settings);
 			this.settings = settings;
 			me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+			me.game.viewport.setDeadzone(0, 0); //Bounding Box for camera
 			
 			this.maxMapHeight = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).rows;
 			this.maxMapWidth = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).cols;
-			//TODO figure out why this works
-			me.game.viewport.setBounds(/*constants.SCREENWIDTH*/0,/*constants.SCREENHEIGHT*/0,this.maxMapWidth * 256,this.maxMapHeight * 128);
+			me.game.viewport.setBounds(0, 0, this.maxMapWidth * 256, this.maxMapHeight * 128);
 			this.gravity = false;
 			this.alwaysUpdate = true;
 			
-		
-
-			
-			this.type = me.game.world.PLAYER;
-			
-			//collisionShape
-			this.shapes[0].height = 64;
-			this.shapes[0].width = 128;
-			this.shapes[0].pos = new me.Vector2d(32,256-64);
-			
-			this.mapPos = constants.PLAYER_STARTLOCATION;
+			this.mapPos = constants.PLAYER_STARTMAPLOCATION;
 			this.keylock = false;
 			
 			this.renderable = new me.AnimationSheet(0, 0, me.loader.getImage("alex"), 128, 256);
@@ -32,6 +22,7 @@ game.Player = me.ObjectEntity.extend({
 			this.renderable.addAnimation("upRight",[8,9,10,11]);
 			this.renderable.addAnimation("upLeft",[12,13,14,15]);
 			
+			//TODO fix animations
 			this.animate = false;
 			this.index = 0;
 			this.deltaTime = 0;
@@ -59,7 +50,7 @@ game.Player = me.ObjectEntity.extend({
 			this.mapPos.y -= 1;
 			this.pos.x += 64;
 			this.pos.y -= 32;
-			me.audio.play("footstep_sfx");
+			//TODO enable audio.me.audio.play("footstep_sfx");
 		},
 		
 		walkDown : function () {
@@ -67,7 +58,7 @@ game.Player = me.ObjectEntity.extend({
 			this.mapPos.y += 1;
 			this.pos.x -= 64;
 			this.pos.y += 32;
-			me.audio.play("footstep_sfx");
+			//TODO enable audio.me.audio.play("footstep_sfx");
 		},
 		
 		walkLeft : function () {
@@ -75,7 +66,7 @@ game.Player = me.ObjectEntity.extend({
 			this.mapPos.x -= 1;
 			this.pos.x -= 64;
 			this.pos.y -= 32;
-			me.audio.play("footstep_sfx");
+			//TODO enable audio.me.audio.play("footstep_sfx");
 		},
 		
 		walkRight : function () {
@@ -83,7 +74,7 @@ game.Player = me.ObjectEntity.extend({
 			this.mapPos.x += 1;
 			this.pos.x += 64;
 			this.pos.y += 32;
-			me.audio.play("footstep_sfx");
+			//TODO enable audio.me.audio.play("footstep_sfx");
 		},
 		
 		checkNPCZ : function () {
@@ -161,7 +152,7 @@ game.Player = me.ObjectEntity.extend({
 			//talk to NPC
 			if(this.nextToNPC() && me.input.isKeyPressed("Use") && !this.keylock){
 				this.keylock = true;
-				//game.play.removeItemFromInventory("koekje");
+				//game.play.removeItemFromInventory("koekje"); TODO fix bug
 				game.play.HUD.remove();
 				me.state.change(me.state.SPEECH);
 			}

@@ -5,13 +5,9 @@ const constants = {
 	"ISOCOLL_LAYER"				: "MetaTiles",
 	"STARTING_LEVEL"			: "Entree",
 	"STARTING_QUESTSTATE" 		: 0,
-	"PLAYER_STARTLOCATION"		: new me.Vector2d(18,7),
+	"PLAYER_STARTLOCATION"		: new me.Vector2d(2602,705),
+	"PLAYER_STARTMAPLOCATION"	: new me.Vector2d(18,7),
 	"COLLISION_TYPE"			: "solid",
-	"BRIEF_TILEID"				: 61,
-	"KNIFE_TILEID"				: 60,
-	"DOOR_TILEID"				: 68,
 	"INVENTORY_SLOTS"			: 8,
-	"INVENTORY_SLOT_SIZE"		: 96,
-	//Temporary for NPCs
-	"NPC_TILEID"				: 67,
+	"INVENTORY_SLOT_SIZE"		: 96
 };

@@ -2,16 +2,13 @@
  *  The game contains the data and resources loaded.
  */
 var game = {
-	//global game data
+	//global game variables
 	data : {
-		//TODO clean this stuff up
 		currentLevel: constants.STARTING_LEVEL, 
-		playerMapPos: constants.PLAYER_STARTLOCATION,
+		playerMapPos: constants.PLAYER_STARTMAPLOCATION,
 		currentQuestState : constants.STARTING_QUESTSTATE,
-		playerPos: new me.Vector2d(2602,705),//hard coded for now needed for initialization of player 
-		lastSpokenPerson : "",
+		playerPos: constants.PLAYER_STARTLOCATION,
 		inventory : [],
-		questItems : [],
 		lastspokenNPC : "",
 		questStateMachine : new StateMachine(QuestStates)
 	},
@@ -61,7 +58,6 @@ var game = {
 		var SPEECH = me.state.USER + 2;
 		game.speech = new game.SpeechScreen();
 		me.state.set(me.state.SPEECH, game.speech);
-		
 		
 		me.pool.register("player", game.Player);
 		me.pool.register("item", game.Item);
