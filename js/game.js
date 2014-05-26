@@ -77,10 +77,11 @@ var game = {
 		me.input.bindKey(me.input.KEY.E, "Use");
 		me.input.bindKey(me.input.KEY.ENTER, "Use");
 		me.input.bindKey(me.input.KEY.SPACE, "Uses");
+		me.input.bindKey(me.input.KEY.M, "Mutes");
 		
 		me.input.bindKey(me.input.KEY.X, "mouse/touch");
 		me.input.bindPointer(me.input.KEY.X);
-
+		console.log(me.audio);
 		me.state.change(me.state.MENU);
 	}
 };

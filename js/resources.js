@@ -146,6 +146,14 @@ game.resources = [
 		name : "nextButton",
 		type : "image",
 		src : "data/img/button/btn_toNexttext.png"
+	}, {
+		name : "muteIcon",
+		type : "image",
+		src : "data/img/button/btn_mute.png"
+	}, {
+		name : "unmuteIcon",
+		type : "image",
+		src : "data/img/button/btn_unmute.png"
 	},
 
 	/*
@@ -158,7 +166,7 @@ game.resources = [
 	}, {
 		name : "nhllogo",
 		type : "image",
-		src : "data/img/backgrounds/nhllogo.png"
+		src : "data/img/sprite/nhllogo.png"
 	},
 	
 	/*
