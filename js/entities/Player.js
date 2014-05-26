@@ -5,7 +5,9 @@ game.Player = me.ObjectEntity.extend({
 			this.parent(x, y, settings);
 			this.settings = settings;
 			me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
-			me.game.viewport.setDeadzone(0, 0); //Bounding Box for camera
+			me.game.viewport.setDeadzone(constants.CAMERA_BOUNDING_BOX.x, constants.CAMERA_BOUNDING_BOX.y);
+			console.log(me.game.viewport.getHeight());
+			console.log(me.game.viewport.getWidth());
 			
 			this.maxMapHeight = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).rows;
 			this.maxMapWidth = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).cols;

@@ -155,10 +155,6 @@ game.resources = [
 		name : "credits",
 		type : "image",
 		src : "data/img/backgrounds/credits.png"
-	}, {
-		name : "nhllogo",
-		type : "image",
-		src : "data/img/backgrounds/nhllogo.png"
 	},
 	
 	/*
