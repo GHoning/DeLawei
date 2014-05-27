@@ -7,6 +7,7 @@ game.Player = me.ObjectEntity.extend({
 			me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 			me.game.viewport.setDeadzone(constants.CAMERA_BOUNDING_BOX.x, constants.CAMERA_BOUNDING_BOX.y);
 			
+			//TODO move this to a class of collision
 			this.maxMapHeight = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).rows;
 			this.maxMapWidth = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).cols;
 			me.game.viewport.setBounds(0, 0, this.maxMapWidth * 256, this.maxMapHeight * 128);
@@ -21,8 +22,7 @@ game.Player = me.ObjectEntity.extend({
 			this.renderable.addAnimation("downRight",[4,5,6,7]);
 			this.renderable.addAnimation("upRight",[8,9,10,11]);
 			this.renderable.addAnimation("upLeft",[12,13,14,15]);
-			
-			//TODO fix animations
+
 			this.animate = false;
 			this.index = 0;
 			this.deltaTime = 0;
@@ -30,9 +30,8 @@ game.Player = me.ObjectEntity.extend({
 		
 		animations : function () {
 			this.deltaTime += me.timer.tick;			
-			//TODO time step
+			//determines speed 
 			if(this.deltaTime >= 4) {
-				console.log(this.index);
 				this.renderable.setAnimationFrame(this.index);
 				this.index++;
 				this.deltaTime = 0;
@@ -53,10 +52,9 @@ game.Player = me.ObjectEntity.extend({
 				
 				if(this.index == 5) {
 					this.keylock = false;
-					this.index = 0;
-					//this.renderable.setAnimationFrame(this.index);
 					this.animate = false;
-					
+					this.index = 0;
+				
 					if(this.renderable.isCurrentAnimation("upRight")) {
 						this.mapPos.y -= 1;
 					} else if (this.renderable.isCurrentAnimation("downLeft")) {
@@ -121,6 +119,13 @@ game.Player = me.ObjectEntity.extend({
 			if(game.play.collisionMap[this.mapPos.x][this.mapPos.y-1] != null) {
 				if(game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].type == "npc") {
 					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].name;
+					var npc = me.game.world.getChildByName("npc");
+					for (var i = 0; i < npc.length; i++) {
+						if(npc[i].image == game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].name) {
+							npc[i].lookAt("down");
+						}
+					}
+					
 					return true;
 				} else {
 					return false;
@@ -130,6 +135,13 @@ game.Player = me.ObjectEntity.extend({
 			if (game.play.collisionMap[this.mapPos.x-1][this.mapPos.y] != null) {
 				if(game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].type == "npc") {
 					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].name;
+					var npc = me.game.world.getChildByName("npc");
+					for (var i = 0; i < npc.length; i++) {
+						if(npc[i].image == game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].name) {
+							npc[i].lookAt("up");
+						}
+					}
+					
 					return true;
 				} else {
 					return false;
@@ -139,6 +151,13 @@ game.Player = me.ObjectEntity.extend({
 			if(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1] != null) {
 				if(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].type == "npc") {
 					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].name;
+					var npc = me.game.world.getChildByName("npc");
+					for (var i = 0; i < npc.length; i++) {
+						
+						if(npc[i].image == game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].name) {
+							npc[i].lookAt("right");
+						}
+					}
 					return true;
 				} else {
 					return false;
@@ -148,6 +167,13 @@ game.Player = me.ObjectEntity.extend({
 			if(game.play.collisionMap[this.mapPos.x+1][this.mapPos.y] != null) {
 				if(game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].type == "npc") {
 					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].name;
+					var npc = me.game.world.getChildByName("npc");
+					
+					for (var i = 0; i < npc.length; i++) {
+						if(npc[i].image == game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].name) {
+							npc[i].lookAt("left");
+						}
+					}
 					return true;
 				} else {
 					return false;

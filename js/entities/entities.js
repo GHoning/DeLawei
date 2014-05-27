@@ -48,10 +48,14 @@ game.QuestNPC = me.ObjectEntity.extend({
 		init : function (x, y, settings) {
 			this.parent(x, y, settings);
 			this.settings = settings;
+			this.image = settings.image;
 			this.mapPosX = settings.mapPosX;
 			this.mapPosY = settings.mapPosY;
 			this.gravity = false;
 			this.z = 20;
+			this.renderable = new me.AnimationSheet(0, 0, me.loader.getImage(settings.image), 128,256);
+			this.renderable.addAnimation("direction", [0, 1, 2, 3]);
+			this.renderable.setCurrentAnimation("direction");
 			me.game.world.sort();
 		},
 
@@ -61,6 +65,24 @@ game.QuestNPC = me.ObjectEntity.extend({
 		
 		setZ : function (num) {
 			this.z = num;
+			me.game.world.sort();
+		},
+		
+		lookAt : function (direction) {
+			switch(direction) {
+				case "down":
+					this.renderable.setAnimationFrame(0);
+					break;
+				case "left":
+					this.renderable.setAnimationFrame(1);
+					break;
+				case "right":
+					this.renderable.setAnimationFrame(2);
+					break;
+				case "up":
+					this.renderable.setAnimationFrame(3);
+					break;
+			}	
 		},
 		
 		addQuestReaction : function (txt) {

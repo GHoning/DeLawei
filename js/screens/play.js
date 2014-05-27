@@ -9,6 +9,7 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.HUD;
 			this.NotebookScreen;
 			this.addHUD();
+			//this.collisionMap = new CollisionMap(me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData)
 			this.collisionMap = this.getCollisionMap();
 			this.placePlayer(game.data.playerPos);
 			this.itemOnReset();
