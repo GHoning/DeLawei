@@ -7,11 +7,13 @@ game.PlayScreen = me.ScreenObject.extend({
 			me.levelDirector.loadLevel(game.data.currentLevel);
 			game.data.score = 0;
 			this.HUD;
-			this.NotebookScreen;
 			this.addHUD();
-			//this.collisionMap = new CollisionMap(me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData)
-			this.collisionMap = this.getCollisionMap();
+			this.collision = new Collision(me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData);
+			//TODO remove this for player
+			this.collisionMap = this.collision.collisionMap;
+			//console.log(this);
 			this.placePlayer(game.data.playerPos);
+			//Does not work here should be done in collision
 			this.itemOnReset();
 			
 			if(game.data.questStateMachine.getStatus() == "brief"){
@@ -19,89 +21,6 @@ game.PlayScreen = me.ScreenObject.extend({
 			}
 			
 			//TODO enable audio. me.audio.play("crowd_sfx", true);
-		},
-
-		addNPCToCollision : function (collisionMap) {
-			var NPCs = me.game.world.getChildByName("npc");
-
-			if (NPCs.length > 0) {
-				for (var i = 0; i < NPCs.length; i++) {
-					collisionMap[NPCs[i].mapPosX][NPCs[i].mapPosY] = {
-						type : NPCs[i].settings.name,
-						name : NPCs[i].settings.image
-					};
-				}
-			}
-
-			return collisionMap;
-		},
-
-		addItemsToCollision : function (collisionMap) {
-			var items = me.game.world.getChildByName("item");
-
-			if (items.length > 0) {
-				for (var i = 0; i < items.length; i++) {
-					collisionMap[items[i].mapPosX][items[i].mapPosY] = {
-						type : items[i].settings.name,
-						name : items[i].settings.image
-					};
-				}
-			}
-
-			return collisionMap;
-		},
-
-		addDoorsToCollision : function (collisionMap) {
-			var doors = me.game.world.getChildByName("door");
-
-			if (doors.length > 0) {
-				for (var i = 0; i < doors.length; i++) {
-					collisionMap[doors[i].mapPosX1][doors[i].mapPosY1] = {
-						type : doors[i].name,
-						level : doors[i].level,
-						mapX : doors[i].mapX,
-						mapY : doors[i].mapY,
-						playerX : doors[i].playerX,
-						playerY : doors[i].playerY
-					};
-					collisionMap[doors[i].mapPosX2][doors[i].mapPosY2] = {
-						type : doors[i].name,
-						level : doors[i].level,
-						mapX : doors[i].mapX,
-						mapY : doors[i].mapY,
-						playerX : doors[i].playerX,
-						playerY : doors[i].playerY
-					};
-					collisionMap[doors[i].mapPosX3][doors[i].mapPosY3] = {
-						type : doors[i].name,
-						level : doors[i].level,
-						mapX : doors[i].mapX,
-						mapY : doors[i].mapY,
-						playerX : doors[i].playerX,
-						playerY : doors[i].playerY
-					};
-					collisionMap[doors[i].mapPosX4][doors[i].mapPosY4] = {
-						type : doors[i].name,
-						level : doors[i].level,
-						mapX : doors[i].mapX,
-						mapY : doors[i].mapY,
-						playerX : doors[i].playerX,
-						playerY : doors[i].playerY
-					};
-				}
-			}
-
-			return collisionMap;
-		},
-
-		getCollisionMap : function () {
-			me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).alpha = 0;
-			var collisionMap = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData;
-			collisionMap = this.addNPCToCollision(collisionMap);
-			collisionMap = this.addItemsToCollision(collisionMap);
-			collisionMap = this.addDoorsToCollision(collisionMap);
-
-			return collisionMap;
 		},
 
 		addHUD : function () {
@@ -169,7 +88,7 @@ game.PlayScreen = me.ScreenObject.extend({
 			player[0].pos.x = x;
 			player[0].pos.y = y;
 			this.itemOnReset();
-			this.collisionMap = this.getCollisionMap();
+			this.collision = new Collision(me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData);
 			//TODO find a better way to reload the HUD
 			this.addHUD();
 		}

@@ -6,11 +6,8 @@ game.Player = me.ObjectEntity.extend({
 			this.settings = settings;
 			me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 			me.game.viewport.setDeadzone(constants.CAMERA_BOUNDING_BOX.x, constants.CAMERA_BOUNDING_BOX.y);
+			//me.game.viewport.setBounds(0, 0, game.play.collision.maxWidth * constants.TILEWIDHT, game.play.collision.maxHeight * constants.TILEHEIGTH);
 			
-			//TODO move this to a class of collision
-			this.maxMapHeight = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).rows;
-			this.maxMapWidth = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).cols;
-			me.game.viewport.setBounds(0, 0, this.maxMapWidth * 256, this.maxMapHeight * 128);
 			this.gravity = false;
 			this.alwaysUpdate = true;
 			

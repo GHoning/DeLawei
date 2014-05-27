@@ -10,5 +10,7 @@ const constants = {
 	"CAMERA_BOUNDING_BOX"		: new me.Vector2d(400,400),
 	"COLLISION_TYPE"			: "solid",
 	"INVENTORY_SLOTS"			: 8,
-	"INVENTORY_SLOT_SIZE"		: 96
+	"INVENTORY_SLOT_SIZE"		: 96,
+	"TILEWIDHT"					: 256,
+	"TILEHEIGTH"				: 128
 };

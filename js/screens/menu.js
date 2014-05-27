@@ -18,7 +18,7 @@ game.MenuScreen.playButton = game.UIButton.extend({
 	},
 	
 	onHover : function () {
-		console.log("hover");
+		//do fun hover stuff here console.log("hover");
 	}
 });
 	
