@@ -15,6 +15,10 @@ game.MenuScreen.playButton = game.UIButton.extend({
 
 	onClick : function () {
 		me.state.change(me.state.PLAY);
+	},
+	
+	onHover : function () {
+		console.log("hover");
 	}
 });
 	
@@ -26,6 +30,10 @@ game.MenuScreen.creditButton = game.UIButton.extend({
 	onClick : function () {
 		//TODO addStateChange
 		console.log("credits");
+	},
+	
+	onHover : function () {
+	
 	}
 });
 
@@ -37,6 +45,10 @@ game.MenuScreen.instructionsButton = game.UIButton.extend({
 	onClick : function () {
 		//TODO addStateChange
 		console.log("instructions");
+	},
+	
+	onHover : function () {
+	
 	}
 });
 

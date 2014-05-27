@@ -6,8 +6,6 @@ game.Player = me.ObjectEntity.extend({
 			this.settings = settings;
 			me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 			me.game.viewport.setDeadzone(constants.CAMERA_BOUNDING_BOX.x, constants.CAMERA_BOUNDING_BOX.y);
-			console.log(me.game.viewport.getHeight());
-			console.log(me.game.viewport.getWidth());
 			
 			this.maxMapHeight = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).rows;
 			this.maxMapWidth = me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).cols;
@@ -31,54 +29,77 @@ game.Player = me.ObjectEntity.extend({
 		},
 		
 		animations : function () {
-			this.deltaTime = this.deltaTime + me.timer.tick;			
+			this.deltaTime += me.timer.tick;			
 			//TODO time step
-			if(this.deltaTime >= 2) {
+			if(this.deltaTime >= 4) {
+				console.log(this.index);
 				this.renderable.setAnimationFrame(this.index);
 				this.index++;
 				this.deltaTime = 0;
 				
-				if(this.index >= 3) {
+				if(this.renderable.isCurrentAnimation("upRight")) {
+					this.pos.x += (64/5);
+					this.pos.y -= (32/5);
+				} else if (this.renderable.isCurrentAnimation("downLeft")) {
+					this.pos.x -= (64/5);
+					this.pos.y += (32/5);
+				} else if (this.renderable.isCurrentAnimation("upLeft")){
+					this.pos.x -= (64/5);
+					this.pos.y -= (32/5);
+				} else if (this.renderable.isCurrentAnimation("downRight")){
+					this.pos.x += (64/5);
+					this.pos.y += (32/5);
+				}
+				
+				if(this.index == 5) {
 					this.keylock = false;
 					this.index = 0;
-					this.renderable.setAnimationFrame(this.index);
+					//this.renderable.setAnimationFrame(this.index);
 					this.animate = false;
+					
+					if(this.renderable.isCurrentAnimation("upRight")) {
+						this.mapPos.y -= 1;
+					} else if (this.renderable.isCurrentAnimation("downLeft")) {
+						this.mapPos.y += 1;
+					} else if (this.renderable.isCurrentAnimation("upLeft")){
+						this.mapPos.x -= 1;
+					} else if (this.renderable.isCurrentAnimation("downRight")){
+						this.mapPos.x += 1;
+					}					
 				}
 			}
 		},
 		
+		//TODO remove these.
 		walkUp : function () {
+			//TODO check for animation
+			this.renderable.setCurrentAnimation("upRight");
 			this.animate = true;
-			this.mapPos.y -= 1;
-			this.pos.x += 64;
-			this.pos.y -= 32;
 			//TODO enable audio.me.audio.play("footstep_sfx");
 		},
 		
 		walkDown : function () {
+			//TODO check for animation
+			this.renderable.setCurrentAnimation("downLeft");
 			this.animate = true;
-			this.mapPos.y += 1;
-			this.pos.x -= 64;
-			this.pos.y += 32;
 			//TODO enable audio.me.audio.play("footstep_sfx");
 		},
 		
 		walkLeft : function () {
+			//TODO check for animation
+			this.renderable.setCurrentAnimation("upLeft");
 			this.animate = true;
-			this.mapPos.x -= 1;
-			this.pos.x -= 64;
-			this.pos.y -= 32;
 			//TODO enable audio.me.audio.play("footstep_sfx");
 		},
 		
 		walkRight : function () {
+			//TODO check for animation
+			this.renderable.setCurrentAnimation("downRight");
 			this.animate = true;
-			this.mapPos.x += 1;
-			this.pos.x += 64;
-			this.pos.y += 32;
 			//TODO enable audio.me.audio.play("footstep_sfx");
 		},
 		
+		//TODO do this in NPC itself
 		checkNPCZ : function () {
 			var npc = me.game.world.getChildByName("npc");
 
@@ -137,19 +158,25 @@ game.Player = me.ObjectEntity.extend({
 		},
 		
 		update : function () {
-			
+		
+			if(this.animate) {
+				this.animations();
+			}
+		
+			//TODO do this in NPC itself
 			this.checkNPCZ();
-			//TODO itemtileID look at the possibilities again.
-			if(game.play.collisionMap[this.mapPos.x][this.mapPos.y] != null) {			
+			
+			
+			if(game.play.collisionMap[this.mapPos.x][this.mapPos.y] != null) {
+				//item
 				if (me.input.isKeyPressed("Use") && game.play.collisionMap[this.mapPos.x][this.mapPos.y].type == "item") {
 					game.play.addItemToInventory(game.play.collisionMap[this.mapPos.x][this.mapPos.y].name);
+				//door
 				} else if (game.play.collisionMap[this.mapPos.x][this.mapPos.y].type == "door") {
 					var tile = game.play.collisionMap[this.mapPos.x][this.mapPos.y];
 					game.play.loadLevel(tile.level, tile.playerX, tile.playerY, tile.mapX, tile.mapY);
 				}
 			}
-			
-			
 			
 			//talk to NPC
 			if(this.nextToNPC() && me.input.isKeyPressed("Use") && !this.keylock){
@@ -159,14 +186,9 @@ game.Player = me.ObjectEntity.extend({
 				me.state.change(me.state.SPEECH);
 			}
 			
-			if(this.animate) {
-				this.animations();
-			}
-			
 			//TODO make type only contain solid or not no stupid stuff with npc/item/door and stuff check cords function
 			if (me.input.isKeyPressed("Up") && !this.keylock) {
 				this.keylock = true;
-				this.renderable.setCurrentAnimation("upRight");
 				if(this.mapPos.y-1 >= 0 && game.play.collisionMap[this.mapPos.x][this.mapPos.y-1] != null) {
 				//TODO reconsider the options about this system
 					if (game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].type == "item" || game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].type == "door") {
@@ -185,7 +207,6 @@ game.Player = me.ObjectEntity.extend({
 			
 			if (me.input.isKeyPressed("Left") && !this.keylock) {
 				this.keylock = true;
-				this.renderable.setCurrentAnimation("upLeft");
 				if(this.mapPos.x-1 >= 0 && game.play.collisionMap[this.mapPos.x-1][this.mapPos.y] != null){
 					if(game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].type == "item" || game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].type == "door") {
 						this.walkLeft();
@@ -203,7 +224,7 @@ game.Player = me.ObjectEntity.extend({
 
 			if (me.input.isKeyPressed("Down") && !this.keylock) {
 				this.keylock = true;
-				this.renderable.setCurrentAnimation("downLeft");
+				
 				if(this.mapPos.y < this.maxMapHeight && game.play.collisionMap[this.mapPos.x][this.mapPos.y+1] != null){
 					if(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].type == "item" || game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].type == "door"){
 						this.walkDown();
@@ -221,7 +242,6 @@ game.Player = me.ObjectEntity.extend({
 
 			if (me.input.isKeyPressed("Right") && !this.keylock) {
 				this.keylock = true;
-				this.renderable.setCurrentAnimation("downRight");
 				if(this.mapPos.x < this.maxMapWidth && game.play.collisionMap[this.mapPos.x+1][this.mapPos.y] != null){
 					if(game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].type == "item" || game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].type == "door"){	
 						this.walkRight();

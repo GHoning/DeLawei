@@ -161,7 +161,6 @@ game.PlayScreen = me.ScreenObject.extend({
 		},
 
 		loadLevel : function (level, x, y, mapX, mapY) {
-			console.log(level);
 			me.levelDirector.loadLevel(level);
 			var player = me.game.world.getChildByName("player");
 			player[0].mapPos.x = mapX;
