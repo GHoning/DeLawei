@@ -131,7 +131,7 @@ game.HUD.MuteButton = game.UIButton.extend({
 		this.muted = true;
 		this.imgMuted = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage(image1), 64, 64);
 		this.imgUnmuted = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage(image2), 64, 64);
-		//TODO fix this isue or i kill ya
+		//TODO fix this isue
 		//this.parent(x, y, this.imgMuted);
 		
 	},

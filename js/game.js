@@ -8,7 +8,7 @@ var game = {
 		playerMapPos: constants.PLAYER_STARTMAPLOCATION,
 		currentQuestState : constants.STARTING_QUESTSTATE,
 		playerPos: constants.PLAYER_STARTLOCATION,
-		inventory : [],
+		inventory : ["brief"],
 		lastspokenNPC : "",
 		questStateMachine : new StateMachine(QuestStates)
 	},

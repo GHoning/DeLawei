@@ -16,10 +16,6 @@ game.MenuScreen.playButton = game.UIButton.extend({
 	onClick : function () {
 		me.state.change(me.state.PLAY);
 	},
-	
-	onHover : function () {
-		//do fun hover stuff here console.log("hover");
-	}
 });
 	
 game.MenuScreen.creditButton = game.UIButton.extend({

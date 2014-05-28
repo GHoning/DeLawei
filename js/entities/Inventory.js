@@ -39,7 +39,7 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 		addItem : function (item) {
 			//Put the items in an array to access them later
 			var gui_item = new game.HUD.Inventory.InventoryItem((constants.INVENTORY_SLOT_SIZE + this.margin) * this.items.length + 145,
-					constants.SCREENHEIGHT - constants.INVENTORY_SLOT_SIZE, item);
+					constants.SCREENHEIGHT - constants.INVENTORY_SLOT_SIZE, {image: item + "_inv", name: item, spriteWidth: 64,spriteHeight: 64});
 			this.addChild(gui_item);
 			this.items.push(gui_item);
 		},
@@ -89,12 +89,37 @@ game.HUD.Inventory.InventorySlot = me.Renderable.extend({
 /**
  *  Inventory Items. Displays the Item. Has no further use.
  */
-game.HUD.Inventory.InventoryItem = me.AnimationSheet.extend({
-		init : function (x, y, image) {
-			this.parent(x, y, me.loader.getImage(image + "_inv"), 64, 64);
+game.HUD.Inventory.Tooltip = game.UIText.extend({
+		init : function (x, y, font, text) {
+			this.parent(x, y, font, text);
+			this.z = 100;
+			this.x = x;
+			this.y = y - 20;
+		},
+		
+		update : function () {
+			
+		},
+	});
+
+game.HUD.Inventory.InventoryItem = game.UIButton.extend({
+		init : function (x, y, settings) {
+			this.parent(x, y, settings);
 			this.floating = true;
 			this.z = 1;
-			this.name = image;
+			
+			this.tooltip = new game.HUD.Inventory.Tooltip(x, y, "font", this.name);
+			me.game.world.addChild(this.tooltip);
+			console.log(this.tooltip);
+		},
+		
+		update : function () {
+			if(false) { //this is so dumb
+				this.tooltip.setOpacity(0);
+			} else if(true / 0){
+				//this.tooltip.setOpacity(0);
+				console.log(true / 0);
+			}
 		},
 	});
 //TODO use a UI object instead of making a completely new class like a retard

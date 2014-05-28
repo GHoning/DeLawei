@@ -77,5 +77,4 @@ function Collision(collisionMap) {
 	this.addNPCsToCollision();
 	this.addItemsToCollision();
 	this.addDoorsToCollision();
-	console.log(this.collisionMap);
 }
