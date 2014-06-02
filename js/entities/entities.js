@@ -9,7 +9,9 @@ game.Item = me.ObjectEntity.extend({
 			this.mapPosY = settings.mapPosY;
 			this.spritewidth = settings.spritewidth;
 			this.spriteheight = settings.spriteheight;
+			this.type = settings.type;
 			this.gravity = false;
+			console.log("item created");
 		}
 	});
 	
@@ -37,7 +39,10 @@ game.Door = me.ObjectEntity.extend({
 			this.mapPosY3 = settings.tile3y;
 			this.mapPosY4 = settings.tile4y;
 			
+			this.type = settings.type;
+			
 			this.gravity = false;
+			console.log("door created");
 		}
 	});
 
@@ -51,12 +56,14 @@ game.QuestNPC = me.ObjectEntity.extend({
 			this.image = settings.image;
 			this.mapPosX = settings.mapPosX;
 			this.mapPosY = settings.mapPosY;
+			this.type = settings.type;
 			this.gravity = false;
 			this.z = 20;
 			this.renderable = new me.AnimationSheet(0, 0, me.loader.getImage(settings.image), 128,256);
 			this.renderable.addAnimation("direction", [0, 1, 2, 3]);
 			this.renderable.setCurrentAnimation("direction");
 			me.game.world.sort();
+			console.log("npc Created")
 		},
 
 		update : function () {

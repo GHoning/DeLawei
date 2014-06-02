@@ -6,7 +6,7 @@ game.Player = me.ObjectEntity.extend({
 			this.settings = settings;
 			me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
 			me.game.viewport.setDeadzone(constants.CAMERA_BOUNDING_BOX.x, constants.CAMERA_BOUNDING_BOX.y);
-			//me.game.viewport.setBounds(0, 0, game.play.collision.maxWidth * constants.TILEWIDHT, game.play.collision.maxHeight * constants.TILEHEIGTH);
+			me.game.viewport.setBounds(0, 0, /* game.play.collision.maxWidth */ me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).rows * constants.TILEWIDHT, /* game.play.collision.maxHeight */me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).cols * constants.TILEHEIGTH);
 			
 			this.gravity = false;
 			this.alwaysUpdate = true;
@@ -23,26 +23,43 @@ game.Player = me.ObjectEntity.extend({
 			this.animate = false;
 			this.index = 0;
 			this.deltaTime = 0;
+			this.goUpRight = false;
+			this.goDownLeft = false;
+			this.goUpLeft = false;
+			this.goDownRight = false;
+			console.log("player created");
 		},
 		
 		animations : function () {
-			this.deltaTime += me.timer.tick;			
+			
+			if(!this.renderable.isCurrentAnimation("downLeft") && this.goDownLeft) {
+				this.renderable.setCurrentAnimation("downLeft");
+			} else if (!this.renderable.isCurrentAnimation("downRight") && this.goDownRight) {
+				this.renderable.setCurrentAnimation("downRight");
+			} else if (!this.renderable.isCurrentAnimation("upRight") && this.goUpRight) {
+				this.renderable.setCurrentAnimation("upRight");
+			} else if (!this.renderable.isCurrentAnimation("upLeft") && this.goUpLeft) {
+				this.renderable.setCurrentAnimation("upLeft");
+			}
+		
+		
+			this.deltaTime += me.timer.tick;		
 			//determines speed 
-			if(this.deltaTime >= 4) {
+			if(this.deltaTime >= 2) {
 				this.renderable.setAnimationFrame(this.index);
 				this.index++;
 				this.deltaTime = 0;
 				
-				if(this.renderable.isCurrentAnimation("upRight")) {
+				if(this.goUpRight) {
 					this.pos.x += (64/5);
 					this.pos.y -= (32/5);
-				} else if (this.renderable.isCurrentAnimation("downLeft")) {
+				} else if (this.goDownLeft) {
 					this.pos.x -= (64/5);
 					this.pos.y += (32/5);
-				} else if (this.renderable.isCurrentAnimation("upLeft")){
+				} else if (this.goUpLeft){
 					this.pos.x -= (64/5);
 					this.pos.y -= (32/5);
-				} else if (this.renderable.isCurrentAnimation("downRight")){
+				} else if (this.goDownRight){
 					this.pos.x += (64/5);
 					this.pos.y += (32/5);
 				}
@@ -52,49 +69,20 @@ game.Player = me.ObjectEntity.extend({
 					this.animate = false;
 					this.index = 0;
 				
-					if(this.renderable.isCurrentAnimation("upRight")) {
+					if(this.goUpRight) {
 						this.mapPos.y -= 1;
-					} else if (this.renderable.isCurrentAnimation("downLeft")) {
+					} else if (this.goDownLeft) {
 						this.mapPos.y += 1;
-					} else if (this.renderable.isCurrentAnimation("upLeft")){
+					} else if (this.goUpLeft){
 						this.mapPos.x -= 1;
-					} else if (this.renderable.isCurrentAnimation("downRight")){
+					} else if (this.goDownRight){
 						this.mapPos.x += 1;
 					}					
 				}
 			}
 		},
 		
-		//TODO remove these.
-		walkUp : function () {
-			//TODO check for animation
-			this.renderable.setCurrentAnimation("upRight");
-			this.animate = true;
-			//TODO enable audio.me.audio.play("footstep_sfx");
-		},
-		
-		walkDown : function () {
-			//TODO check for animation
-			this.renderable.setCurrentAnimation("downLeft");
-			this.animate = true;
-			//TODO enable audio.me.audio.play("footstep_sfx");
-		},
-		
-		walkLeft : function () {
-			//TODO check for animation
-			this.renderable.setCurrentAnimation("upLeft");
-			this.animate = true;
-			//TODO enable audio.me.audio.play("footstep_sfx");
-		},
-		
-		walkRight : function () {
-			//TODO check for animation
-			this.renderable.setCurrentAnimation("downRight");
-			this.animate = true;
-			//TODO enable audio.me.audio.play("footstep_sfx");
-		},
-		
-		//TODO do this in NPC itself
+		//TODO use the base of the object
 		checkNPCZ : function () {
 			var npc = me.game.world.getChildByName("npc");
 
@@ -111,76 +99,8 @@ game.Player = me.ObjectEntity.extend({
 			}
 		},
 		
-		nextToNPC : function () {
-			//TODO make it shorter
-			if(game.play.collisionMap[this.mapPos.x][this.mapPos.y-1] != null) {
-				if(game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].type == "npc") {
-					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].name;
-					var npc = me.game.world.getChildByName("npc");
-					for (var i = 0; i < npc.length; i++) {
-						if(npc[i].image == game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].name) {
-							npc[i].lookAt("down");
-						}
-					}
-					
-					return true;
-				} else {
-					return false;
-				}
-			}
-			
-			if (game.play.collisionMap[this.mapPos.x-1][this.mapPos.y] != null) {
-				if(game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].type == "npc") {
-					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].name;
-					var npc = me.game.world.getChildByName("npc");
-					for (var i = 0; i < npc.length; i++) {
-						if(npc[i].image == game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].name) {
-							npc[i].lookAt("up");
-						}
-					}
-					
-					return true;
-				} else {
-					return false;
-				}
-			}
-			
-			if(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1] != null) {
-				if(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].type == "npc") {
-					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].name;
-					var npc = me.game.world.getChildByName("npc");
-					for (var i = 0; i < npc.length; i++) {
-						
-						if(npc[i].image == game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].name) {
-							npc[i].lookAt("right");
-						}
-					}
-					return true;
-				} else {
-					return false;
-				}
-			}
-		
-			if(game.play.collisionMap[this.mapPos.x+1][this.mapPos.y] != null) {
-				if(game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].type == "npc") {
-					game.data.lastspokenNPC = game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].name;
-					var npc = me.game.world.getChildByName("npc");
-					
-					for (var i = 0; i < npc.length; i++) {
-						if(npc[i].image == game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].name) {
-							npc[i].lookAt("left");
-						}
-					}
-					return true;
-				} else {
-					return false;
-				}
-			}
-			
-			return false;
-		},
-		
 		update : function () {
+			//console.log("player Update");
 		
 			if(this.animate) {
 				this.animations();
@@ -189,96 +109,64 @@ game.Player = me.ObjectEntity.extend({
 			//TODO do this in NPC itself
 			this.checkNPCZ();
 			
+			var tile = game.play.collision.getTile(this.mapPos.x, this.mapPos.y);
+			//use items
 			
-			if(game.play.collisionMap[this.mapPos.x][this.mapPos.y] != null) {
+			if(tile != null) {
 				//item
-				if (me.input.isKeyPressed("Use") && game.play.collisionMap[this.mapPos.x][this.mapPos.y].type == "item") {
-					game.play.addItemToInventory(game.play.collisionMap[this.mapPos.x][this.mapPos.y].name);
+				if (me.input.isKeyPressed("Use") && tile.type == "item") {
+					game.play.addItemToInventory(tile.name);
 				//door
-				} else if (game.play.collisionMap[this.mapPos.x][this.mapPos.y].type == "door") {
-					var tile = game.play.collisionMap[this.mapPos.x][this.mapPos.y];
+				} else if (tile.name == "door") {
 					game.play.loadLevel(tile.level, tile.playerX, tile.playerY, tile.mapX, tile.mapY);
 				}
 			}
 			
 			//talk to NPC
-			if(this.nextToNPC() && me.input.isKeyPressed("Use") && !this.keylock){
+			if (game.play.collision.isNextToNPC(this.mapPos.x, this.mapPos.y) && me.input.isKeyPressed("Use") && !this.keylock) {
+				console.log(game.data.lastSpokenNPC);
 				this.keylock = true;
 				//game.play.removeItemFromInventory("koekje"); TODO fix bug
 				game.play.HUD.remove();
 				me.state.change(me.state.SPEECH);
 			}
-			
-			//TODO make type only contain solid or not no stupid stuff with npc/item/door and stuff check cords function
-			if (me.input.isKeyPressed("Up") && !this.keylock) {
+
+			//TODO fix animations because they still being looped over in the begining of a level switch which means he doesn't know about this.renderable
+			if (me.input.isKeyPressed("Up") && !this.keylock && game.play.collision.isWalkable(this.mapPos.x, this.mapPos.y-1)) {
 				this.keylock = true;
-				if(this.mapPos.y-1 >= 0 && game.play.collisionMap[this.mapPos.x][this.mapPos.y-1] != null) {
-				//TODO reconsider the options about this system
-					if (game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].type == "item" || game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].type == "door") {
-						this.walkUp();
-					} else if(game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].type == "npc") {
-						this.keylock = false;
-					} else if (game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].tileset.TileProperties[game.play.collisionMap[this.mapPos.x][this.mapPos.y-1].tileId].type == constants.COLLISION_TYPE) {
-						this.keylock = false;
-					}else {
-						this.walkUp();
-					}
-				} else {
-					this.walkUp();
-				}
+				this.goUpRight = true;
+				this.goDownLeft = false;
+				this.goUpLeft = false;
+				this.goDownRight = false;
+				this.animate = true;
 			}
 			
-			if (me.input.isKeyPressed("Left") && !this.keylock) {
+			if (me.input.isKeyPressed("Left") && !this.keylock && game.play.collision.isWalkable(this.mapPos.x-1, this.mapPos.y)) {
 				this.keylock = true;
-				if(this.mapPos.x-1 >= 0 && game.play.collisionMap[this.mapPos.x-1][this.mapPos.y] != null){
-					if(game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].type == "item" || game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].type == "door") {
-						this.walkLeft();
-					} else if(game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].type == "npc") {
-						this.keylock = false;
-					} else if (game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].tileset.TileProperties[game.play.collisionMap[this.mapPos.x-1][this.mapPos.y].tileId].type == constants.COLLISION_TYPE){
-						this.keylock = false;
-					} else {
-						this.walkLeft();
-					}
-				}else {
-					this.walkLeft();
-				}
+				this.goUpRight = false;
+				this.goDownLeft = false;
+				this.goUpLeft = true;
+				this.goDownRight = false;
+				this.animate = true;
 			}
 
-			if (me.input.isKeyPressed("Down") && !this.keylock) {
+			if (me.input.isKeyPressed("Down") && !this.keylock && game.play.collision.isWalkable(this.mapPos.x, this.mapPos.y+1)) {
 				this.keylock = true;
-				
-				if(this.mapPos.y < this.maxMapHeight && game.play.collisionMap[this.mapPos.x][this.mapPos.y+1] != null){
-					if(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].type == "item" || game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].type == "door"){
-						this.walkDown();
-					} else if(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].type == "npc"){
-						this.keylock = false;
-					} else if(game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].tileset.TileProperties[game.play.collisionMap[this.mapPos.x][this.mapPos.y+1].tileId].type == constants.COLLISION_TYPE){
-						this.keylock = false;
-					} else {
-						this.walkDown();
-					}
-				} else {
-					this.walkDown();
-				}
+				this.goUpRight = false;
+				this.goDownLeft = true;
+				this.goUpLeft = false;
+				this.goDownRight = false;
+				this.animate = true;
 			}
 
-			if (me.input.isKeyPressed("Right") && !this.keylock) {
+			if (me.input.isKeyPressed("Right") && !this.keylock && game.play.collision.isWalkable(this.mapPos.x+1, this.mapPos.y)) {
 				this.keylock = true;
-				if(this.mapPos.x < this.maxMapWidth && game.play.collisionMap[this.mapPos.x+1][this.mapPos.y] != null){
-					if(game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].type == "item" || game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].type == "door"){	
-						this.walkRight();
-					} else if (game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].type == "npc") {
-						this.keylock = false;
-					} else if (game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].tileset.TileProperties[game.play.collisionMap[this.mapPos.x+1][this.mapPos.y].tileId].type == constants.COLLISION_TYPE){
-						this.keylock = false;
-					} else {
-						this.walkRight();
-					}
-				} else {
-					this.walkRight();
-				}
-			}
+				this.goUpRight = false;
+				this.goDownLeft = false;
+				this.goUpLeft = false;
+				this.goDownRight = true;
+				this.animate = true;
+			} 
 			
 			this.updateMovement();
 			this.parent();

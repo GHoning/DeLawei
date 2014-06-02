@@ -75,6 +75,7 @@
     <property name="tile3y" value="24"/>
     <property name="tile4x" value="27"/>
     <property name="tile4y" value="25"/>
+    <property name="type" value="none"/>
    </properties>
   </object>
   <object name="door" x="894" y="1981" width="64" height="256">
@@ -92,6 +93,7 @@
     <property name="tile3y" value="33"/>
     <property name="tile4x" value="14"/>
     <property name="tile4y" value="36"/>
+    <property name="type" value="none"/>
    </properties>
   </object>
   <object name="door" x="1278" y="1982" width="64" height="256">
@@ -109,6 +111,7 @@
     <property name="tile3y" value="33"/>
     <property name="tile4x" value="20"/>
     <property name="tile4y" value="35"/>
+    <property name="type" value="none"/>
    </properties>
   </object>
   <object name="door" x="1407" y="2235" width="256" height="64">
@@ -126,6 +129,7 @@
     <property name="tile3y" value="35"/>
     <property name="tile4x" value="25"/>
     <property name="tile4y" value="35"/>
+    <property name="type" value="none"/>
    </properties>
   </object>
   <object name="npc" x="542" y="1050" width="64" height="64">

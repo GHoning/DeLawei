@@ -9,8 +9,9 @@ function Collision(collisionMap) {
 		if (NPCs.length > 0) {
 			for (var i = 0; i < NPCs.length; i++) {
 				this.collisionMap[NPCs[i].mapPosX][NPCs[i].mapPosY] = {
-						type : NPCs[i].settings.name,
-						name : NPCs[i].settings.image
+						obj : NPCs[i].settings.name,
+						name : NPCs[i].settings.image,
+						type : NPCs[i].settings.type
 				};
 			}
 		}
@@ -22,8 +23,9 @@ function Collision(collisionMap) {
 		if (items.length > 0) {
 			for (var i = 0; i < items.length; i++) {
 				this.collisionMap[items[i].mapPosX][items[i].mapPosY] = {
-					type : items[i].settings.name,
-					name : items[i].settings.image
+					obj : items[i].settings.name,
+					name : items[i].settings.image,
+					type : items[i].settings.type
 				};
 			}
 		}
@@ -35,47 +37,139 @@ function Collision(collisionMap) {
 		if (doors.length > 0) {
 			for (var i = 0; i < doors.length; i++) {
 				this.collisionMap[doors[i].mapPosX1][doors[i].mapPosY1] = {
-					type : doors[i].name,
+					name : doors[i].name,
 					level : doors[i].level,
 					mapX : doors[i].mapX,
 					mapY : doors[i].mapY,
 					playerX : doors[i].playerX,
-					playerY : doors[i].playerY
+					playerY : doors[i].playerY,
+					type : doors[i].settings.type
 				};
 				this.collisionMap[doors[i].mapPosX2][doors[i].mapPosY2] = {
-					type : doors[i].name,
+					name : doors[i].name,
 					level : doors[i].level,
 					mapX : doors[i].mapX,
 					mapY : doors[i].mapY,
 					playerX : doors[i].playerX,
-					playerY : doors[i].playerY
+					playerY : doors[i].playerY,
+					type : doors[i].settings.type
 				};
 				this.collisionMap[doors[i].mapPosX3][doors[i].mapPosY3] = {
-					type : doors[i].name,
+					name : doors[i].name,
 					level : doors[i].level,
 					mapX : doors[i].mapX,
 					mapY : doors[i].mapY,
 					playerX : doors[i].playerX,
-					playerY : doors[i].playerY
+					playerY : doors[i].playerY,
+					type : doors[i].settings.type
 				};
 				this.collisionMap[doors[i].mapPosX4][doors[i].mapPosY4] = {
-					type : doors[i].name,
+					name : doors[i].name,
 					level : doors[i].level,
 					mapX : doors[i].mapX,
 					mapY : doors[i].mapY,
 					playerX : doors[i].playerX,
-					playerY : doors[i].playerYa
+					playerY : doors[i].playerY,
+					type : doors[i].settings.type
 				};
 			}
 		}
 	}
-	
-	this.checkPosition = function (vec2) {
-		
+
+	//collision with npc none with the rest.
+	this.isWalkable = function (x, y) {
+		if (this.collisionMap[x][y] != null) {
+			//think of a better algorithm
+			if (this.collisionMap[x][y].type == "none") {
+				return true;
+			} else if(this.collisionMap[x][y].type !== "solid") {
+				return false;
+			} else  if (this.collisionMap[x][y].type == "solid") {
+				return false;
+			} else {
+				return true;
+			}
+		}
+		return true;
 	}
+	
+	this.getTile = function (x, y) {
+		return this.collisionMap[x][y];
+	}
+	
+	this.isNextToNPC = function (x, y) {
+		if(this.collisionMap[x][y-1] != null) {
+			if(this.collisionMap[x][y-1].obj == "npc") {
+				game.data.lastSpokenNPC = this.collisionMap[x][y-1].name;
+				var npc = me.game.world.getChildByName("npc");
+				
+				for (var i = 0; i < npc.length; i++) {
+					if(npc[i].image == this.collisionMap[x][y-1].name) {
+						npc[i].lookAt("down");
+					}
+				}
+				
+				return true;
+			}
+			
+			return false;
+		}
+		
+		if(this.collisionMap[x-1][y] != null) {
+			if(this.collisionMap[x-1][y].obj == "npc") {
+				game.data.lastSpokenNPC = this.collisionMap[x-1][y].name;
+				var npc = me.game.world.getChildByName("npc");
+				
+				for (var i = 0; i < npc.length; i++) {
+					if(npc[i].image == this.collisionMap[x-1][y].name) {
+						npc[i].lookAt("up");
+					}
+				}
+				
+				return true;
+			}
+			
+			return false;
+		}
+		
+		if(this.collisionMap[x][y+1] != null) {
+			if(this.collisionMap[x][y+1].obj == "npc") {
+				game.data.lastSpokenNPC = this.collisionMap[x][y+1].name;
+				var npc = me.game.world.getChildByName("npc");
+				
+				for (var i = 0; i < npc.length; i++) {
+					if(npc[i].image == this.collisionMap[x][y+1].name) {
+						npc[i].lookAt("right");
+					}
+				}
+				
+				return true;
+			}
+			
+			return false;
+		}
+		
+		if(this.collisionMap[x+1][y] != null) {
+			if(this.collisionMap[x+1][y].obj == "npc") {
+				game.data.lastSpokenNPC = this.collisionMap[x+1][y].name;
+				var npc = me.game.world.getChildByName("npc");
+				
+				for (var i = 0; i < npc.length; i++) {
+					if(npc[i].image == this.collisionMap[x+1][y].name) {
+						npc[i].lookAt("left");
+					}
+				}
+				
+				return true;
+			}
+			
+			return false;
+		}
+		
+		return false;
+	} 
 	
 	this.addNPCsToCollision();
 	this.addItemsToCollision();
 	this.addDoorsToCollision();
-	console.log(this.collisionMap);
 }

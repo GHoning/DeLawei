@@ -77,6 +77,7 @@
     <property name="mapPosY" value="15"/>
     <property name="spriteheight" value="256"/>
     <property name="spritewidth" value="128"/>
+    <property name="type" value="solid"/>
    </properties>
   </object>
   <object name="door" x="578" y="833" width="64" height="256">
@@ -94,6 +95,7 @@
     <property name="tile3y" value="15"/>
     <property name="tile4x" value="9"/>
     <property name="tile4y" value="16"/>
+    <property name="type" value="none"/>
    </properties>
   </object>
   <object name="npc" x="1054" y="668" width="64" height="64">
@@ -103,6 +105,7 @@
     <property name="mapPosY" value="11"/>
     <property name="spriteheight" value="256"/>
     <property name="spritewidth" value="128"/>
+    <property name="type" value="solid"/>
    </properties>
   </object>
  </objectgroup>

@@ -20,6 +20,8 @@ game.PlayScreen = me.ScreenObject.extend({
 				me.state.change(me.state.SPEECH);
 			}
 			
+			console.log("reset play.js");
+			
 			//TODO enable audio. me.audio.play("crowd_sfx", true);
 		},
 
@@ -82,14 +84,16 @@ game.PlayScreen = me.ScreenObject.extend({
 
 		loadLevel : function (level, x, y, mapX, mapY) {
 			me.levelDirector.loadLevel(level);
+			
 			var player = me.game.world.getChildByName("player");
 			player[0].mapPos.x = mapX;
 			player[0].mapPos.y = mapY;
 			player[0].pos.x = x;
 			player[0].pos.y = y;
 			this.itemOnReset();
-			this.collision = new Collision(me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData);
 			//TODO find a better way to reload the HUD
 			this.addHUD();
+			console.log("load level");
+			this.collision = new Collision(me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData);
 		}
 	});
