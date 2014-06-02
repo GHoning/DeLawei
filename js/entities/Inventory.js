@@ -110,7 +110,6 @@ game.HUD.Inventory.InventoryItem = game.UIButton.extend({
 			
 			this.tooltip = new game.HUD.Inventory.Tooltip(x, y, "font", this.name);
 			me.game.world.addChild(this.tooltip);
-			console.log(this.tooltip);
 		},
 		
 		update : function () {
@@ -118,7 +117,6 @@ game.HUD.Inventory.InventoryItem = game.UIButton.extend({
 				this.tooltip.setOpacity(0);
 			} else if(true / 0){
 				//this.tooltip.setOpacity(0);
-				console.log(true / 0);
 			}
 		},
 	});

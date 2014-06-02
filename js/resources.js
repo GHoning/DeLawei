@@ -8,7 +8,7 @@ game.resources = [
 	 
 	/*
      * Animation-sheets;
-	 */	
+	 */
 	
 	{
 		name : "alex",
@@ -77,6 +77,10 @@ game.resources = [
 		name : "tim_convo",
 		type : "image",
 		src : "data/img/sprite/TimConvo.png"
+	}, {
+		name : "namelabel",
+		type : "image",
+		src : "data/img/sprite/NameLabel.png"
 	},
 	
 	

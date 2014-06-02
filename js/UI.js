@@ -57,7 +57,6 @@ game.UIText = me.Renderable.extend({
 	
 	draw : function (context) {
 		this.font.draw(context, this.text, this.pos.x, this.pos.y);
-		console.log(this.pos);
 	}
 });
 
@@ -79,6 +78,6 @@ game.UIImage = me.Renderable.extend({
 	},
 	
 	draw : function (context) {
-		this.image.draw(context);
+		this.image.draw(context, this.pos.x, this.pos.y);
 	}	
 });
