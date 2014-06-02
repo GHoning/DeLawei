@@ -13,10 +13,9 @@ game.UIButton = me.ObjectEntity.extend({
 	},
 	
 	update : function () {
-		if (this.getShape().containsPointV(me.input.mouse.pos)) {
-			this.onHover();
-		}
 	
+		this.hover = this.getShape().containsPointV(me.input.mouse.pos);
+		
 		if (this.getShape().containsPointV(me.input.mouse.pos) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
 			this.keyLock = true;
 			this.onClick();
@@ -79,6 +78,6 @@ game.UIImage = me.Renderable.extend({
 	},
 	
 	draw : function (context) {
-		this.image.draw(context);
+		this.image.draw(context, this.pos.x, this.pos.y);
 	}	
 });

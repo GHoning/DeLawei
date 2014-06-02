@@ -13,11 +13,16 @@ game.SpeechScreen = me.ScreenObject.extend({
 
 			if(game.data.questStateMachine.getStatus() == "brief"){ //TODO fix this in a more elegant way
 			
-			for (var i = 0; i < dialog.length; i++) {
-				if (dialog[i][0] == "letter" && dialog[i][1] == game.data.questStateMachine.getStatus()) {
-					this.script = dialog[i][2];
+				for (var i = 0; i < dialog.length; i++) {
+					if (dialog[i][0] == "letter" && dialog[i][1] == game.data.questStateMachine.getStatus()) {
+						this.script = dialog[i][2];
+					}
 				}
+<<<<<<< HEAD
 			}
+=======
+				
+>>>>>>> 6ba49222f641624c90fa7c5e79685018c9c09b2f
 				this.index = 0;
 				this.textfield = new game.UIText(150, constants.SCREENHEIGHT - 170, "font", this.script[this.index]);
 				me.game.world.addChild(this.textfield);
@@ -27,7 +32,6 @@ game.SpeechScreen = me.ScreenObject.extend({
 
 				me.game.world.addChild(new game.UIImage(128, constants.SCREENHEIGHT - 192, "speechbalk"));
 				me.game.world.addChild(new game.UIImage(1024 - 276, constants.SCREENHEIGHT - 571, "alex_convo"));
-				
 			
 			} else {
 				//TODO replace hard coded stuff
@@ -36,7 +40,14 @@ game.SpeechScreen = me.ScreenObject.extend({
 				//empty object just to listen for mouse click
 				this.eventListener = new game.SpeechScreen.eventListener(0, 0, {});
 				me.game.world.addChild(this.eventListener);
-
+				
+				this.namelabel = new game.UIText(730, constants.SCREENHEIGHT - 235, "font", "Alex");
+				me.game.world.addChild(this.namelabel);
+				
+				this.bgnamelabel= new game.UIImage(730, constants.SCREENHEIGHT - 250, "namelabel");
+				me.game.world.addChild(this.bgnamelabel);
+				
+				me.game.world.addChild(new game.UIText(128, constants.SCREENHEIGHT - 40, "font", "Druk op de spatiebalk om door te gaan."));
 				me.game.world.addChild(new game.UIImage(128, constants.SCREENHEIGHT - 192, "speechbalk"));
 				me.game.world.addChild(new game.UIImage(1024 - 276, constants.SCREENHEIGHT - 571, "alex_convo"));
 				me.game.world.addChild(new game.UIImage(0, constants.SCREENHEIGHT - 638, game.data.lastSpokenNPC + "_convo"));
@@ -44,16 +55,32 @@ game.SpeechScreen = me.ScreenObject.extend({
 			
 			console.log (2);
 		},
-
+		
+		updateNameLabel : function(index) {
+			if (index % 2 == 0) {
+				this.namelabel.replaceText("Alex");
+				this.namelabel.pos.x = 730;
+				this.bgnamelabel.pos.x = 730;
+				//TODO bgnamelabel is not drawn in the new position
+			} else {
+				this.namelabel.replaceText(game.data.lastspokenNPC);
+				this.namelabel.pos.x = 130;
+				this.bgnamelabel.pos.x = 130;
+				//TODO bgnamelabel is not drawn in the new position
+			}
+		},
+		
 		changeLines : function () {
 			this.index++;
+
+			this.updateNameLabel(this.index);
 			
 			if (this.index < this.script.length) {
 				this.textfield.replaceText(this.script[this.index]);
 			} else if (this.index >= this.script.length) {
 				if(game.data.questStateMachine.getStatus() == "brief_gelezen" && game.data.lastSpokenNPC == "roel") {
 					game.data.questStateMachine.consumeEvent("get_quest_chair");
-					console.log(game.data.questStateMachine.getStatus());
+					//console.log(game.data.questStateMachine.getStatus());
 				} else if(game.data.questStateMachine.getStatus() == "brief") {
 					game.data.questStateMachine.consumeEvent("read_letter");
 					console.log(game.data.questStateMachine.getStatus());
@@ -62,8 +89,14 @@ game.SpeechScreen = me.ScreenObject.extend({
 					game.data.questStateMachine.consumeEvent("get_brief");
 					console.log(game.data.questStateMachine.getStatus());
 				} else if (game.data.questStateMachine.getStatus() == "intro" && game.data.lastSpokenNPC == "kim") {
+					//console.log(game.data.questStateMachine.getStatus());
+				} else if(game.data.questStateMachine.getStatus() == "roel" && game.data.lastSpokenNPC == "roel") {
+					game.data.inventory.push("brief");
+					game.data.questStateMachine.consumeEvent("get_brief");
+					//console.log(game.data.questStateMachine.getStatus());
+				} else if (game.data.questStateMachine.getStatus() == "intro" && game.data.lastSpokenNPC == "kim") {
 					game.data.questStateMachine.consumeEvent("talk_to_kim");
-					console.log(game.data.questStateMachine.getStatus());
+					//console.log(game.data.questStateMachine.getStatus());
 				}
 				
 				this.index = 0;
