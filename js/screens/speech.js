@@ -52,13 +52,11 @@ game.SpeechScreen = me.ScreenObject.extend({
 		updateNameLabel : function(index) {
 			if (index % 2 == 0) {
 				this.namelabel.replaceText("Alex");
-				this.namelabel.pos.x = 730;
-				this.bgnamelabel.pos.x = 730;
+				this.namelabel.pos.x, this.bgnamelabel.pos.x = 730;
 				//TODO bgnamelabel is not drawn in the new position
 			} else {
 				this.namelabel.replaceText(game.data.lastSpokenNPC);
-				this.namelabel.pos.x = 130;
-				this.bgnamelabel.pos.x = 130;
+				this.namelabel.pos.x, this.bgnamelabel.pos.x = 130;
 				//TODO bgnamelabel is not drawn in the new position
 			}
 		},

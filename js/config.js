@@ -14,3 +14,15 @@ const constants = {
 	"TILEWIDHT"					: 256,
 	"TILEHEIGTH"				: 128
 };
+
+/*store word for endscreen here*/
+
+words = [
+	"appel",
+	"peer",
+	"sinasappel",
+	"druif",
+	"kiwi",
+	"banaan",
+	"manderijn"
+]
