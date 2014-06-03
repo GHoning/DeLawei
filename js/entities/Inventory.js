@@ -1,8 +1,6 @@
 /**
  * Inventory Container
  */
- 
- //waar is dit voor?
 game.HUD.Inventory = game.HUD.Inventory || {};
 
 game.HUD.Inventory.Container = me.ObjectContainer.extend({
@@ -23,13 +21,13 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 
 		addInventorySlots : function () {
 			for (var i = 0; i < constants.INVENTORY_SLOTS; i++) {
-				this.addChild(new game.HUD.Inventory.InventorySlot((constants.INVENTORY_SLOT_SIZE + this.margin) * i + 128,
-																   constants.SCREENHEIGHT - (constants.INVENTORY_SLOT_SIZE + 17)));
+				this.addChild(new game.UIImage((constants.INVENTORY_SLOT_SIZE + this.margin) * i + 128,
+						constants.SCREENHEIGHT - (constants.INVENTORY_SLOT_SIZE + 17), "inventorySlot"));
 			}
 		},
-		
-		addInventoryBalk : function() {
-			this.addChild(new game.HUD.Inventory.InventoryBalk(0, constants.SCREENHEIGHT - 128));
+
+		addInventoryBalk : function () {
+			this.addChild(new game.UIImage(0, constants.SCREENHEIGHT - 128, "inventorybalk"));
 		},
 
 		addItems : function (items) {
@@ -41,7 +39,12 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 		addItem : function (item) {
 			//Put the items in an array to access them later
 			var gui_item = new game.HUD.Inventory.InventoryItem((constants.INVENTORY_SLOT_SIZE + this.margin) * this.items.length + 145,
-					constants.SCREENHEIGHT - constants.INVENTORY_SLOT_SIZE, {image: item + "_inv", name: item, spriteWidth: 64,spriteHeight: 64});
+					constants.SCREENHEIGHT - constants.INVENTORY_SLOT_SIZE, {
+					image : item + "_inv",
+					name : item,
+					spriteWidth : 64,
+					spriteHeight : 64
+				});
 			this.addChild(gui_item);
 			this.items.push(gui_item);
 		},
@@ -67,28 +70,6 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 			me.game.world.removeChild(this);
 		},
 	});
-/**
- *  InventorySlot Renderable. This displays the slots to place the InventoryItems on.
- */
- 
- //kan wel gedaan worden door UIImage
-game.HUD.Inventory.InventorySlot = me.Renderable.extend({
-		init : function (x, y) {
-			this.parent(new me.Vector2d(x, y), 0, 0);
-			this.floating = true;
-			this.inventoryslotsprite = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("inventorySlot"), 96, 96);
-		},
-
-		update : function () {
-			this.inventoryslotsprite.setAnimationFrame(0);
-			return true;
-		},
-
-		draw : function (context) {
-
-			this.inventoryslotsprite.draw(context);
-		}
-	});
 
 /**
  *  Inventory Items. Displays the Item. Has no further use.
@@ -99,37 +80,22 @@ game.HUD.Inventory.InventoryItem = game.UIButton.extend({
 			this.parent(x, y, settings);
 			this.floating = true;
 			this.z = 1;
-			console.log(x,y);
-			this.tooltip = new game.UIText(x, y, "font", this.name);
-			me.game.world.addChild(this.tooltip, Infinity + 1001);		
+			console.log(x, y);
+			this.tooltip = new game.UIText(x - 40, y - 40, "font", this.name);
+			me.game.world.addChild(this.tooltip, Infinity + 1001);
 		},
-		
+
 		onClick : function () {
 			console.log("open brief");
 		},
-		
+
 		onHover : function (bool) {
-			if(bool){
+			if (bool) {
 				//fuck alpha
 				this.tooltip.replaceText(this.name);
 			} else {
 				this.tooltip.replaceText("");
 			}
-			
-			
-		}
-	});
-	
-//TODO use a UI object instead of making a completely new class
-game.HUD.Inventory.InventoryBalk = me.Renderable.extend({
-		init : function (x, y) {
-			this.parent(new me.Vector2d(x, y), 0, 0);
-			this.floating = true;
-			this.inventorybalksprite = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage("inventorybalk"), 1024, 128);
-		},
-		
-		draw : function (context) {
 
-			this.inventorybalksprite.draw(context);
 		}
 	});

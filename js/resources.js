@@ -158,6 +158,10 @@ game.resources = [
 		name : "unmuteIcon",
 		type : "image",
 		src : "data/img/button/btn_unmute.png"
+	}, {
+		name : "replaybutton",
+		type : "image",
+		src : "data/img/button/btn_replay.png"
 	},
 
 	/*

@@ -8,7 +8,6 @@ var game = {
 		playerMapPos: constants.PLAYER_STARTMAPLOCATION,
 		currentQuestState : constants.STARTING_QUESTSTATE,
 		playerPos: constants.PLAYER_STARTLOCATION,
-		inventory : [],
 		lastSpokenNPC : "",
 		inventory : ["brief"],
 		questStateMachine : new StateMachine(QuestStates)
@@ -60,6 +59,9 @@ var game = {
 		game.speech = new game.SpeechScreen();
 		me.state.set(me.state.SPEECH, game.speech);
 		
+		game.end = new game.EndScreen();
+		me.state.set(me.state.GAME_END, game.end);
+		
 		me.pool.register("player", game.Player);
 		me.pool.register("item", game.Item);
 		me.pool.register("npc", game.QuestNPC);
@@ -82,6 +84,6 @@ var game = {
 		
 		me.input.bindKey(me.input.KEY.X, "mouse/touch");
 		me.input.bindPointer(me.input.KEY.X);
-		me.state.change(me.state.MENU);
+		me.state.change(me.state.GAME_END);
 	}
 };
