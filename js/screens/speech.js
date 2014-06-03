@@ -25,7 +25,6 @@ game.SpeechScreen = me.ScreenObject.extend({
 				//empty object just to listen for mouse click
 				this.eventListener = new game.SpeechScreen.eventListener(0, 0, {});
 				me.game.world.addChild(this.eventListener);
-
 				me.game.world.addChild(new game.UIImage(128, constants.SCREENHEIGHT - 192, "speechbalk"));
 				me.game.world.addChild(new game.UIImage(1024 - 276, constants.SCREENHEIGHT - 571, "alex_convo"));
 			

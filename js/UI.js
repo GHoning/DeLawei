@@ -10,11 +10,13 @@ game.UIButton = me.ObjectEntity.extend({
 		//add Shape in MelonJS 1.0.0 for the collision box
 		this.rect = new me.Rect(this.pos, settings.spriteWidth, settings.spriteHeight);
 		this.addShape(this.rect);
+		//this.hover = false;
 	},
 	
 	update : function () {
-	
-		this.hover = this.getShape().containsPointV(me.input.mouse.pos);
+		
+		this.onHover(this.getShape().containsPointV(me.input.mouse.pos));
+		
 		
 		if (this.getShape().containsPointV(me.input.mouse.pos) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
 			this.keyLock = true;

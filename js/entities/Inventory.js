@@ -1,6 +1,8 @@
 /**
  * Inventory Container
  */
+ 
+ //waar is dit voor?
 game.HUD.Inventory = game.HUD.Inventory || {};
 
 game.HUD.Inventory.Container = me.ObjectContainer.extend({
@@ -68,6 +70,8 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 /**
  *  InventorySlot Renderable. This displays the slots to place the InventoryItems on.
  */
+ 
+ //kan wel gedaan worden door UIImage
 game.HUD.Inventory.InventorySlot = me.Renderable.extend({
 		init : function (x, y) {
 			this.parent(new me.Vector2d(x, y), 0, 0);
@@ -89,38 +93,34 @@ game.HUD.Inventory.InventorySlot = me.Renderable.extend({
 /**
  *  Inventory Items. Displays the Item. Has no further use.
  */
-game.HUD.Inventory.Tooltip = game.UIText.extend({
-		init : function (x, y, font, text) {
-			this.parent(x, y, font, text);
-			this.z = 100;
-			this.x = x;
-			this.y = y - 20;
-		},
-		
-		update : function () {
-			
-		},
-	});
 
 game.HUD.Inventory.InventoryItem = game.UIButton.extend({
 		init : function (x, y, settings) {
 			this.parent(x, y, settings);
 			this.floating = true;
 			this.z = 1;
-			
-			this.tooltip = new game.HUD.Inventory.Tooltip(x, y, "font", this.name);
-			me.game.world.addChild(this.tooltip);
+			console.log(x,y);
+			this.tooltip = new game.UIText(x, y, "font", this.name);
+			me.game.world.addChild(this.tooltip, Infinity + 1001);		
 		},
 		
-		update : function () {
-			if(false) { //this is so dumb
-				this.tooltip.setOpacity(0);
-			} else if(true / 0){
-				//this.tooltip.setOpacity(0);
-			}
+		onClick : function () {
+			console.log("open brief");
 		},
+		
+		onHover : function (bool) {
+			if(bool){
+				//fuck alpha
+				this.tooltip.replaceText(this.name);
+			} else {
+				this.tooltip.replaceText("");
+			}
+			
+			
+		}
 	});
-//TODO use a UI object instead of making a completely new class like a retard
+	
+//TODO use a UI object instead of making a completely new class
 game.HUD.Inventory.InventoryBalk = me.Renderable.extend({
 		init : function (x, y) {
 			this.parent(new me.Vector2d(x, y), 0, 0);
