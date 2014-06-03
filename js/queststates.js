@@ -73,6 +73,4 @@ function StateMachine(QuestStates) {
 	this.getStatus = function() {
 		return this.currentState.name;
 	}
-	
-	this.reset = function() 
 }
