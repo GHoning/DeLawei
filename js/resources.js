@@ -159,6 +159,15 @@ game.resources = [
 		type : "image",
 		src : "data/img/button/btn_unmute.png"
 	},
+	
+	/*
+	 * Scenery
+	 */
+	{
+		name : "lelijkUitknipsel",
+		type : "image",
+		src : "data/img/sprite/lelijkUitknipsel.png"
+	},
 
 	/*
 	 * Background
