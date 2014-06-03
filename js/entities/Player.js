@@ -84,14 +84,21 @@ game.Player = me.ObjectEntity.extend({
 		
 		//TODO use the base of the object
 		checkNPCZ : function () {
+		//make the game sort on Y
+			me.game.world.sortOn = "y";
 			var npc = me.game.world.getChildByName("npc");
 
 			if(npc.length > 0) {
 				for( var i = 0; i < npc.length; i++ ) {
-					if(npc[i].pos.y > this.pos.y) {
+					
+					if((npc[i].pos.y - npc[i].renderable.hHeight) > (this.pos.y - this.renderable.hHeight)) {
 						npc[i].setZ(20);
-					} else if (npc[0].pos.y < this.pos.y) {
+						console.log(20);
+						console.log(this.pos.y - this.renderable.hHeight);
+						console.log(npc[i].pos.y - npc[i].renderable.hHeight)
+					} else if ((npc[i].pos.y - npc[i].renderable.hHeight) <  (this.pos.y - this.renderable.hHeight)) {
 						npc[i].setZ(14);
+						console.log(14);
 					}
 				}
 				
@@ -107,7 +114,7 @@ game.Player = me.ObjectEntity.extend({
 			}
 		
 			//TODO do this in NPC itself
-			this.checkNPCZ();
+			//this.checkNPCZ();
 			
 			var tile = game.play.collision.getTile(this.mapPos.x, this.mapPos.y);
 			//use items

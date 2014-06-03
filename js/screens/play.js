@@ -21,6 +21,7 @@ game.PlayScreen = me.ScreenObject.extend({
 			}
 			
 			console.log("reset play.js");
+			me.game.world.sortOn = "y";
 			
 			//TODO enable audio. me.audio.play("crowd_sfx", true);
 		},

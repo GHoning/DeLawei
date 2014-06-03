@@ -45,6 +45,24 @@ game.Door = me.ObjectEntity.extend({
 			console.log("door created");
 		}
 	});
+	
+/**
+ *	Scenery Object 
+ */
+
+ //TODO add to collision map and zSorting :D
+game.Scenery = me.ObjectEntity.extend({
+	init : function (x, y, settings) {
+		this.parent(x, y, settings);
+		this.settings = settings;
+		this.image = settings.image;
+		this.mapPosX = settings.mapPosX;
+		this.mapPosY = settings.mapPosY;
+		this.type = settings.type;
+		this.gravity = false;
+		console.log("Scenery Created");
+	}
+});
 
 /**
  *  The QuestNPCObject specifics are filled using tiled.

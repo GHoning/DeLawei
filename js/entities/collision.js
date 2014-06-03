@@ -75,6 +75,18 @@ function Collision(collisionMap) {
 			}
 		}
 	}
+	
+	this.addSceneryToCollision = function () {
+		var scenery = me.game.world.getChildByName("scenery");
+		
+		if (scenery.length > 0) {
+			for (var i = 0; i < scenery.length; i++) {
+				this.collisionMap[scenery[i].mapPosX][scenery[i].mapPosY] = {
+					type : scenery[i].settings.type
+				};
+			}
+		}
+	}
 
 	//collision with npc none with the rest.
 	this.isWalkable = function (x, y) {
@@ -172,4 +184,5 @@ function Collision(collisionMap) {
 	this.addNPCsToCollision();
 	this.addItemsToCollision();
 	this.addDoorsToCollision();
+	this.addSceneryToCollision();
 }

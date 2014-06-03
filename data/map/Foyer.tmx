@@ -150,6 +150,14 @@
     <property name="spritewidth" value="128"/>
    </properties>
   </object>
+  <object name="scenery" x="1117" y="1371" width="64" height="64">
+   <properties>
+    <property name="image" value="lelijkUitknipsel"/>
+    <property name="mapPosX" value="18"/>
+    <property name="mapPosY" value="22"/>
+    <property name="type" value="solid"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="object3" width="30" height="50">
   <data encoding="base64">
