@@ -11,7 +11,8 @@ var dialog = [
 		]], 
 	
 	["sam","intro", 
-		[	"..."			
+		[	"Pardon meneer...",
+			"Sorry, kom later anders terug, dan heb ik wel tijd voor je."
 		]],
 
 	["tim","intro", 
@@ -57,14 +58,16 @@ var dialog = [
 		]], //TODO quest state to quest_chair
 		
 	["sam","brief_gelezen", 
-		[	"..."			
+		[	
+			"Hallo meneer, ik ben Alex en ik ben hier om een artikel te schrijven over de Lawei. Kunt u mij misschien meer vertellen over uzelf en het gebouw?",
+			
 		]],
 
 	["tim","brief_gelezen", 
 		[	"..."			
 		]], 
 		
-	["kim", "quest_chair",
+	/*["kim", "quest_chair",
 		[
 			"Heeft u nog iets interessants te vertellen over de Lawei?",
 			"Hmm...Wist je dat er een stoel is in de grote toneelzaal die altijd open blijft staan. Ze zeggen dat er een geest op die stoel zit om mee te kijken bij voorstellingen. Wat er ook aan gebeurd ze kunnen het niet repareren."
@@ -83,7 +86,7 @@ var dialog = [
 
 	["tim","quest_chair", 
 		[	"..."			
-		]], 
+		]], */
 		
 	["letter","brief",
 		[

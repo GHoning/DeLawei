@@ -3,10 +3,10 @@ QuestStates = [
 		'name' : "intro",
 		'initial': true,
 		'events' : {
-			'talk_to_kim': 'roel'
+			'talk_to_kim': 'talk_to'
 		}
 	},{
-		'name' : "roel",
+		'name' : "talk_to_roel",
 		'events' : {
 			'get_brief': 'brief'
 		}
@@ -23,7 +23,33 @@ QuestStates = [
 	},{
 		'name' : "quest_chair",
 		'events' : {
-			'so_cool': 'end'
+			'get_note1': 'got_note1'
+		}
+	},{
+		'name' : "got_note1",
+		'events' : {
+			'talk_to_sam1': 'get_number'
+		}
+	},{
+		'name' : "get_number",
+		'events' : {
+			'talk_to_kim': 'got_number'
+		}
+	},{
+		'name' : "got_number",
+		'events' : {
+			'talk_to_sam2': 'get_note2'
+		}
+	},{
+		'name' : "get_note2",
+		'events' : {
+			'retrieve_note2': 'got_note2'
+		}
+	},{
+		'name' : "got_note2",
+		//hier weer verder morgen voor de states
+		'events' : {
+			'retrieve_note2': 'got_note2'
 		}
 	}
 ];
@@ -47,4 +73,6 @@ function StateMachine(QuestStates) {
 	this.getStatus = function() {
 		return this.currentState.name;
 	}
+	
+	this.reset = function() 
 }

@@ -9,11 +9,7 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.HUD;
 			this.addHUD();
 			this.collision = new Collision(me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData);
-			//TODO remove this for player
-			this.collisionMap = this.collision.collisionMap;
-			//console.log(this);
 			this.placePlayer(game.data.playerPos);
-			//Does not work here should be done in collision
 			this.itemOnReset();
 			
 			if(game.data.questStateMachine.getStatus() == "brief"){
@@ -21,7 +17,6 @@ game.PlayScreen = me.ScreenObject.extend({
 			}
 			
 			console.log("reset play.js");
-			me.game.world.sortOn = "y";
 			
 			//TODO enable audio. me.audio.play("crowd_sfx", true);
 		},

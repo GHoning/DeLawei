@@ -79,7 +79,7 @@ game.SpeechScreen = me.ScreenObject.extend({
 				} else if(game.data.questStateMachine.getStatus() == "brief") {
 					game.data.questStateMachine.consumeEvent("read_letter");
 					console.log(game.data.questStateMachine.getStatus());
-				} else if(game.data.questStateMachine.getStatus() == "roel" && game.data.lastSpokenNPC == "roel") {
+				} else if(game.data.questStateMachine.getStatus() == "talk_to_roel" && game.data.lastSpokenNPC == "roel") {
 					game.data.inventory.push("brief");
 					game.data.questStateMachine.consumeEvent("get_brief");
 					console.log(game.data.questStateMachine.getStatus());
