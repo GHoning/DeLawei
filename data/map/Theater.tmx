@@ -93,6 +93,7 @@
     <property name="mapPosY" value="21"/>
     <property name="spriteheight" value="1"/>
     <property name="spritewidth" value="1"/>
+    <property name="type" value="none"/>
    </properties>
   </object>
  </objectgroup>

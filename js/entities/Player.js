@@ -103,8 +103,17 @@ game.Player = me.ObjectEntity.extend({
 			
 			if(tile != null) {
 				//item
-				if (me.input.isKeyPressed("Use") && tile.type == "item") {
-					game.play.addItemToInventory(tile.name);
+				if (me.input.isKeyPressed("Use") && tile.obj == "item") {
+					
+					if(game.data.questStateMachine.getStatus() == "got_note1") {
+						game.data.questStateMachine.consumeEvent("pick_up_note2");
+						console.log(game.data.questStateMachine.getStatus());
+						game.play.addItemToInventory(tile.name);
+					}else if(game.data.questStateMachine.getStatus() == "get_note1") {
+						game.data.questStateMachine.consumeEvent("pick_up_note1");
+						console.log(game.data.questStateMachine.getStatus());
+						game.play.addItemToInventory(tile.name);
+					}
 				//door
 				} else if (tile.name == "door") {
 					game.play.loadLevel(tile.level, tile.playerX, tile.playerY, tile.mapX, tile.mapY);

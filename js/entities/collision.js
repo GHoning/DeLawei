@@ -9,9 +9,9 @@ function Collision(collisionMap) {
 		if (NPCs.length > 0) {
 			for (var i = 0; i < NPCs.length; i++) {
 				this.collisionMap[NPCs[i].mapPosX][NPCs[i].mapPosY] = {
-						obj : NPCs[i].settings.name,
-						name : NPCs[i].settings.image,
-						type : NPCs[i].settings.type
+					obj : NPCs[i].settings.name,
+					name : NPCs[i].settings.image,
+					type : NPCs[i].settings.type
 				};
 			}
 		}

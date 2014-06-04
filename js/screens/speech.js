@@ -61,31 +61,57 @@ game.SpeechScreen = me.ScreenObject.extend({
 			}
 		},
 		
+		
+		
+		stateChange : function () {
+		
+			//Copy paste
+			/*if(game.data.questStateMachine.getStatus() =="got_number" && game.data.lastSpokenNPC == "sam") {
+				game.data.questStateMachine.consumeEvent("talk_to_sam2");
+				console.log(game.data.questStateMachine.getStatus());
+			}else */
+		
+			
+			/*if(game.data.questStateMachine.getStatus() =="got_number" && game.data.lastSpokenNPC == "sam") {
+				game.data.questStateMachine.consumeEvent("talk_to_sam2");
+				console.log(game.data.questStateMachine.getStatus());
+			}else*/ if(game.data.questStateMachine.getStatus() =="got_number" && game.data.lastSpokenNPC == "sam") {
+				game.data.questStateMachine.consumeEvent("talk_to_sam2");
+				console.log(game.data.questStateMachine.getStatus());
+			}else if(game.data.questStateMachine.getStatus() =="get_number" && game.data.lastSpokenNPC == "kim") {
+				game.data.questStateMachine.consumeEvent("talk_to_kim");
+				console.log(game.data.questStateMachine.getStatus());
+			}else if(game.data.questStateMachine.getStatus() =="quest_chair" && game.data.lastSpokenNPC == "sam") {
+				game.data.questStateMachine.consumeEvent("talk_to_sam1");
+				console.log(game.data.questStateMachine.getStatus());
+			}else if(game.data.questStateMachine.getStatus() == "brief_read" && game.data.lastSpokenNPC == "roel") {
+				game.data.questStateMachine.consumeEvent("get_quest_chair");
+				console.log(game.data.questStateMachine.getStatus());
+			} 
+			
+			//TODO clean up give to HUD for display of letter. Comrade!
+			else if(game.data.questStateMachine.getStatus() == "brief") {
+				game.data.questStateMachine.consumeEvent("read_letter");
+				console.log(game.data.questStateMachine.getStatus());
+			} else if(game.data.questStateMachine.getStatus() == "talk_to_roel" && game.data.lastSpokenNPC == "roel") {
+				game.data.inventory.push("brief");
+				game.data.questStateMachine.consumeEvent("get_brief");
+				console.log(game.data.questStateMachine.getStatus());
+			} else if (game.data.questStateMachine.getStatus() == "intro" && game.data.lastSpokenNPC == "kim") {
+				game.data.questStateMachine.consumeEvent("talk_to_kim");
+				console.log(game.data.questStateMachine.getStatus());
+			}
+		},
+		
 		changeLines : function () {
 			this.index++;
 			this.updateNameLabel(this.index);
 			
-			console.log(this.index);
-			console.log(this.script.length);
 			if (this.index < this.script.length) {
 				this.textfield.replaceText(this.script[this.index]);
 			} else if (this.index >= this.script.length) {
 				console.log(game.data.questStateMachine.getStatus());
-				if(game.data.questStateMachine.getStatus() == "brief_gelezen" && game.data.lastSpokenNPC == "roel") {
-					game.data.questStateMachine.consumeEvent("get_quest_chair");
-					console.log(game.data.questStateMachine.getStatus());
-				} else if(game.data.questStateMachine.getStatus() == "brief") {
-					game.data.questStateMachine.consumeEvent("read_letter");
-					console.log(game.data.questStateMachine.getStatus());
-				} else if(game.data.questStateMachine.getStatus() == "talk_to_roel" && game.data.lastSpokenNPC == "roel") {
-					game.data.inventory.push("brief");
-					game.data.questStateMachine.consumeEvent("get_brief");
-					console.log(game.data.questStateMachine.getStatus());
-				} else if (game.data.questStateMachine.getStatus() == "intro" && game.data.lastSpokenNPC == "kim") {
-					game.data.questStateMachine.consumeEvent("talk_to_kim");
-					console.log(game.data.questStateMachine.getStatus());
-				}
-				
+				this.stateChange();
 				this.index = 0;
 				me.state.change(me.state.PLAY);
 			}
