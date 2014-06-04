@@ -42,7 +42,7 @@ game.SpeechScreen = me.ScreenObject.extend({
 				this.bgnamelabel= new game.UIImage(730, constants.SCREENHEIGHT - 250, "namelabel");
 				me.game.world.addChild(this.bgnamelabel);
 				
-				me.game.world.addChild(new game.UIText(128, constants.SCREENHEIGHT - 40, "font", "Druk op de spatiebalk om door te gaan."));
+				me.game.world.addChild(new game.UIText(20, constants.SCREENHEIGHT - 40, "font", "Druk op de spatiebalk om Sorry"));
 				me.game.world.addChild(new game.UIImage(128, constants.SCREENHEIGHT - 192, "speechbalk"));
 				me.game.world.addChild(new game.UIImage(1024 - 276, constants.SCREENHEIGHT - 571, "alex_convo"));
 				me.game.world.addChild(new game.UIImage(0, constants.SCREENHEIGHT - 638, game.data.lastSpokenNPC + "_convo"));
@@ -52,11 +52,11 @@ game.SpeechScreen = me.ScreenObject.extend({
 		updateNameLabel : function(index) {
 			if (index % 2 == 0) {
 				this.namelabel.replaceText("Alex");
-				this.namelabel.pos.x, this.bgnamelabel.pos.x = 730;
+				this.namelabel.pos.x = this.bgnamelabel.pos.x = 730;
 				//TODO bgnamelabel is not drawn in the new position
 			} else {
 				this.namelabel.replaceText(game.data.lastSpokenNPC);
-				this.namelabel.pos.x, this.bgnamelabel.pos.x = 130;
+				this.namelabel.pos.x = this.bgnamelabel.pos.x = 130;
 				//TODO bgnamelabel is not drawn in the new position
 			}
 		},

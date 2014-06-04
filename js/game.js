@@ -47,17 +47,18 @@ var game = {
 		game.credits = new game.CreditsScreen();
 		me.state.set(me.state.CREDITS, game.credits);
 		
-		var INSTRUCTIONS = me.state.USER + 0;
-		game.instructions = new game.InstructionsScreen();
-		me.state.set(me.state.INSTRUCTIONS, game.instructions);
 		
-		var NOTEBOOK = me.state.USER + 1;
+		var NOTEBOOK = me.state.USER + 0;
 		game.notebook = new game.NotebookScreen();
 		me.state.set(me.state.NOTEBOOK, game.notebook);
 		
-		var SPEECH = me.state.USER + 2;
+		var SPEECH = me.state.USER + 1;
 		game.speech = new game.SpeechScreen();
 		me.state.set(me.state.SPEECH, game.speech);
+		
+		var INSTRUCTIONS = me.state.USER + 2;
+		game.instructions = new game.InstructionsScreen();
+		me.state.set(me.state.INSTRUCTIONS, game.instructions);
 		
 		game.end = new game.EndScreen();
 		me.state.set(me.state.GAME_END, game.end);
@@ -85,6 +86,6 @@ var game = {
 		
 		me.input.bindKey(me.input.KEY.X, "mouse/touch");
 		me.input.bindPointer(me.input.KEY.X);
-		me.state.change(me.state.GAME_END);
+		me.state.change(me.state.MENU);
 	}
 };

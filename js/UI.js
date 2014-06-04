@@ -11,6 +11,7 @@ game.UIButton = me.ObjectEntity.extend({
 		this.rect = new me.Rect(this.pos, settings.spriteWidth, settings.spriteHeight);
 		this.addShape(this.rect);
 		//this.hover = false;
+		console.log("init uibutton");
 	},
 	
 	update : function () {

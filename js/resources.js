@@ -184,6 +184,10 @@ game.resources = [
 		name : "nhllogo",
 		type : "image",
 		src : "data/img/sprite/nhllogo.png"
+	}, {
+		name : "introductiescherm",
+		type : "image",
+		src : "data/img/backgrounds/introductiescherm.png"
 	},
 	
 	/*
