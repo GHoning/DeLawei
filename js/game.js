@@ -9,7 +9,7 @@ var game = {
 		currentQuestState : constants.STARTING_QUESTSTATE,
 		playerPos: constants.PLAYER_STARTLOCATION,
 		lastSpokenNPC : "",
-		inventory : ["brief"],
+		inventory : [],
 		questStateMachine : new StateMachine(QuestStates),
 		firstTime : true
 	},
