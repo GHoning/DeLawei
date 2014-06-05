@@ -47,6 +47,7 @@ game.UIText = me.Renderable.extend({
 		
 		this.text = text;
 		this.floating = true;
+		this.text = this.format(this.text, 20);
 	},
 	
 	update : function () {
@@ -54,48 +55,38 @@ game.UIText = me.Renderable.extend({
 		return true;
 	},
 	
-	format : function (sentenceLenght) {
-		//var t = this.text;
-		var l = this.text.length;
-		var sentence = sentenceLenght;
+	format : function (text, sentenceLength) {
+	
+		var sentence = sentenceLength;
 		
-		var returnText = "";
+		console.log("charaters in sentence " + sentence);
 		
-		console.log("sentence "+ sentence);
-		
-		
-		for (var i = 0; i < this.text.length; i = i + sentence) {
+		/*for (var i = 0; i < this.text.length; i = i + sentence) {
 			console.log(i);
 			//var t = this.text;
-			var tt = this.text.slice(0, sentence);
-			console.log(tt.lastIndexOf(" ") + i);
+			var tt = this.text.slice(i, i + sentence);
 			
-			this.text[tt.lastIndexOf(" ") + i] = "/n";
-			console.log("waarom " + this.text[tt.lastIndexOf(" ") + i]);
 			console.log(this.text);
-		}
+			
+			this.text = tt.replace(/ (?!.*? )/, "/n");
+			
+			
+			console.log("index of string tt " + (tt.lastIndexOf(" ")));
+			console.log("index of string tt + i " + (tt.lastIndexOf(" ") + i));
+
+			console.log("return whitespace " + this.text[(tt.lastIndexOf(" ") + i)]);
+			
+			
+			var repl = "12_13_12".replace(/12(?!.*?12)/, 'aa');
+			
+			console.log(repl);
+			
+			this.text[(tt.lastIndexOf(" ") + i)] = "k";
+		}*/
 		
+		console.log(this.text);
 		
-		/*if(sentence < this.text.length) {
-			var tt = t.slice(0, sentence);
-		} else {
-			return t;
-		}
-		
-		
-		var tt = t.slice(0, sentence);
-		
-		console.log("tt1 " + tt)
-		
-		tt[tt.lastIndexOf(" ")] = "/n";
-		
-		console.log("tt2 " + tt)
-		
-		
-		var tt2 = t.slice(sentenceLengh, sentenceLenght);
-		
-		*/
-		return this.text;
+		return text;
 	},
 	
 	replaceText : function (txt) {
@@ -103,7 +94,7 @@ game.UIText = me.Renderable.extend({
 	},
 	
 	draw : function (context) {
-		this.font.draw(context, this.format(12), this.pos.x, this.pos.y);
+		this.font.draw(context, this.text, this.pos.x, this.pos.y);
 	}
 });
 
