@@ -72,10 +72,29 @@ game.SpeechScreen = me.ScreenObject.extend({
 			}else */
 		
 			
-			/*if(game.data.questStateMachine.getStatus() =="got_number" && game.data.lastSpokenNPC == "sam") {
-				game.data.questStateMachine.consumeEvent("talk_to_sam2");
+			if(game.data.questStateMachine.getStatus() =="got_note5" && game.data.lastSpokenNPC == "roel") {
+				
+				console.log("You win, but you're still a loser");
+			}else if(game.data.questStateMachine.getStatus() =="have_pocketknife" && game.data.lastSpokenNPC == "tim") {
+				game.data.questStateMachine.consumeEvent("talk_to_tim2");
 				console.log(game.data.questStateMachine.getStatus());
-			}else*/ if(game.data.questStateMachine.getStatus() =="got_number" && game.data.lastSpokenNPC == "sam") {
+				
+				//add Notenschrift3 to inventory
+				game.play.addItemToInventory("notenschrift");
+				
+			}else if(game.data.questStateMachine.getStatus() =="quest_get_pocketknife2" && game.data.lastSpokenNPC == "roel") {
+				game.data.questStateMachine.consumeEvent("talk_to_roel3");
+				console.log(game.data.questStateMachine.getStatus());
+				
+				//add knife to inventory
+				game.play.addItemToInventory("knife");
+			}else if(game.data.questStateMachine.getStatus() =="quest_get_pocketknife" && game.data.lastSpokenNPC == "kim") {
+				game.data.questStateMachine.consumeEvent("talk_to_kim2");
+				console.log(game.data.questStateMachine.getStatus());
+			}else if(game.data.questStateMachine.getStatus() =="got_note2" && game.data.lastSpokenNPC == "tim") {
+				game.data.questStateMachine.consumeEvent("talk_to_tim");
+				console.log(game.data.questStateMachine.getStatus());
+			}else if(game.data.questStateMachine.getStatus() =="got_number" && game.data.lastSpokenNPC == "sam") {
 				game.data.questStateMachine.consumeEvent("talk_to_sam2");
 				console.log(game.data.questStateMachine.getStatus());
 			}else if(game.data.questStateMachine.getStatus() =="get_number" && game.data.lastSpokenNPC == "kim") {

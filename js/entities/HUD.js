@@ -2,7 +2,7 @@
  * a HUD container
  */
  
-//TODO clean up this mess
+//TODO clean up this mess half of these functions don't get used because limited UI maybe move Inventory here'
 game.HUD = game.HUD || {};
 
 game.HUD.Container = me.ObjectContainer.extend({
@@ -17,7 +17,6 @@ game.HUD.Container = me.ObjectContainer.extend({
 			this.addButton();
 			this.inventory;
 			this.addInventory();
-			console.log("introductiescherm");
 			me.game.world.addChild(new game.UIImage(0, 0, "introductiescherm"));
 		},
 		

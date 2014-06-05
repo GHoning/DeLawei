@@ -58,7 +58,7 @@ QuestStates = [
 	},{
 		'name' : "quest_get_pocketknife2",
 		'events' : {
-			'talk_to_sam3' : 'have_pocketknife'
+			'talk_to_roel3' : 'have_pocketknife'
 		}
 	},{
 		'name' : "have_pocketknife",

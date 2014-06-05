@@ -10,8 +10,6 @@ game.UIButton = me.ObjectEntity.extend({
 		//add Shape in MelonJS 1.0.0 for the collision box
 		this.rect = new me.Rect(this.pos, settings.spriteWidth, settings.spriteHeight);
 		this.addShape(this.rect);
-		//this.hover = false;
-		console.log("init uibutton");
 	},
 	
 	update : function () {
