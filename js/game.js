@@ -56,9 +56,9 @@ var game = {
 		game.speech = new game.SpeechScreen();
 		me.state.set(me.state.SPEECH, game.speech);
 		
-		var INSTRUCTIONS = me.state.USER + 2;
+		/*var INSTRUCTIONS = me.state.USER + 2;
 		game.instructions = new game.InstructionsScreen();
-		me.state.set(me.state.INSTRUCTIONS, game.instructions);
+		me.state.set(me.state.INSTRUCTIONS, game.instructions);*/
 		
 		game.end = new game.EndScreen();
 		me.state.set(me.state.GAME_END, game.end);
@@ -86,6 +86,6 @@ var game = {
 		
 		me.input.bindKey(me.input.KEY.X, "mouse/touch");
 		me.input.bindPointer(me.input.KEY.X);
-		me.state.change(me.state.MENU);
+		me.state.change(me.state.PLAY);
 	}
 };

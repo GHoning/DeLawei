@@ -45,7 +45,7 @@ game.UIText = me.Renderable.extend({
 		//the 10's are irrelevant
 		this.parent(new me.Vector2d(x,y), 10, 10);
 		this.font = new me.BitmapFont(font, 32);
-		this.text =  text;
+		this.text = text;
 		this.floating = true;
 	},
 	

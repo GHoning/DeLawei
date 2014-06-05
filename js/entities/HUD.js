@@ -17,6 +17,8 @@ game.HUD.Container = me.ObjectContainer.extend({
 			this.addButton();
 			this.inventory;
 			this.addInventory();
+			console.log("introductiescherm");
+			me.game.world.addChild(new game.UIImage(0, 0, "introductiescherm"));
 		},
 		
 		addInventory : function() {
