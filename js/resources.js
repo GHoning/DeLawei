@@ -188,7 +188,12 @@ game.resources = [
 		name : "introductiescherm",
 		type : "image",
 		src : "data/img/backgrounds/introductiescherm.png"
+	}, {
+		name : "endbackground",
+		type : "image",
+		src : "data/img/backgrounds/Endscreen.png"
 	},
+	
 	
 	/*
 	 *	Inv Items
