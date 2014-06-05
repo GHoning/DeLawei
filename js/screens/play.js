@@ -68,6 +68,7 @@ game.PlayScreen = me.ScreenObject.extend({
 				//TODO go over list and find the right item through name and destroy the instance
 				var items = me.game.world.getChildByName("item");
 				me.game.world.removeChild(items[0]);
+				console.log("wow");
 				//TODO enable audio.me.audio.play("itempickup_sfx");
 			}
 		},

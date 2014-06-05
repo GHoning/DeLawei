@@ -116,18 +116,21 @@ game.Player = me.ObjectEntity.extend({
 						console.log(game.data.questStateMachine.getStatus());
 						//add Notenschrift 2
 						game.play.addItemToInventory(tile.name);
+						console.log(game.data.inventory);
 						game.play.collision.clearTile(this.mapPos.x, this.mapPos.y);
 					}else if(game.data.questStateMachine.getStatus() == "got_note1") {
 						game.data.questStateMachine.consumeEvent("pick_up_note2");
 						console.log(game.data.questStateMachine.getStatus());
 						//add Notenschrift 2
 						game.play.addItemToInventory(tile.name);
+						console.log(game.data.inventory);
 						game.play.collision.clearTile(this.mapPos.x, this.mapPos.y);
 					}else if(game.data.questStateMachine.getStatus() == "get_note1") {
 						game.data.questStateMachine.consumeEvent("pick_up_note1");
 						console.log(game.data.questStateMachine.getStatus());
 						//add Notenschrift 1
 						game.play.addItemToInventory(tile.name);
+						console.log(game.data.inventory);
 						game.play.collision.clearTile(this.mapPos.x, this.mapPos.y);
 						
 					}

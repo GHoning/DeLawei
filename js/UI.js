@@ -43,6 +43,8 @@ game.UIText = me.Renderable.extend({
 		//the 10's are irrelevant
 		this.parent(new me.Vector2d(x,y), 10, 10);
 		this.font = new me.BitmapFont(font, 32);
+		this.font = new me.Font("Arail", 24, "#000000");
+		
 		this.text = text;
 		this.floating = true;
 	},
@@ -52,12 +54,56 @@ game.UIText = me.Renderable.extend({
 		return true;
 	},
 	
+	format : function (sentenceLenght) {
+		//var t = this.text;
+		var l = this.text.length;
+		var sentence = sentenceLenght;
+		
+		var returnText = "";
+		
+		console.log("sentence "+ sentence);
+		
+		
+		for (var i = 0; i < this.text.length; i = i + sentence) {
+			console.log(i);
+			//var t = this.text;
+			var tt = this.text.slice(0, sentence);
+			console.log(tt.lastIndexOf(" ") + i);
+			
+			this.text[tt.lastIndexOf(" ") + i] = "/n";
+			console.log("waarom " + this.text[tt.lastIndexOf(" ") + i]);
+			console.log(this.text);
+		}
+		
+		
+		/*if(sentence < this.text.length) {
+			var tt = t.slice(0, sentence);
+		} else {
+			return t;
+		}
+		
+		
+		var tt = t.slice(0, sentence);
+		
+		console.log("tt1 " + tt)
+		
+		tt[tt.lastIndexOf(" ")] = "/n";
+		
+		console.log("tt2 " + tt)
+		
+		
+		var tt2 = t.slice(sentenceLengh, sentenceLenght);
+		
+		*/
+		return this.text;
+	},
+	
 	replaceText : function (txt) {
 		this.text = txt;
 	},
 	
 	draw : function (context) {
-		this.font.draw(context, this.text, this.pos.x, this.pos.y);
+		this.font.draw(context, this.format(12), this.pos.x, this.pos.y);
 	}
 });
 

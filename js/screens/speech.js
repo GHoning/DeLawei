@@ -78,16 +78,21 @@ game.SpeechScreen = me.ScreenObject.extend({
 			}else if(game.data.questStateMachine.getStatus() =="have_pocketknife" && game.data.lastSpokenNPC == "tim") {
 				game.data.questStateMachine.consumeEvent("talk_to_tim2");
 				console.log(game.data.questStateMachine.getStatus());
-				game.play.removeItemFromInventory("zakmes");
+				//does not exist in speechscreen probably. So try to do this in play
+				
+				//game.play.removeItemFromInventory("zakmes");
+				
+				game.data.inventory.splice(game.data.inventory.indexOf("zakmes"),1);
 				//add Notenschrift3 to inventory
 				//game.play.addItemToInventory("notenschrift");
+				game.data.inventory.push("notenschrift");
 				
 			}else if(game.data.questStateMachine.getStatus() =="quest_get_pocketknife2" && game.data.lastSpokenNPC == "roel") {
 				game.data.questStateMachine.consumeEvent("talk_to_roel3");
 				console.log(game.data.questStateMachine.getStatus());
 				
 				//add knife to inventory
-				//game.play.addItemToInventory("zakmes");
+				game.data.inventory.push("zakmes");
 			}else if(game.data.questStateMachine.getStatus() =="quest_get_pocketknife" && game.data.lastSpokenNPC == "kim") {
 				game.data.questStateMachine.consumeEvent("talk_to_kim2");
 				console.log(game.data.questStateMachine.getStatus());

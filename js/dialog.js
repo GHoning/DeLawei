@@ -3,7 +3,7 @@ var dialog = [
 	//--------------------------------------------------------------------------
 	["kim","intro",
 		[	
-			"Hallo! Ik ben alex en \nik ben gestuurd door \nmijn schoolkrant om over \nde vernieuwing te schrijven.",
+			"Hallo! Ik ben alex en ik ben gestuurd door mijn schoolkrant om over de vernieuwing te schrijven.",
 			"Hallo alex, jouw leraar had al contact met ons opgenomen. Helaas heb ik geen tijd op het moment om jou te helpen maar je bent vrij om rond te lopen en de mensen te interviewen die aanwezig zijn. Als je vragen hebt voor mij wees dan vrij om me lastig te vallen.",
 			"Bedankt!"
 		]],
