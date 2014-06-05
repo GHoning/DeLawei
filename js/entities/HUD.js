@@ -17,7 +17,15 @@ game.HUD.Container = me.ObjectContainer.extend({
 			this.addButton();
 			this.inventory;
 			this.addInventory();
-			me.game.world.addChild(new game.UIImage(0, 0, "introductiescherm"));
+			this.addIntroduction();
+		},
+		
+		addIntroduction : function () {
+			if(game.data.firstTime) {
+				this.introscreen = new game.HUD.IntroductionScreen(0, -70, {image: "introductiescherm", spriteWidth: 1024, spriteHeight: 768});
+				this.addChild(this.introscreen);
+				game.data.firstTime = false;
+			}
 		},
 		
 		addInventory : function() {
@@ -146,6 +154,22 @@ game.HUD.MuteButton = game.UIButton.extend({
 			this.image = imgUnmuted;
 		}
 	},
+	
+	
+});
+
+game.HUD.IntroductionScreen = game.UIButton.extend({
+	init : function(x, y, settings) {
+		this.parent(x, y, settings);
+	},
+	
+	onClick : function() {
+		me.game.world.removeChild(this);
+	},
+	
+	onHover : function() {
+		
+	}
 	
 	
 });
