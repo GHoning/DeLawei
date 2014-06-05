@@ -104,15 +104,32 @@ game.Player = me.ObjectEntity.extend({
 			if(tile != null) {
 				//item
 				if (me.input.isKeyPressed("Use") && tile.obj == "item") {
-					
-					if(game.data.questStateMachine.getStatus() == "got_note1") {
+				
+					if(game.data.questStateMachine.getStatus() == "got_note4") {
+						game.data.questStateMachine.consumeEvent("get_note5");
+						console.log(game.data.questStateMachine.getStatus());
+						//add Notenschrift 2
+						game.play.addItemToInventory(tile.name);
+						game.play.collision.clearTile(this.mapPos.x, this.mapPos.y);
+					}else if(game.data.questStateMachine.getStatus() == "got_note3") {
+						game.data.questStateMachine.consumeEvent("get_note4");
+						console.log(game.data.questStateMachine.getStatus());
+						//add Notenschrift 2
+						game.play.addItemToInventory(tile.name);
+						game.play.collision.clearTile(this.mapPos.x, this.mapPos.y);
+					}else if(game.data.questStateMachine.getStatus() == "got_note1") {
 						game.data.questStateMachine.consumeEvent("pick_up_note2");
 						console.log(game.data.questStateMachine.getStatus());
+						//add Notenschrift 2
 						game.play.addItemToInventory(tile.name);
+						game.play.collision.clearTile(this.mapPos.x, this.mapPos.y);
 					}else if(game.data.questStateMachine.getStatus() == "get_note1") {
 						game.data.questStateMachine.consumeEvent("pick_up_note1");
 						console.log(game.data.questStateMachine.getStatus());
+						//add Notenschrift 1
 						game.play.addItemToInventory(tile.name);
+						game.play.collision.clearTile(this.mapPos.x, this.mapPos.y);
+						
 					}
 				//door
 				} else if (tile.name == "door") {

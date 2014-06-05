@@ -109,6 +109,10 @@ function Collision(collisionMap) {
 		return this.collisionMap[x][y];
 	}
 	
+	this.clearTile = function (x, y){
+		this.collisionMap[x][y] = null;
+	}
+	
 	this.isNextToNPC = function (x, y) {
 		if(this.collisionMap[x][y-1] != null) {
 			if(this.collisionMap[x][y-1].obj == "npc") {

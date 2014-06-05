@@ -108,6 +108,16 @@
     <property name="type" value="solid"/>
    </properties>
   </object>
+  <object name="item" x="896" y="640" width="64" height="64">
+   <properties>
+    <property name="image" value="notenschrift"/>
+    <property name="mapPosX" value="14"/>
+    <property name="mapPosY" value="10"/>
+    <property name="spriteheight" value="1"/>
+    <property name="spritewidth" value="1"/>
+    <property name="type" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="wall3" width="30" height="30">
   <data encoding="base64">

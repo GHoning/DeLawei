@@ -75,6 +75,16 @@
     <property name="type" value="none"/>
    </properties>
   </object>
+  <object name="item" x="576" y="512" width="64" height="64">
+   <properties>
+    <property name="image" value="notenschrift"/>
+    <property name="mapPosX" value="9"/>
+    <property name="mapPosY" value="8"/>
+    <property name="spriteheight" value="1"/>
+    <property name="spritewidth" value="1"/>
+    <property name="type" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="wall2" width="20" height="20">
   <data encoding="base64">
