@@ -10,7 +10,7 @@ game.EndScreen = me.ScreenObject.extend({
 		},
 		
 		addBackground : function () {
-			
+			me.game.world.addChild(new game.UIImage(0, 0, "endbackground"));
 		},
 		
 		addKeyword : function () {

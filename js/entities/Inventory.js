@@ -22,7 +22,8 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 		addInventorySlots : function () {
 			for (var i = 0; i < constants.INVENTORY_SLOTS; i++) {
 				this.addChild(new game.UIImage((constants.INVENTORY_SLOT_SIZE + this.margin) * i + 128,
-						constants.SCREENHEIGHT - (constants.INVENTORY_SLOT_SIZE + 17), "inventorySlot"));
+						constants.SCREENHEIGHT - (constants.INVENTORY_SLOT_SIZE + 17),
+						"inventorySlot"));
 			}
 		},
 
@@ -80,7 +81,7 @@ game.HUD.Inventory.InventoryItem = game.UIButton.extend({
 			this.parent(x, y, settings);
 			this.floating = true;
 			this.z = 1;
-			
+
 			console.log(x, y);
 			this.tooltip = new game.UIText(x - 40, y - 40, "font", this.name);
 			me.game.world.addChild(this.tooltip, Infinity + 1001);
