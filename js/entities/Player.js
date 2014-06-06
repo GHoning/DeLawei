@@ -45,7 +45,7 @@ game.Player = me.ObjectEntity.extend({
 		
 			this.deltaTime += me.timer.tick;		
 			//determines speed 
-			if(this.deltaTime >= 2) {
+			if(this.deltaTime >= 4) {
 				this.renderable.setAnimationFrame(this.index);
 				this.index++;
 				this.deltaTime = 0;

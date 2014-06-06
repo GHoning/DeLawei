@@ -29,7 +29,7 @@ game.resources = [
 	}, { 
 		name : "tim",
 		type : "image",
-		src : "data/img/sprite/TimAssets.png"
+		src : "data/img/sprite/TimAsset.png"
 	}, {
 		name : "notenschrift",
 		type : "image",
@@ -112,6 +112,18 @@ game.resources = [
 		name : "WallSet2",
 		type : "image",
 		src : "data/img/tileset/WallSet2.png"
+	}, {
+		name : "FurnitureSet",
+		type : "image",
+		src : "data/img/tileset/FurnitureSet.png"
+	}, {
+		name : "LightSet",
+		type : "image",
+		src : "data/img/tileset/LightSet.png"
+	}, {
+		name : "LightSet2",
+		type : "image",
+		src : "data/img/tileset/LightSet2.png"
 	}, 
 	 
 	/*	
