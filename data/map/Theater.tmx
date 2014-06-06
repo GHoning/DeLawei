@@ -55,7 +55,7 @@
   </data>
  </layer>
  <objectgroup name="Objectlaag 1" width="45" height="40">
-  <object name="player" x="2024" y="765" width="64" height="64"/>
+  <object name="player" x="2178" y="714" width="64" height="64"/>
   <object name="door" x="2368" y="768" width="64" height="256">
    <properties>
     <property name="level" value="Foyer"/>
@@ -100,6 +100,24 @@
     <property name="spriteheight" value="1"/>
     <property name="spritewidth" value="1"/>
     <property name="type" value="none"/>
+   </properties>
+  </object>
+  <object name="scenery" x="929" y="734" width="64" height="64">
+   <properties>
+    <property name="image" value="TheatreChairs"/>
+    <property name="mapPosX" value="15"/>
+    <property name="mapPosY" value="12"/>
+    <property name="spritewidth" value="128"/>
+    <property name="type" value="solid"/>
+   </properties>
+  </object>
+  <object name="scenery" x="994" y="734" width="64" height="64">
+   <properties>
+    <property name="image" value="TheatreChairs"/>
+    <property name="mapPosX" value="16"/>
+    <property name="mapPosY" value="12"/>
+    <property name="spritewidth" value="128"/>
+    <property name="type" value="solid"/>
    </properties>
   </object>
  </objectgroup>

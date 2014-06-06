@@ -127,7 +127,7 @@
   </object>
   <object name="scenery" x="735" y="860" width="64" height="64">
    <properties>
-    <property name="image" value="lelijkUitknipsel"/>
+    <property name="image" value="Table"/>
     <property name="mapPosX" value="12"/>
     <property name="mapPosY" value="14"/>
     <property name="type" value="solid"/>
@@ -135,7 +135,7 @@
   </object>
   <object name="scenery" x="1182" y="986" width="64" height="64">
    <properties>
-    <property name="image" value="lelijkUitknipsel"/>
+    <property name="image" value="Table"/>
     <property name="mapPosX" value="19"/>
     <property name="mapPosY" value="16"/>
     <property name="type" value="solid"/>

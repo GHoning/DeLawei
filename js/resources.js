@@ -180,9 +180,13 @@ game.resources = [
 	 * Scenery
 	 */
 	{
-		name : "lelijkUitknipsel",
+		name : "Table",
 		type : "image",
-		src : "data/img/sprite/lelijkUitknipsel.png"
+		src : "data/img/sprite/Table.png"
+	}, {
+		name : "TheatreChairs",
+		type : "image",
+		src : "data/img/sprite/TheatreChairs.png"
 	},
 
 	/*
