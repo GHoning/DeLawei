@@ -295,5 +295,13 @@ game.resources = [
 		name : "itempickup_sfx",
 		type : "audio",
 		src : "data/sfx/"
+	}, {
+		name : "Laweimusic_bgm",
+		type : "audio",
+		src : "data/bgm/"
+	}, {
+		name : "LaweiWin_bgm",
+		type : "audio",
+		src : "data/bgm/"
 	},
 ];
