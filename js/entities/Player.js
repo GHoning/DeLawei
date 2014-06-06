@@ -68,6 +68,7 @@ game.Player = me.ObjectEntity.extend({
 					this.keylock = false;
 					this.animate = false;
 					this.index = 0;
+					me.audio.play("footstep_sfx");
 				
 					if(this.goUpRight) {
 						this.mapPos.y -= 1;

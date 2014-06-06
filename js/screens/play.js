@@ -17,8 +17,8 @@ game.PlayScreen = me.ScreenObject.extend({
 			}
 			
 			console.log("reset play.js");
-			
-			//TODO enable audio. me.audio.play("crowd_sfx", true);
+			me.audio.play("laweimusic_bgm", true);
+			me.audio.play("crowd_sfx", true);
 		},
 
 		addHUD : function () {
@@ -69,7 +69,7 @@ game.PlayScreen = me.ScreenObject.extend({
 				var items = me.game.world.getChildByName("item");
 				me.game.world.removeChild(items[0]);
 				console.log("wow");
-				//TODO enable audio.me.audio.play("itempickup_sfx");
+				me.audio.play("itempickup_sfx");
 			}
 		},
 

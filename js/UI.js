@@ -20,7 +20,7 @@ game.UIButton = me.ObjectEntity.extend({
 		if (this.getShape().containsPointV(me.input.mouse.pos) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
 			this.keyLock = true;
 			this.onClick();
-			//me.audio.play("click_sfx");
+			me.audio.play("click_sfx");
 		}
 		
 		if (!me.input.isKeyPressed("mouse/touch")) {

@@ -7,6 +7,8 @@ game.EndScreen = me.ScreenObject.extend({
 			this.addReplayButton();
 			this.addKeyword();
 			this.addBackground();
+			me.audio.stop("footstep_sfx");
+			me.audio.play("laweiwin_bgm");
 		},
 		
 		addBackground : function () {
@@ -20,6 +22,10 @@ game.EndScreen = me.ScreenObject.extend({
 		addReplayButton : function () {
 			me.game.world.addChild(new game.EndScreen.ReplayButton(500, 500, {image: "replaybutton", spriteWidth: 155, spriteHeight: 46}))
 		},
+		
+		onDestroyEvent : function () {
+			me.audio.stop("laweiwin_bgm");
+		}
 
 	});
 	
