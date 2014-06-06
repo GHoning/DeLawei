@@ -219,6 +219,10 @@ game.resources = [
 		name : "inventorybalk",
 		type : "image",
 		src : "data/img/sprite/InventoryBalk.png"
+	}, {
+		name : "tajiribrief",
+		type : "image",
+		src : "data/img/sprite/TajiriBrief.png"
 	},
 
 	/* Atlases

@@ -86,7 +86,10 @@ game.HUD.Inventory.InventoryItem = game.UIButton.extend({
 		},
 
 		onClick : function () {
-			console.log("open brief");
+			if (this.name == "brief") {
+				console.log("open brief");
+				game.play.HUD.addChild(new game.HUD.Inventory.TajiriBrief(0, 0, {image: "tajiribrief", spriteWidth: 512, spriteHeight: 608}));
+			}
 		},
 
 		onHover : function (bool) {
@@ -97,5 +100,21 @@ game.HUD.Inventory.InventoryItem = game.UIButton.extend({
 				this.tooltip.replaceText("");
 			}
 
+		}
+	});
+	
+game.HUD.Inventory.TajiriBrief = game.UIButton.extend({
+		init : function (x, y, settings) {
+			this.parent(x, y, settings);
+			this.floating = true;
+			this.z = 1;
+		},
+
+		onClick : function () {
+			me.game.world.removeChild(this);
+		},
+
+		onHover : function (bool) {
+		
 		}
 	});
