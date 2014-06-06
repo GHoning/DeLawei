@@ -13,6 +13,8 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 			this.z = Infinity;
 			this.name = "Inventory";
 			this.margin = 14;
+			this.itemSlotPos = 128;
+			this.itemMargin = 17;
 			this.invLength = 0;
 			this.addInventorySlots();
 			this.addItems(items);
@@ -21,7 +23,7 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 
 		addInventorySlots : function () {
 			for (var i = 0; i < constants.INVENTORY_SLOTS; i++) {
-				this.addChild(new game.UIImage((constants.INVENTORY_SLOT_SIZE + this.margin) * i + 128,
+				this.addChild(new game.UIImage((constants.INVENTORY_SLOT_SIZE + this.margin) * i + this.itemSlotPos,
 						constants.SCREENHEIGHT - (constants.INVENTORY_SLOT_SIZE + 17),
 						"inventorySlot"));
 			}
@@ -39,7 +41,7 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 
 		addItem : function (item) {
 			//Put the items in an array to access them later
-			var gui_item = new game.HUD.Inventory.InventoryItem((constants.INVENTORY_SLOT_SIZE + this.margin) * this.items.length + 145,
+			var gui_item = new game.HUD.Inventory.InventoryItem(this.getItemXPos(this.items.length),
 					constants.SCREENHEIGHT - constants.INVENTORY_SLOT_SIZE, {
 					image : item + "_inv",
 					name : item,
@@ -61,10 +63,14 @@ game.HUD.Inventory.Container = me.ObjectContainer.extend({
 			}
 		},
 
-		fixItemPositions : function (index) {
+		fixItemPositions : function(index) {
 			for (var i = index; i < this.items.length; i++) {
-				this.items[i].pos.x = i * constants.INVENTORY_SLOT_SIZE; //Put the items in the right spot so when an item gets added it will be in an empty spot.
+				this.items[i].pos.x = this.getItemXPos(i); //Put the items in the right spot so when an item gets added it will be in an empty spot
 			}
+		},
+		
+		getItemXPos: function(index) {
+			return (constants.INVENTORY_SLOT_SIZE + this.margin) * index + (this.itemSlotPos + this.itemMargin);
 		},
 
 		remove : function () {
@@ -83,6 +89,11 @@ game.HUD.Inventory.InventoryItem = game.UIButton.extend({
 			this.z = 1;
 			this.tooltip = new game.UIText(x - 40, y - 40, "font", this.name);
 			me.game.world.addChild(this.tooltip, Infinity + 1001);
+		},
+		
+		update: function(dt) {
+			this.parent(dt);
+			return true;
 		},
 
 		onClick : function () {

@@ -6,7 +6,7 @@ game.UIButton = me.ObjectEntity.extend({
 		this.parent(x, y, settings);
 		this.keyLock = false;
 		this.floating = true;
-		this.imgButton = new me.AnimationSheet(this.pos.x, this.pos.y, me.loader.getImage(settings.image), settings.spriteWidth, settings.spriteHeight);
+		this.imgButton = new me.AnimationSheet(0, 0, me.loader.getImage(settings.image), settings.spriteWidth, settings.spriteHeight);
 		//add Shape in MelonJS 1.0.0 for the collision box
 		this.rect = new me.Rect(this.pos, settings.spriteWidth, settings.spriteHeight);
 		this.addShape(this.rect);
@@ -31,6 +31,7 @@ game.UIButton = me.ObjectEntity.extend({
 	},
 	
 	draw : function (context) {
+		context.translate(this.pos.x, this.pos.y);
 		this.imgButton.draw(context);
 	}
 });

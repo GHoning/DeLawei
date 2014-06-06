@@ -75,8 +75,10 @@ game.PlayScreen = me.ScreenObject.extend({
 
 		removeItemFromInventory : function (item) {
 			var index = game.data.inventory.indexOf(item);
-			game.data.inventory.splice(index, 1);
-			this.HUD.inventory.removeItem(item);
+			if (index != -1) {
+				game.data.inventory.splice(index, 1);
+				this.HUD.inventory.removeItem(item);
+			}
 		},
 
 		loadLevel : function (level, x, y, mapX, mapY) {
