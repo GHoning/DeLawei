@@ -48,7 +48,7 @@ game.UIText = me.Renderable.extend({
 		
 		this.text = text;
 		this.floating = true;
-		this.text = this.format(this.text, 20);
+		this.text = this.wordWrap(this.text, constants.TEXTWIDTH);
 	},
 	
 	update : function () {
@@ -56,42 +56,46 @@ game.UIText = me.Renderable.extend({
 		return true;
 	},
 	
-	format : function (text, sentenceLength) {
+	testWhite : function(x) {
+		var white = new RegExp(/^\s$/);
+		return white.test(x.charAt(0));
+	},
 	
-		var sentence = sentenceLength;
+	wordWrap : function (str, maxWidth) {
+	
+		var newLineStr = "\n";
+		var done = false;
+		var res = '';
 		
-		console.log("charaters in sentence " + sentence);
+		do {
+			found = false;
+			
+			for (i = maxWidth -1; i >= 0; i--) {
+				if(this.testWhite(str.charAt(i))) {
+					res = res + [str.slice(0, i), newLineStr].join('');
+					str = str.slice(i + 1);
+					found = true;
+					break;
+					
+				}
+			}
+			
+			if(!found) {
+				res = res + [str.slice(0, maxWidth), newLineStr].join('');
+				str = str.slice(maxWidth);
+			}
+			
+			if(str.length < maxWidth)
+				done = true;
+		} while (!done);
 		
-		/*for (var i = 0; i < this.text.length; i = i + sentence) {
-			console.log(i);
-			//var t = this.text;
-			var tt = this.text.slice(i, i + sentence);
-			
-			console.log(this.text);
-			
-			this.text = tt.replace(/ (?!.*? )/, "/n");
-			
-			
-			console.log("index of string tt " + (tt.lastIndexOf(" ")));
-			console.log("index of string tt + i " + (tt.lastIndexOf(" ") + i));
-
-			console.log("return whitespace " + this.text[(tt.lastIndexOf(" ") + i)]);
-			
-			
-			var repl = "12_13_12".replace(/12(?!.*?12)/, 'aa');
-			
-			console.log(repl);
-			
-			this.text[(tt.lastIndexOf(" ") + i)] = "k";
-		}*/
+		return res + str;
 		
-		console.log(this.text);
-		
-		return text;
+		console.log(res);
 	},
 	
 	replaceText : function (txt) {
-		this.text = txt;
+		this.text = this.wordWrap(txt, constants.TEXTWIDTH);
 	},
 	
 	draw : function (context) {

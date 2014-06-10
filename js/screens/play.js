@@ -17,8 +17,8 @@ game.PlayScreen = me.ScreenObject.extend({
 			}
 			
 			console.log("reset play.js");
-			me.audio.play("laweimusic_bgm", true);
-			me.audio.play("crowd_sfx", true);
+			//me.audio.play("laweimusic_bgm", true);
+			//me.audio.play("crowd_sfx", true);
 		},
 
 		addHUD : function () {

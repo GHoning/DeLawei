@@ -11,8 +11,9 @@ const constants = {
 	"COLLISION_TYPE"			: "solid",
 	"INVENTORY_SLOTS"			: 8,
 	"INVENTORY_SLOT_SIZE"		: 96,
-	"TILEWIDHT"					: 256,
-	"TILEHEIGTH"				: 128
+	"TILEWIDTH"					: 256,
+	"TILEHEIGHT"				: 128,
+	"TEXTWIDTH"					: 75
 };
 
 /*store word for endscreen here*/
