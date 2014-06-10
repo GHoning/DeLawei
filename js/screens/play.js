@@ -17,8 +17,14 @@ game.PlayScreen = me.ScreenObject.extend({
 			}
 			
 			console.log("reset play.js");
-			//me.audio.play("laweimusic_bgm", true);
-			//me.audio.play("crowd_sfx", true);
+			
+			if(me.audio.getCurrentTrack() != "laweimusic_bgm") {
+				me.audio.play("laweimusic_bgm", true);
+			}
+			
+			if(me.audio.getCurrentTrack() != "crowd_sfx") {
+				me.audio.play("crowd_sfx", true);
+			}
 		},
 
 		addHUD : function () {

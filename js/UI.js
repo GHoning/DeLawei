@@ -16,7 +16,6 @@ game.UIButton = me.ObjectEntity.extend({
 		
 		this.onHover(this.getShape().containsPointV(me.input.mouse.pos));
 		
-		
 		if (this.getShape().containsPointV(me.input.mouse.pos) && me.input.isKeyPressed("mouse/touch") && !this.keyLock) {
 			this.keyLock = true;
 			this.onClick();
