@@ -78,7 +78,7 @@ game.SpeechScreen = me.ScreenObject.extend({
 			
 			if(game.data.questStateMachine.getStatus() =="got_note5" && game.data.lastSpokenNPC == "roel") {
 				me.state.change(me.state.END_GAME);
-				console.log("You win, but you're still a loser");
+				console.log("You win, but you're still a Canadian");
 			}else if(game.data.questStateMachine.getStatus() =="have_pocketknife" && game.data.lastSpokenNPC == "tim") {
 				game.data.questStateMachine.consumeEvent("talk_to_tim2");
 				console.log(game.data.questStateMachine.getStatus());

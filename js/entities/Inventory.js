@@ -89,6 +89,8 @@ game.HUD.Inventory.InventoryItem = game.UIButton.extend({
 			this.z = 1;
 			this.tooltip = new game.UIText(x - 40, y - 40, "font", this.name);
 			me.game.world.addChild(this.tooltip, Infinity + 1001);
+			this.onClick();
+			console.log("this.onClick()");
 		},
 		
 		update: function(dt) {
@@ -123,6 +125,7 @@ game.HUD.Inventory.TajiriBrief = game.UIButton.extend({
 
 		onClick : function () {
 			me.game.world.removeChild(this);
+			game.data.questStateMachine.consumeEvent("read_letter");
 		},
 
 		onHover : function (bool) {
