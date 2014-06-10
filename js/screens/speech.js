@@ -36,13 +36,15 @@ game.SpeechScreen = me.ScreenObject.extend({
 				this.eventListener = new game.SpeechScreen.eventListener(0, 0, {});
 				me.game.world.addChild(this.eventListener);
 				
-				this.namelabel = new game.UIText(730, constants.SCREENHEIGHT - 235, "font", "Alex");
+				this.namelabel = new game.UIText(740, constants.SCREENHEIGHT - 235, "font", "Alex");
 				me.game.world.addChild(this.namelabel);
 				
 				this.bgnamelabel= new game.UIImage(730, constants.SCREENHEIGHT - 250, "namelabel");
 				me.game.world.addChild(this.bgnamelabel);
+				this.bgnamelabelNPC= new game.UIImage(130, constants.SCREENHEIGHT - 250, "namelabel");
+				me.game.world.addChild(this.bgnamelabelNPC);
 				
-				me.game.world.addChild(new game.UIText(20, constants.SCREENHEIGHT - 40, "font", "Druk op de spatiebalk om door te gaan"));
+				me.game.world.addChild(new game.UIText(140, constants.SCREENHEIGHT - 40, "font", "Druk op spatiebalk om door te gaan"));
 				me.game.world.addChild(new game.UIImage(128, constants.SCREENHEIGHT - 192, "speechbalk"));
 				me.game.world.addChild(new game.UIImage(1024 - 276, constants.SCREENHEIGHT - 571, "alex_convo"));
 				me.game.world.addChild(new game.UIImage(0, constants.SCREENHEIGHT - 638, game.data.lastSpokenNPC + "_convo"));
@@ -53,15 +55,13 @@ game.SpeechScreen = me.ScreenObject.extend({
 			if (index % 2 == 0) {
 				console.log("Alex");
 				this.namelabel.replaceText("Alex");
-				this.namelabel.pos.x = this.bgnamelabel.image.pos.x = 730;
+				this.namelabel.pos.x = 740;
 				console.log(this.bgnamelabel);
-				//TODO bgnamelabel is not drawn in the new position
 			} else {
 				console.log(game.data.lastSpokenNPC);
 				this.namelabel.replaceText(game.data.lastSpokenNPC);
-				this.namelabel.pos.x = this.bgnamelabel.image.pos.x = 130;
+				this.namelabel.pos.x = 140;
 				console.log(this.bgnamelabel);
-				//TODO bgnamelabel is not drawn in the new position
 			}
 		},
 		

@@ -41,6 +41,7 @@ game.UIButton = me.ObjectEntity.extend({
 game.UIText = me.Renderable.extend({
 	init : function (x, y, font, text) {
 		//the 10's are irrelevant
+		//TODO make var for setting length of sentences
 		this.parent(new me.Vector2d(x,y), 10, 10);
 		this.font = new me.BitmapFont(font, 32);
 		this.font = new me.Font("Arail", 24, "#000000");
