@@ -205,9 +205,13 @@ game.resources = [
 		type : "image",
 		src : "data/img/backgrounds/introductiescherm.png"
 	}, {
-		name : "endbackground",
+		name : "endbackgroundkrant",
 		type : "image",
 		src : "data/img/backgrounds/Endscreen.png"
+	}, {
+		name : "endbackgroundtheater",
+		type : "image",
+		src : "data/img/backgrounds/EndScreenTheater.png"
 	},
 	
 	

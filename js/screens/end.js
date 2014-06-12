@@ -4,30 +4,41 @@
 game.EndScreen = me.ScreenObject.extend({
 
 		onResetEvent : function () {
-			this.addReplayButton();
-			this.addKeyword();
-			this.addBackground();
 			me.audio.stop("footstep_sfx");
 			me.audio.play("laweiwin_bgm");
+			me.game.world.addChild(new game.EndScreen.NextButton(500, 500, {image: "nextbutton", spriteWidth: 148, spriteHeight: 54}))
+			this.BGTheater = new game.UIImage(0, 0, "endbackgroundtheater")
+			me.game.world.addChild(this.BGTheater);
 		},
 		
-		addBackground : function () {
-			me.game.world.addChild(new game.UIImage(0, 0, "endbackground"));
+		addBackgroundKrant : function() {
+			me.game.world.removeChild(this.BGTheater);
+			this.BGKrant = new game.UIImage(0, 0, "endbackgroundkrant");
+			me.game.world.addChild(BGKrant);
 		},
 		
-		addKeyword : function () {
+		addLastScreen : function() {
+			me.game.world.removeChild(this.BGKrant);
 			me.game.world.addChild(new game.UIText(500, 300, "font", words[Math.floor(Math.random() * words.length)]));
-		},
-		
-		addReplayButton : function () {
 			me.game.world.addChild(new game.EndScreen.ReplayButton(500, 500, {image: "replaybutton", spriteWidth: 155, spriteHeight: 46}))
-		},
+		}, 
 		
 		onDestroyEvent : function () {
 			me.audio.stop("laweiwin_bgm");
 		}
 
 	});
+	
+game.EndScreen.NextButton = game.UIButton.extend({
+	
+	onHover : function() {
+		
+	},
+	
+	onClick : function() {
+		//TODO call parent functions
+	},
+}),
 	
 game.EndScreen.ReplayButton = game.UIButton.extend({
 	
