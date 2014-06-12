@@ -236,7 +236,7 @@ game.resources = [
 		type : "image",
 		src : "data/img/sprite/InventoryBalk.png"
 	}, {
-		name : "tajiribrief",
+		name : "brief_showItem",
 		type : "image",
 		src : "data/img/sprite/TajiriBrief.png"
 	},

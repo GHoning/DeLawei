@@ -99,9 +99,10 @@ game.HUD.Inventory.InventoryItem = game.UIButton.extend({
 		},
 
 		onClick : function () {
-			if (this.name == "brief") {
-				console.log("open brief");
-				game.play.HUD.addChild(new game.HUD.Inventory.TajiriBrief((constants.SCREENWIDTH / 2) - 256, 20, {image: "tajiribrief", spriteWidth: 512, spriteHeight: 608}));
+			try {
+				game.play.HUD.addChild(new game.HUD.Inventory.ShowItem((constants.SCREENWIDTH / 2) - 256, 20, {image: this.name + "_showItem", spriteWidth: 512, spriteHeight: 608}));
+			} catch(error) {
+				console.log(error);
 			}
 		},
 
@@ -116,7 +117,7 @@ game.HUD.Inventory.InventoryItem = game.UIButton.extend({
 		}
 	});
 	
-game.HUD.Inventory.TajiriBrief = game.UIButton.extend({
+game.HUD.Inventory.ShowItem = game.UIButton.extend({
 		init : function (x, y, settings) {
 			this.parent(x, y, settings);
 			this.floating = true;

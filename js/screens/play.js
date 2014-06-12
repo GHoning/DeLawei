@@ -12,7 +12,12 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.itemOnReset();
 			
 			if(game.data.questStateMachine.getStatus() == "brief"){
-				game.play.HUD.addChild(new game.HUD.Inventory.TajiriBrief((constants.SCREENWIDTH / 2) - 256, 20, {image: "tajiribrief", spriteWidth: 512, spriteHeight: 608}));
+				try {
+					game.play.HUD.addChild(new game.HUD.Inventory.ShowItem((constants.SCREENWIDTH / 2) - 256, 20, {image: "brief_showItem", spriteWidth: 512, spriteHeight: 608}));
+				} catch(err) {
+					console.log(err.message);
+				}
+				
 			}
 			
 			console.log("reset play.js");
