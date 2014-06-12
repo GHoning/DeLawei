@@ -86,7 +86,7 @@ QuestStates = [
 function StateMachine(QuestStates) {
 	this.states = QuestStates;
 	this.indexes = {}; //convenience
-	for( var i = 0; i< this.states.length; i++) {
+	for( var i = 0; i < this.states.length; i++) {
 		this.indexes[this.states[i].name] = i;
 		if(this.states[i].initial) {
 			this.currentState = this.states[i];
@@ -101,5 +101,16 @@ function StateMachine(QuestStates) {
 	
 	this.getStatus = function() {
 		return this.currentState.name;
+	}
+	
+	this.getIndex = function(status) {
+	
+		for(var i = 0; i < this.states.length; i++) {
+			if(this.states[i].name == status) {
+				return i;
+			}
+		}
+	
+		
 	}
 }

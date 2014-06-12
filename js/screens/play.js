@@ -5,7 +5,6 @@ game.PlayScreen = me.ScreenObject.extend({
 
 		onResetEvent : function () {
 			me.levelDirector.loadLevel(game.data.currentLevel);
-			game.data.score = 0;
 			this.HUD;
 			this.addHUD();
 			this.collision = new Collision(me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData);
@@ -18,13 +17,13 @@ game.PlayScreen = me.ScreenObject.extend({
 			
 			console.log("reset play.js");
 			
-			if(me.audio.getCurrentTrack() != "laweimusic_bgm") {
+			/*if(me.audio.getCurrentTrack() != "laweimusic_bgm") {
 				me.audio.play("laweimusic_bgm", true);
 			}
 			
 			if(me.audio.getCurrentTrack() != "crowd_sfx") {
 				me.audio.play("crowd_sfx", true);
-			}
+			}*/
 		},
 
 		addHUD : function () {

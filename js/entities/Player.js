@@ -137,7 +137,31 @@ game.Player = me.ObjectEntity.extend({
 					}
 				//door
 				} else if (tile.name == "door") {
-					game.play.loadLevel(tile.level, tile.playerX, tile.playerY, tile.mapX, tile.mapY);
+					console.log(game.data.questStateMachine.indexes.get_note1);
+					console.log(game.data.questStateMachine.getIndex(game.data.questStateMachine.getStatus()));
+					if(game.data.questStateMachine.getIndex(game.data.questStateMachine.getStatus()) < game.data.questStateMachine.indexes.get_note1 && tile.level == "Theater") {	
+						console.log(1);
+						game.data.lastSpokenNPC = "sam";
+						game.play.HUD.remove();
+						
+						this.mapPos.x += 1;
+						this.pos.x += 64;
+						this.pos.y += 32;
+						
+						me.state.change(me.state.SPEECH);
+					} else if (game.data.questStateMachine.getIndex(game.data.questStateMachine.getStatus()) < game.data.questStateMachine.indexes.get_note1 && tile.level == "Kleedkamer") {
+						console.log(2);
+						game.data.lastSpokenNPC = "sam";
+						game.play.HUD.remove();
+						
+						this.mapPos.y -= 1;
+						this.pos.x += 64;
+						this.pos.y -= 32;
+						
+						me.state.change(me.state.SPEECH);	
+					} else {
+						game.play.loadLevel(tile.level, tile.playerX, tile.playerY, tile.mapX, tile.mapY);
+					}
 				}
 			}
 			
