@@ -124,6 +124,10 @@ game.resources = [
 		name : "LightSet2",
 		type : "image",
 		src : "data/img/tileset/LightSet2.png"
+	}, {
+		name : "barSet",
+		type : "image",
+		src : "data/img/tileset/barSet.png"
 	}, 
 	 
 	/*	
@@ -187,6 +191,14 @@ game.resources = [
 		name : "TheatreChairs",
 		type : "image",
 		src : "data/img/sprite/TheatreChairs.png"
+	}, {
+		name : "Plant",
+		type : "image",
+		src : "data/img/sprite/Plant.png"
+	}, {
+		name : "Bar",
+		type : "image",
+		src : "data/img/sprite/Bar.png"
 	},
 
 	/*
@@ -205,17 +217,9 @@ game.resources = [
 		type : "image",
 		src : "data/img/backgrounds/introductiescherm.png"
 	}, {
-		name : "endbackgroundkrant",
+		name : "endbackground",
 		type : "image",
 		src : "data/img/backgrounds/Endscreen.png"
-	}, {
-		name : "endbackgroundtheater",
-		type : "image",
-		src : "data/img/backgrounds/EndScreenTheater.png"
-	}, {
-		name : "interfacewachtwoord",
-		type : "image",
-		src : "data/img/sprite/InterfaceWachtwoord.png"
 	},
 	
 	
@@ -244,7 +248,7 @@ game.resources = [
 		type : "image",
 		src : "data/img/sprite/InventoryBalk.png"
 	}, {
-		name : "brief_showItem",
+		name : "tajiribrief",
 		type : "image",
 		src : "data/img/sprite/TajiriBrief.png"
 	},
