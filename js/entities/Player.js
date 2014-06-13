@@ -31,7 +31,7 @@ game.Player = me.ObjectEntity.extend({
 		},
 		
 		switchAnimations : function () {
-			if(!this.renderable.isCurrentAnimation("downLeft") && this.goDownLeft) {
+			/*if(!this.renderable.isCurrentAnimation("downLeft") && this.goDownLeft) {
 				this.renderable.setCurrentAnimation("downLeft");
 			} else if (!this.renderable.isCurrentAnimation("downRight") && this.goDownRight) {
 				this.renderable.setCurrentAnimation("downRight");
@@ -39,7 +39,7 @@ game.Player = me.ObjectEntity.extend({
 				this.renderable.setCurrentAnimation("upRight");
 			} else if (!this.renderable.isCurrentAnimation("upLeft") && this.goUpLeft) {
 				this.renderable.setCurrentAnimation("upLeft");
-			}
+			}*/
 		},
 		
 		animations : function () {
