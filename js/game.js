@@ -10,8 +10,7 @@ var game = {
 		playerPos: constants.PLAYER_STARTLOCATION,
 		lastSpokenNPC : "",
 		inventory : [],
-		questStateMachine : new StateMachine(QuestStates),
-		firstTime : true
+		questStateMachine : new StateMachine(QuestStates)
 	},
 	
 	/*
@@ -87,6 +86,6 @@ var game = {
 		
 		me.input.bindKey(me.input.KEY.X, "mouse/touch");
 		me.input.bindPointer(me.input.KEY.X);
-		me.state.change(me.state.PLAY);
+		me.state.change(me.state.GAME_END);
 	}
 };

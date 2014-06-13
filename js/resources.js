@@ -212,6 +212,10 @@ game.resources = [
 		name : "endbackgroundtheater",
 		type : "image",
 		src : "data/img/backgrounds/EndScreenTheater.png"
+	}, {
+		name : "interfacewachtwoord",
+		type : "image",
+		src : "data/img/sprite/InterfaceWachtwoord.png"
 	},
 	
 	

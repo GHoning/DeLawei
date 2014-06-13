@@ -16,14 +16,10 @@ const constants = {
 	"TEXTWIDTH"					: 75
 };
 
-/*store word for endscreen here*/
+/*store codewords for endscreen here*/
 
 words = [
-	"appel",
-	"peer",
-	"sinasappel",
-	"druif",
-	"kiwi",
-	"banaan",
-	"manderijn"
+	"Jij in de Lawei",
+	"Nieuwe Lawei",
+	"Vernieuwbouw",
 ]

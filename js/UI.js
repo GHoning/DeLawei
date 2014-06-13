@@ -12,6 +12,10 @@ game.UIButton = me.ObjectEntity.extend({
 		this.addShape(this.rect);
 	},
 	
+	setOnClick : function(onclick) {
+		this.onClick = onclick;
+	},
+	
 	update : function () {
 		
 		this.onHover(this.getShape().containsPointV(me.input.mouse.pos));
