@@ -31,19 +31,21 @@ game.Player = me.ObjectEntity.extend({
 		},
 		
 		switchAnimations : function () {
-			if(!this.renderable.isCurrentAnimation("downLeft") && this.goDownLeft) {
-				this.renderable.setCurrentAnimation("downLeft");
-			} else if (!this.renderable.isCurrentAnimation("downRight") && this.goDownRight) {
-				this.renderable.setCurrentAnimation("downRight");
-			} else if (!this.renderable.isCurrentAnimation("upRight") && this.goUpRight) {
-				this.renderable.setCurrentAnimation("upRight");
-			} else if (!this.renderable.isCurrentAnimation("upLeft") && this.goUpLeft) {
-				this.renderable.setCurrentAnimation("upLeft");
+			if(this.renderable != null){
+				if(!this.renderable.isCurrentAnimation("downLeft") && this.goDownLeft) {
+					this.renderable.setCurrentAnimation("downLeft");
+				} else if (!this.renderable.isCurrentAnimation("downRight") && this.goDownRight) {
+					this.renderable.setCurrentAnimation("downRight");
+				} else if (!this.renderable.isCurrentAnimation("upRight") && this.goUpRight) {
+					this.renderable.setCurrentAnimation("upRight");
+				} else if (!this.renderable.isCurrentAnimation("upLeft") && this.goUpLeft) {
+					this.renderable.setCurrentAnimation("upLeft");
+				}
 			}
 		},
 		
 		animations : function () {
-			this.deltaTime += me.timer.tick;		
+			this.deltaTime += me.timer.tick;
 			//determines speed 
 			if(this.deltaTime >= 4) {
 				this.renderable.setAnimationFrame(this.index);
@@ -179,28 +181,26 @@ game.Player = me.ObjectEntity.extend({
 							this.goDownLeft = false;
 							this.goUpLeft = true;
 							this.goDownRight = false;
-							this.switchAnimations();
 						} else if (npcs[i].lookLeft) {
 							this.goUpRight = false;
 							this.goDownLeft = false;
 							this.goUpLeft = false;
 							this.goDownRight = true;
-							this.switchAnimations();
 						} else if (npcs[i].lookUp) {
 							this.goUpRight = false;
 							this.goDownLeft = true;
 							this.goUpLeft = false;
 							this.goDownRight = false;
-							this.switchAnimations();
 						} else if (npcs[i].lookDown) {
 							this.goUpRight = true;
 							this.goDownLeft = false;
 							this.goUpLeft = false;
 							this.goDownRight = false;
-							this.switchAnimations();
 						}
 					}
 				}
+				
+				this.switchAnimations();
 				
 				game.play.HUD.remove();
 				me.state.change(me.state.SPEECH);
