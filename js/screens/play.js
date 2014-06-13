@@ -78,7 +78,6 @@ game.PlayScreen = me.ScreenObject.extend({
 				//TODO go over list and find the right item through name and destroy the instance
 				var items = me.game.world.getChildByName("item");
 				me.game.world.removeChild(items[0]);
-				console.log("wow");
 				me.audio.play("itempickup_sfx");
 			}
 		},
@@ -100,7 +99,6 @@ game.PlayScreen = me.ScreenObject.extend({
 			player[0].pos.x = x;
 			player[0].pos.y = y;
 			this.itemOnReset();
-			//TODO find a better way to reload the HUD
 			this.addHUD();
 			console.log("load level");
 			this.collision = new Collision(me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData);

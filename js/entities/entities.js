@@ -81,7 +81,7 @@ game.QuestNPC = me.ObjectEntity.extend({
 			this.renderable.addAnimation("direction", [0, 1, 2, 3]);
 			this.renderable.setCurrentAnimation("direction");
 			me.game.world.sort();
-			console.log("npc Created")
+			console.log("npc Created");
 		},
 
 		update : function () {
@@ -97,15 +97,31 @@ game.QuestNPC = me.ObjectEntity.extend({
 			switch(direction) {
 				case "down":
 					this.renderable.setAnimationFrame(0);
+					this.lookDown = true;
+					this.lookUp = false;
+					this.lookLeft = false;
+					this.lookRight = false;
 					break;
 				case "left":
 					this.renderable.setAnimationFrame(1);
+					this.lookDown = false;
+					this.lookUp = false;
+					this.lookLeft = true;
+					this.lookRight = false;
 					break;
 				case "right":
 					this.renderable.setAnimationFrame(2);
+					this.lookDown = false;
+					this.lookUp = false;
+					this.lookLeft = false;
+					this.lookRight = true;
 					break;
 				case "up":
 					this.renderable.setAnimationFrame(3);
+					this.lookDown = false;
+					this.lookUp = true;
+					this.lookLeft = false;
+					this.lookRight = false;
 					break;
 			}	
 		},

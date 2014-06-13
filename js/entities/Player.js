@@ -30,8 +30,7 @@ game.Player = me.ObjectEntity.extend({
 			console.log("player created");
 		},
 		
-		animations : function () {
-			
+		switchAnimations : function () {
 			if(!this.renderable.isCurrentAnimation("downLeft") && this.goDownLeft) {
 				this.renderable.setCurrentAnimation("downLeft");
 			} else if (!this.renderable.isCurrentAnimation("downRight") && this.goDownRight) {
@@ -41,8 +40,9 @@ game.Player = me.ObjectEntity.extend({
 			} else if (!this.renderable.isCurrentAnimation("upLeft") && this.goUpLeft) {
 				this.renderable.setCurrentAnimation("upLeft");
 			}
+		},
 		
-		
+		animations : function () {
 			this.deltaTime += me.timer.tick;		
 			//determines speed 
 			if(this.deltaTime >= 4) {
@@ -103,30 +103,30 @@ game.Player = me.ObjectEntity.extend({
 			//use items
 			
 			if(tile != null) {
-				//item
+				//item pickup
 				if (me.input.isKeyPressed("Use") && tile.obj == "item") {
 				
-					if(game.data.questStateMachine.getStatus() == "got_note4") {
+					if(game.data.questStateMachine.getStatus() == "got_note4" && this.goUpRight) {
 						game.data.questStateMachine.consumeEvent("get_note5");
 						console.log(game.data.questStateMachine.getStatus());
 						//add Notenschrift 2
 						game.play.addItemToInventory(tile.name);
 						game.play.collision.clearTile(this.mapPos.x, this.mapPos.y);
-					}else if(game.data.questStateMachine.getStatus() == "got_note3") {
+					}else if(game.data.questStateMachine.getStatus() == "got_note3" && this.goUpLeft) {
 						game.data.questStateMachine.consumeEvent("get_note4");
 						console.log(game.data.questStateMachine.getStatus());
 						//add Notenschrift 2
 						game.play.addItemToInventory(tile.name);
 						console.log(game.data.inventory);
 						game.play.collision.clearTile(this.mapPos.x, this.mapPos.y);
-					}else if(game.data.questStateMachine.getStatus() == "got_note1") {
+					}else if(game.data.questStateMachine.getStatus() == "got_note1" && this.goDownRight) {
 						game.data.questStateMachine.consumeEvent("pick_up_note2");
 						console.log(game.data.questStateMachine.getStatus());
 						//add Notenschrift 2
 						game.play.addItemToInventory(tile.name);
 						console.log(game.data.inventory);
 						game.play.collision.clearTile(this.mapPos.x, this.mapPos.y);
-					}else if(game.data.questStateMachine.getStatus() == "get_note1") {
+					}else if(game.data.questStateMachine.getStatus() == "get_note1" && this.goUpRight) {
 						game.data.questStateMachine.consumeEvent("pick_up_note1");
 						console.log(game.data.questStateMachine.getStatus());
 						//add Notenschrift 1
@@ -169,46 +169,94 @@ game.Player = me.ObjectEntity.extend({
 			if (game.play.collision.isNextToNPC(this.mapPos.x, this.mapPos.y) && me.input.isKeyPressed("Use") && !this.keylock) {
 				console.log(game.data.lastSpokenNPC);
 				this.keylock = true;
-				//game.play.removeItemFromInventory("koekje"); TODO fix bug
+				
+				var npcs = me.game.world.getChildByName("npc");
+				//look at NPC while talking
+				for(var i = 0; i < npcs.length; i++) {
+					if(npcs[i].image == game.data.lastSpokenNPC) {
+						if(npcs[i].lookRight) {
+							this.goUpRight = false;
+							this.goDownLeft = false;
+							this.goUpLeft = true;
+							this.goDownRight = false;
+							this.switchAnimations();
+						} else if (npcs[i].lookLeft) {
+							this.goUpRight = false;
+							this.goDownLeft = false;
+							this.goUpLeft = false;
+							this.goDownRight = true;
+							this.switchAnimations();
+						} else if (npcs[i].lookUp) {
+							this.goUpRight = false;
+							this.goDownLeft = true;
+							this.goUpLeft = false;
+							this.goDownRight = false;
+							this.switchAnimations();
+						} else if (npcs[i].lookDown) {
+							this.goUpRight = true;
+							this.goDownLeft = false;
+							this.goUpLeft = false;
+							this.goDownRight = false;
+							this.switchAnimations();
+						}
+					}
+				}
+				
 				game.play.HUD.remove();
 				me.state.change(me.state.SPEECH);
 			}
-
-			//TODO fix animations because they still being looped over in the begining of a level switch which means he doesn't know about this.renderable
-			if (me.input.isKeyPressed("Up") && !this.keylock && game.play.collision.isWalkable(this.mapPos.x, this.mapPos.y-1)) {
-				this.keylock = true;
+			
+			//Walk
+			if (me.input.isKeyPressed("Up") && !this.keylock) {
 				this.goUpRight = true;
 				this.goDownLeft = false;
 				this.goUpLeft = false;
 				this.goDownRight = false;
-				this.animate = true;
+				this.switchAnimations();
+				
+				if(game.play.collision.isWalkable(this.mapPos.x, this.mapPos.y-1)){
+					this.keylock = true;
+					this.animate = true;
+				}
 			}
 			
-			if (me.input.isKeyPressed("Left") && !this.keylock && game.play.collision.isWalkable(this.mapPos.x-1, this.mapPos.y)) {
-				this.keylock = true;
+			if (me.input.isKeyPressed("Left") && !this.keylock) {
 				this.goUpRight = false;
 				this.goDownLeft = false;
 				this.goUpLeft = true;
 				this.goDownRight = false;
-				this.animate = true;
+				this.switchAnimations();
+				
+				if(game.play.collision.isWalkable(this.mapPos.x-1, this.mapPos.y)) {
+					this.keylock = true;
+					this.animate = true;
+				}
 			}
 
-			if (me.input.isKeyPressed("Down") && !this.keylock && game.play.collision.isWalkable(this.mapPos.x, this.mapPos.y+1)) {
-				this.keylock = true;
+			if (me.input.isKeyPressed("Down") && !this.keylock) {
 				this.goUpRight = false;
 				this.goDownLeft = true;
 				this.goUpLeft = false;
 				this.goDownRight = false;
-				this.animate = true;
+				this.switchAnimations();
+			
+				if(game.play.collision.isWalkable(this.mapPos.x, this.mapPos.y+1)){
+					this.keylock = true;
+					this.animate = true;
+				}
 			}
 
-			if (me.input.isKeyPressed("Right") && !this.keylock && game.play.collision.isWalkable(this.mapPos.x+1, this.mapPos.y)) {
-				this.keylock = true;
+			if (me.input.isKeyPressed("Right") && !this.keylock) {
 				this.goUpRight = false;
 				this.goDownLeft = false;
 				this.goUpLeft = false;
 				this.goDownRight = true;
-				this.animate = true;
+				this.switchAnimations();
+				
+				if(game.play.collision.isWalkable(this.mapPos.x+1, this.mapPos.y)){
+					this.keylock = true;
+					this.animate = true;
+				}
 			} 
 			
 			this.updateMovement();
