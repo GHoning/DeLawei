@@ -58,9 +58,23 @@ game.Scenery = me.ObjectEntity.extend({
 		this.image = settings.image;
 		this.mapPosX = settings.mapPosX;
 		this.mapPosY = settings.mapPosY;
+		this.n = settings.n;
 		this.type = settings.type;
 		this.gravity = false;
+		this.renderable = new me.AnimationSheet(0, 0, me.loader.getImage(settings.image), 128,256);
+		this.renderable.addAnimation("anim", [0, 1]);
+		this.renderable.setCurrentAnimation("anim");
+		this.renderable.setAnimationFrame(settings.n);
+		
 		console.log("Scenery Created");
+	},
+	
+	setAnimationFrameTo : function (n) {
+		this.renderable.setAnimationFrame(n);
+	},
+	
+	update : function () {
+		return false;
 	}
 });
 

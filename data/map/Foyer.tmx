@@ -87,21 +87,21 @@
     <property name="type" value="none"/>
    </properties>
   </object>
-  <object name="door" x="1408" y="2240" width="256" height="64">
+  <object name="door" x="1662" y="1985" width="65" height="258">
    <properties>
     <property name="level" value="Kleedkamer"/>
     <property name="mapX" value="8"/>
     <property name="mapY" value="6"/>
     <property name="playerX" value="1376"/>
     <property name="playerY" value="352"/>
-    <property name="tile1x" value="22"/>
-    <property name="tile1y" value="35"/>
-    <property name="tile2x" value="23"/>
-    <property name="tile2y" value="35"/>
-    <property name="tile3x" value="24"/>
-    <property name="tile3y" value="35"/>
-    <property name="tile4x" value="25"/>
-    <property name="tile4y" value="35"/>
+    <property name="tile1x" value="26"/>
+    <property name="tile1y" value="31"/>
+    <property name="tile2x" value="26"/>
+    <property name="tile2y" value="31"/>
+    <property name="tile3x" value="26"/>
+    <property name="tile3y" value="32"/>
+    <property name="tile4x" value="26"/>
+    <property name="tile4y" value="33"/>
     <property name="type" value="none"/>
    </properties>
   </object>

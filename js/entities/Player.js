@@ -31,15 +31,6 @@ game.Player = me.ObjectEntity.extend({
 		},
 		
 		switchAnimations : function () {
-			if(!this.renderable.isCurrentAnimation("downLeft") && this.goDownLeft) {
-				this.renderable.setCurrentAnimation("downLeft");
-			} else if (!this.renderable.isCurrentAnimation("downRight") && this.goDownRight) {
-				this.renderable.setCurrentAnimation("downRight");
-			} else if (!this.renderable.isCurrentAnimation("upRight") && this.goUpRight) {
-				this.renderable.setCurrentAnimation("upRight");
-			} else if (!this.renderable.isCurrentAnimation("upLeft") && this.goUpLeft) {
-				this.renderable.setCurrentAnimation("upLeft");
-			}
 			if(this.renderable != null){
 				if(!this.renderable.isCurrentAnimation("downLeft") && this.goDownLeft) {
 					this.renderable.setCurrentAnimation("downLeft");
@@ -140,7 +131,15 @@ game.Player = me.ObjectEntity.extend({
 					}else if(game.data.questStateMachine.getStatus() == "get_note1" && this.goUpRight) {
 						game.data.questStateMachine.consumeEvent("pick_up_note1");
 						console.log(game.data.questStateMachine.getStatus());
-						//add Notenschrift 1
+						
+						var sceneries = me.game.world.getChildByName("scenery");
+						
+						for(var i = 0; i < sceneries.length; i++) {
+							if(sceneries[i].n == 1) {
+								sceneries[i].setAnimationFrameTo(0);
+							}
+						}
+						
 						game.play.addItemToInventory(tile.name);
 						console.log(game.data.inventory);
 						game.play.collision.clearTile(this.mapPos.x, this.mapPos.y);

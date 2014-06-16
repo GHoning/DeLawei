@@ -104,9 +104,12 @@ game.SpeechScreen = me.ScreenObject.extend({
 				game.data.questStateMachine.consumeEvent("talk_to_tim");
 				console.log(game.data.questStateMachine.getStatus());
 			}else if(game.data.questStateMachine.getStatus() =="got_number" && game.data.lastSpokenNPC == "sam") {
+			
+				game.data.inventory.splice(game.data.inventory.indexOf("note"),1);
 				game.data.questStateMachine.consumeEvent("talk_to_sam2");
 				console.log(game.data.questStateMachine.getStatus());
 			}else if(game.data.questStateMachine.getStatus() =="get_number" && game.data.lastSpokenNPC == "kim") {
+				game.data.inventory.push("note");
 				game.data.questStateMachine.consumeEvent("talk_to_kim");
 				console.log(game.data.questStateMachine.getStatus());
 			}else if(game.data.questStateMachine.getStatus() =="quest_chair" && game.data.lastSpokenNPC == "sam") {

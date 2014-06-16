@@ -108,8 +108,8 @@ game.HUD.Inventory.InventoryItem = game.UIButton.extend({
 
 		onHover : function (bool) {
 			if (bool) {
-				//fuck alpha
 				this.tooltip.replaceText(this.name);
+				//TODO add usefull tooltip one big if or add items differently.
 			} else {
 				this.tooltip.replaceText("");
 			}

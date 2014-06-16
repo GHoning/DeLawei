@@ -114,6 +114,7 @@
     <property name="image" value="Plant"/>
     <property name="mapPosX" value="12"/>
     <property name="mapPosY" value="8"/>
+    <property name="n" value="0"/>
     <property name="type" value="solid"/>
    </properties>
   </object>
@@ -122,6 +123,7 @@
     <property name="image" value="Plant"/>
     <property name="mapPosX" value="7"/>
     <property name="mapPosY" value="8"/>
+    <property name="n" value="0"/>
     <property name="type" value="solid"/>
    </properties>
   </object>

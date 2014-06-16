@@ -112,6 +112,7 @@
     <property name="image" value="TheatreChairs"/>
     <property name="mapPosX" value="15"/>
     <property name="mapPosY" value="12"/>
+    <property name="n" value="0"/>
     <property name="spritewidth" value="128"/>
     <property name="type" value="solid"/>
    </properties>
@@ -184,6 +185,7 @@
     <property name="image" value="TheatreChairs"/>
     <property name="mapPosX" value="16"/>
     <property name="mapPosY" value="12"/>
+    <property name="n" value="0"/>
     <property name="spritewidth" value="128"/>
     <property name="type" value="solid"/>
    </properties>
@@ -436,6 +438,7 @@
     <property name="image" value="TheatreChairs"/>
     <property name="mapPosX" value="26"/>
     <property name="mapPosY" value="20"/>
+    <property name="n" value="1"/>
     <property name="spritewidth" value="128"/>
     <property name="type" value="solid"/>
    </properties>

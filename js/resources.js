@@ -34,6 +34,10 @@ game.resources = [
 		name : "notenschrift",
 		type : "image",
 		src : "data/img/sprite/notenschrift.png"
+	}, {
+		name : "note",
+		type : "image",
+		src : "data/img/sprite/note.png"
 	},
 		
 	/*
@@ -248,7 +252,7 @@ game.resources = [
 		type : "image",
 		src : "data/img/sprite/InventoryBalk.png"
 	}, {
-		name : "tajiribrief",
+		name : "brief_showItem",
 		type : "image",
 		src : "data/img/sprite/TajiriBrief.png"
 	},

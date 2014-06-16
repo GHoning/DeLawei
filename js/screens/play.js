@@ -72,14 +72,13 @@ game.PlayScreen = me.ScreenObject.extend({
 		},
 
 		addItemToInventory : function (item) {
-			if (this.checkInventory(item)) {
-				game.data.inventory.push(item);
-				this.HUD.inventory.addItem(item);
-				//TODO go over list and find the right item through name and destroy the instance
-				var items = me.game.world.getChildByName("item");
-				me.game.world.removeChild(items[0]);
-				me.audio.play("itempickup_sfx");
-			}
+			
+			game.data.inventory.push(item);
+			this.HUD.inventory.addItem(item);
+			//TODO go over list and find the right item through name and destroy the instance
+			var items = me.game.world.getChildByName("item");
+			me.game.world.removeChild(items[0]);
+			me.audio.play("itempickup_sfx");
 		},
 
 		removeItemFromInventory : function (item) {
@@ -102,5 +101,19 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.addHUD();
 			console.log("load level");
 			this.collision = new Collision(me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData);
+			console.log(me.levelDirector.getCurrentLevelId());
+			
+			if(me.levelDirector.getCurrentLevelId() == "theater" && game.data.questStateMachine.getIndex(game.data.questStateMachine.getStatus()) > game.data.questStateMachine.indexes.get_note1) {
+				console.log("Hostage");
+				var sceneries = me.game.world.getChildByName("scenery");
+					//add Notenschrift 1
+				for(var i = 0; i < sceneries.length; i++) {
+					if(sceneries[i].n == 1) {
+						sceneries[i].setAnimationFrameTo(0);
+					}
+				}
+			}
+			
+			
 		}
 	});
