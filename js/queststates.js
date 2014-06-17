@@ -43,6 +43,11 @@ QuestStates = [
 	},{
 		'name' : "got_note1",
 		'events' : {
+			'randomNPCTalk': 'get_note2'
+		}
+	},{
+		'name' : "get_note2",
+		'events' : {
 			'pick_up_note2': 'got_note2'
 		}
 	},{
@@ -66,19 +71,24 @@ QuestStates = [
 			'talk_to_tim2' : 'got_note3'
 		}
 	},{
+		'name' : "get_note4",
+		'events' : {
+			'pick_up_note4' : 'got_note4'
+		}
+	},{
 		'name' : "got_note3",
 		'events' : {
-			'get_note4' : 'got_note4'
+			'talked_to_kim' : 'get_note4'
 		}
 	},{
 		'name' : "got_note4",
 		'events' : {
-			'get_note5' : 'got_note5'
+			'pick_up_note5' : 'got_note5'
 		}
 	},{
 		'name' : "got_note5",
 		'events' : {
-			'finish_game' : 'finished_game'
+			'none' : 'finished_game'
 		}
 	}
 ];

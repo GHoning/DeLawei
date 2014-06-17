@@ -47,7 +47,12 @@ game.SpeechScreen = me.ScreenObject.extend({
 				me.game.world.addChild(new game.UIText(140, constants.SCREENHEIGHT - 40, "font", "Druk op spatiebalk om door te gaan"));
 				me.game.world.addChild(new game.UIImage(128, constants.SCREENHEIGHT - 192, "speechbalk"));
 				me.game.world.addChild(new game.UIImage(1024 - 276, constants.SCREENHEIGHT - 571, "alex_convo"));
-				me.game.world.addChild(new game.UIImage(0, constants.SCREENHEIGHT - 638, game.data.lastSpokenNPC + "_convo"));
+				
+				if(game.data.lastSpokenNPC == "kim") {
+					me.game.world.addChild(new game.UIImage(0, constants.SCREENHEIGHT - 574, game.data.lastSpokenNPC + "_convo"));
+				} else {
+					me.game.world.addChild(new game.UIImage(0, constants.SCREENHEIGHT - 638, game.data.lastSpokenNPC + "_convo"));
+				}
 			}
 		},
 		
@@ -78,7 +83,9 @@ game.SpeechScreen = me.ScreenObject.extend({
 			
 			if(game.data.questStateMachine.getStatus() =="got_note5" && game.data.lastSpokenNPC == "roel") {
 				me.state.change(me.state.END_GAME);
-				console.log("You win, but you're still a Canadian");
+			}else if(game.data.questStateMachine.getStatus() =="got_note3" && game.data.lastSpokenNPC == "kim") {
+				game.data.questStateMachine.consumeEvent("talked_to_kim");
+				console.log(game.data.questStateMachine.getStatus());
 			}else if(game.data.questStateMachine.getStatus() =="have_pocketknife" && game.data.lastSpokenNPC == "tim") {
 				game.data.questStateMachine.consumeEvent("talk_to_tim2");
 				console.log(game.data.questStateMachine.getStatus());
@@ -103,8 +110,10 @@ game.SpeechScreen = me.ScreenObject.extend({
 			}else if(game.data.questStateMachine.getStatus() =="got_note2" && game.data.lastSpokenNPC == "tim") {
 				game.data.questStateMachine.consumeEvent("talk_to_tim");
 				console.log(game.data.questStateMachine.getStatus());
+			}else if(game.data.questStateMachine.getStatus() =="got_note1" && game.data.lastSpokenNPC == "randy") {
+				game.data.questStateMachine.consumeEvent("randomNPCTalk");
+				console.log(game.data.questStateMachine.getStatus());
 			}else if(game.data.questStateMachine.getStatus() =="got_number" && game.data.lastSpokenNPC == "sam") {
-			
 				game.data.inventory.splice(game.data.inventory.indexOf("note"),1);
 				game.data.questStateMachine.consumeEvent("talk_to_sam2");
 				console.log(game.data.questStateMachine.getStatus());

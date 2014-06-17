@@ -20,6 +20,10 @@ var dialog = [
 	["tim","intro", 
 		[	"..."			
 		]], 
+	
+	["randy","intro", 
+		[	"..."			
+		]], 
 		
 	//--------------------------------------------------------------------------
 	["kim","talk_to_roel",
@@ -41,6 +45,10 @@ var dialog = [
 		]],
 
 	["tim","talk_to_roel", 
+		[	"..."			
+		]], 
+		
+	["randy","talk_to_roel", 
 		[	"..."			
 		]], 
 	
@@ -66,6 +74,10 @@ var dialog = [
 		]],
 
 	["tim","brief_read", 
+		[	"..."			
+		]], 
+		
+	["randy","brief_read", 
 		[	"..."			
 		]], 
 		
@@ -95,7 +107,10 @@ var dialog = [
 		[	"..."			
 		]],
 	
-	
+	["randy","quest_chair", 
+		[	"..."			
+		]],
+		
 	//--------------------------------------------------------------------------
 	["kim", "get_note1",
 		[	"..."
@@ -114,6 +129,10 @@ var dialog = [
 	["tim","get_note1", 
 		[	"..."
 		]], 
+		
+	["randy","get_note1", 
+		[	"..."
+		]],
 	
 	//--------------------------------------------------------------------------
 	["kim", "got_note1",
@@ -131,6 +150,10 @@ var dialog = [
 		]],
 
 	["tim","got_note1", 
+		[	"..."
+		]], 
+		
+	["randy","got_note1", 
 		[	"..."
 		]], 
 		
@@ -161,6 +184,10 @@ var dialog = [
 			"Helaas heb ik nu even geen tijd, kan je later misschien terugkomen?"
 		]],
 		
+	["randy","get_number", 
+		[	"..."			
+		]],
+		
 	//--------------------------------------------------------------------------
 	["kim", "got_number",
 		[	"..."
@@ -182,6 +209,33 @@ var dialog = [
 		[	"..."			
 		]],
 		
+	["randy","got_number", 
+		[	"..."			
+		]],
+		
+	//--------------------------------------------------------------------------
+	["kim", "get_note2",
+		[	"..."
+		]],
+		
+	["roel", "get_note2",
+		[	"..."
+		]],
+		
+	["sam","get_note2", 
+		[	"..."			
+		]],
+
+	["tim","get_note2", 
+		[	
+			"..."
+		]],
+		
+	["randy","get_note2", 
+		[	
+			"..."
+		]],
+	
 	//--------------------------------------------------------------------------
 	["kim", "got_note2",
 		[	"..."
@@ -204,6 +258,10 @@ var dialog = [
 			"Weet u misschien waar ik 1 vandaan zou kunnen halen?",
 			"Misschien kan je het aan Kim vragen.",
 			"Tot zo!"
+		]],
+	
+	["randy","got_note2", 
+		[	"..."			
 		]],
 	
 	//--------------------------------------------------------------------------
@@ -230,6 +288,10 @@ var dialog = [
 	["tim","quest_get_pocketknife", 
 		[	"..."			
 		]],
+		
+	["randy","quest_get_pocketknife", 
+		[	"..."			
+		]],
 	
 	//--------------------------------------------------------------------------
 	["kim", "quest_get_pocketknife2",
@@ -254,6 +316,10 @@ var dialog = [
 	["tim","quest_get_pocketknife2", 
 		[	"..."			
 		]],
+		
+	["randy","quest_get_pocketknife2", 
+		[	"..."			
+		]],
 	
 	//--------------------------------------------------------------------------
 	["kim", "have_pocketknife",
@@ -276,6 +342,10 @@ var dialog = [
 			"Nou je bent vrij om mijn bar te onderzoeken. Niet stiekem bier drinken he."
 		]],
 		
+	["randy","have_pocketknife", 
+		[	"..."			
+		]],
+		
 	//--------------------------------------------------------------------------
 	["kim", "got_note3",
 		[	"..."
@@ -290,6 +360,10 @@ var dialog = [
 		]],
 
 	["tim","got_note3", 
+		[	"..."			
+		]],
+		
+	["randy","got_note3", 
 		[	"..."			
 		]],
 		
@@ -310,6 +384,10 @@ var dialog = [
 		[	"..."			
 		]],
 		
+	["randy","got_note4", 
+		[	"..."			
+		]],
+		
 	//--------------------------------------------------------------------------
 	["kim", "got_note5",
 		[	"..."
@@ -326,6 +404,10 @@ var dialog = [
 		]],
 
 	["tim","got_note5", 
+		[	"..."			
+		]],
+		
+	["randy","got_note5", 
 		[	"..."			
 		]],
 	

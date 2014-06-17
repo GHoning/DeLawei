@@ -72,12 +72,8 @@ game.PlayScreen = me.ScreenObject.extend({
 		},
 
 		addItemToInventory : function (item) {
-			
 			game.data.inventory.push(item);
 			this.HUD.inventory.addItem(item);
-			//TODO go over list and find the right item through name and destroy the instance
-			var items = me.game.world.getChildByName("item");
-			me.game.world.removeChild(items[0]);
 			me.audio.play("itempickup_sfx");
 		},
 

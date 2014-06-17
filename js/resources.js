@@ -82,6 +82,10 @@ game.resources = [
 		type : "image",
 		src : "data/img/sprite/TimConvo.png"
 	}, {
+		name : "randy_convo",
+		type : "image",
+		src : "data/img/sprite/RandyConvo.png"
+	}, {
 		name : "namelabel",
 		type : "image",
 		src : "data/img/sprite/NameLabel.png"
