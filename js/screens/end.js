@@ -5,29 +5,35 @@ game.EndScreen = me.ScreenObject.extend({
 
 		onResetEvent : function () {
 			this.thing = true;
+			console.log(game.laweimusic_bgm);
+			game.laweimusic_bgm.pause();
 			me.audio.stop("footstep_sfx");
 			me.audio.play("laweiwin_bgm");
-			this.button = new game.EndScreen.NextButton(850, 700, {image: "nextbutton", spriteWidth: 148, spriteHeight: 54});
+			this.button = new game.EndScreen.NextButton(850, 700, {image: "nextButton", spriteWidth: 148, spriteHeight: 54});
 			this.button.setOnClick(this.nextScreen.bind(this));
 			me.game.world.addChild(this.button, 2000);
-			this.BGTheater = new game.UIImage(0, 0, "endbackgroundtheater");
+			this.BGTheater = new game.UIImage(0, 0, "endbackgroundTheater");
 			me.game.world.addChild(this.BGTheater, 1);
 		},
 		
 		addBackgroundKrant : function() {
 			me.game.world.removeChild(this.BGTheater);
-			this.BGKrant = new game.UIImage(0, 0, "endbackgroundkrant");
+			this.BGKrant = new game.UIImage(0, 0, "endbackground");
 			me.game.world.addChild(this.BGKrant, 1);
 		},
 		
 		addLastScreen : function() {
 			//me.game.world.removeChild(this.BGKrant);
-			this.code = new game.UIText((constants.SCREENWIDTH / 2) - 70, 500, "font", "Code: " + words[Math.floor(Math.random() * words.length)])
-			me.game.world.addChild(this.code, 2000);
+			this.code = new game.UIText((constants.SCREENWIDTH / 2) - 70, 500, "font", "Code: " + words[Math.floor(Math.random() * words.length)]);
+			me.game.world.addChild(this.code, 2001);
+			
+			this.interfaceWW = new game.UIImage (256,64, "interfaceWW");
+			me.game.world.addChild(this.interfaceWW, 2000)
+			
 			this.replaybutton = new game.EndScreen.ReplayButton((constants.SCREENWIDTH / 2) - 74, 600, {image: "replaybutton", spriteWidth: 148, spriteHeight: 54})
 			me.game.world.addChild(this.replaybutton, 2000);
-			this.interfacewachtword = new game.UIImage((constants.SCREENWIDTH / 2) - 256, 100, "interfacewachtwoord");
-			me.game.world.addChild(this.interfacewachtword, 2000);
+			/*this.interfacewachtword = new game.UIImage((constants.SCREENWIDTH / 2) - 256, 100, "interfacewachtwoord");
+			me.game.world.addChild(this.interfacewachtword, 2000);*/
 			me.game.world.removeChild(this.button);
 		},
 		
@@ -69,7 +75,7 @@ game.EndScreen.ReplayButton = game.UIButton.extend({
 		game.data.questStateMachine = new StateMachine(QuestStates);
 		
 		me.state.change(me.state.PLAY);
-		
+		game.laweimusic_bgm.play();
 		//TODO quest state reset();
 		//TODO reset variables and start playscreen
 	}

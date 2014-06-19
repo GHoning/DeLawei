@@ -67,13 +67,12 @@
   </data>
  </layer>
  <objectgroup name="Objectlaag 1" width="20" height="20">
-  <object name="player" x="512" y="386" width="64" height="64"/>
   <object name="door" x="512" y="128" width="64" height="256">
    <properties>
     <property name="level" value="Foyer"/>
-    <property name="mapX" value="23"/>
-    <property name="mapY" value="34"/>
-    <property name="playerX" value="2464"/>
+    <property name="mapX" value="25"/>
+    <property name="mapY" value="32"/>
+    <property name="playerX" value="2720"/>
     <property name="playerY" value="1728"/>
     <property name="tile1x" value="8"/>
     <property name="tile1y" value="5"/>
@@ -88,11 +87,46 @@
   </object>
   <object name="item" x="896" y="512" width="64" height="64">
    <properties>
-    <property name="image" value="notenschrift"/>
+    <property name="image" value="notenschrift2"/>
     <property name="mapPosX" value="14"/>
     <property name="mapPosY" value="8"/>
     <property name="spriteheight" value="1"/>
     <property name="spritewidth" value="1"/>
+    <property name="type" value="none"/>
+   </properties>
+  </object>
+  <object name="scenery" x="286" y="348" width="64" height="64">
+   <properties>
+    <property name="image" value="randoms"/>
+    <property name="mapPosX" value="5"/>
+    <property name="mapPosY" value="6"/>
+    <property name="n" value="0"/>
+    <property name="spritewidth" value="128"/>
+    <property name="type" value="solid"/>
+   </properties>
+  </object>
+  <object name="player" x="481" y="348" width="64" height="64"/>
+  <object name="eventTile" x="447" y="385" width="64" height="64">
+   <properties>
+    <property name="mapPosX" value="7"/>
+    <property name="mapPosY" value="6"/>
+    <property name="npc" value="randy"/>
+    <property name="type" value="none"/>
+   </properties>
+  </object>
+  <object name="eventTile" x="577" y="385" width="64" height="64">
+   <properties>
+    <property name="mapPosX" value="9"/>
+    <property name="mapPosY" value="6"/>
+    <property name="npc" value="randy"/>
+    <property name="type" value="none"/>
+   </properties>
+  </object>
+  <object name="eventTile" x="511" y="447" width="64" height="64">
+   <properties>
+    <property name="mapPosX" value="8"/>
+    <property name="mapPosY" value="7"/>
+    <property name="npc" value="randy"/>
     <property name="type" value="none"/>
    </properties>
   </object>

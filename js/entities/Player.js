@@ -27,7 +27,6 @@ game.Player = me.ObjectEntity.extend({
 			this.goDownLeft = false;
 			this.goUpLeft = false;
 			this.goDownRight = false;
-			console.log("player created");
 		},
 		
 		switchAnimations : function () {
@@ -108,28 +107,17 @@ game.Player = me.ObjectEntity.extend({
 				//item pickup
 				if (me.input.isKeyPressed("Use") && tile.obj == "item") {
 				
-					if(game.data.questStateMachine.getStatus() == "got_note4" && this.goUpRight) {
-						game.data.questStateMachine.consumeEvent("get_note5");
+					if(game.data.questStateMachine.getStatus() == "got_note4" && this.goUpLeft) {
+						game.data.questStateMachine.consumeEvent("pick_up_note5");
 						console.log(game.data.questStateMachine.getStatus());
 						game.play.addItemToInventory(tile.name);
 						game.play.collision.clearTile(this.mapPos.x, this.mapPos.y);
-					}else if(game.data.questStateMachine.getStatus() == "get_note4" && this.goUpRight) {
+					}else if(game.data.questStateMachine.getStatus() == "got_note3" && this.goUpRight) {
 						game.data.questStateMachine.consumeEvent("pick_up_note4");
 						console.log(game.data.questStateMachine.getStatus());
 						game.play.addItemToInventory(tile.name);
 						game.play.collision.clearTile(this.mapPos.x, this.mapPos.y);
-					}else if(game.data.questStateMachine.getStatus() == "got_note3" && this.goUpLeft) {
-					//Talk width kim
-						game.data.lastSpokenNPC = "kim";
-						game.play.HUD.remove();
-						me.state.change(me.state.SPEECH);
-					
-						/*game.data.questStateMachine.consumeEvent("get_note4");
-						console.log(game.data.questStateMachine.getStatus());
-						game.play.addItemToInventory(tile.name);
-						console.log(game.data.inventory);
-						game.play.collision.clearTile(this.mapPos.x, this.mapPos.y);*/
-					}else if(game.data.questStateMachine.getStatus() == "get_note2" && this.goDownRight) {
+					}else if(game.data.questStateMachine.getStatus() == "got_note1" && this.goDownRight) {
 						game.data.questStateMachine.consumeEvent("pick_up_note2");
 						console.log(game.data.questStateMachine.getStatus());
 						game.play.addItemToInventory(tile.name);
@@ -166,19 +154,15 @@ game.Player = me.ObjectEntity.extend({
 						this.pos.y += 32;
 						
 						me.state.change(me.state.SPEECH);
-					} else if (game.data.questStateMachine.getIndex(game.data.questStateMachine.getStatus()) < game.data.questStateMachine.indexes.got_note1 && tile.level == "Kleedkamer") {
-						console.log(2);
-						game.data.lastSpokenNPC = "randy";
-						game.play.HUD.remove();
-						
-						this.mapPos.y -= 1;
-						this.pos.x += 64;
-						this.pos.y -= 32;
-						
-						me.state.change(me.state.SPEECH);	
 					} else {
 						game.play.loadLevel(tile.level, tile.playerX, tile.playerY, tile.mapX, tile.mapY);
 					}
+					
+				//eventTiles
+				} else if (tile.name == "eventtile" && !game.data.spokenRandy) {
+					game.data.spokenRandy = true;
+					game.data.lastSpokenNPC = tile.npc;
+					me.state.change(me.state.SPEECH);
 				}
 			}
 			

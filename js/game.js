@@ -10,7 +10,9 @@ var game = {
 		playerPos: constants.PLAYER_STARTLOCATION,
 		lastSpokenNPC : "",
 		inventory : [],
-		questStateMachine : new StateMachine(QuestStates)
+		questStateMachine : new StateMachine(QuestStates),
+		//ugly but it doesn't matter any more.
+		spokenRandy : false
 	},
 	
 	/*
@@ -47,27 +49,23 @@ var game = {
 		game.credits = new game.CreditsScreen();
 		me.state.set(me.state.CREDITS, game.credits);
 		
+		game.end = new game.EndScreen();
+		me.state.set(me.state.GAME_END, game.end);
 		
-		var NOTEBOOK = me.state.USER + 0;
-		game.notebook = new game.NotebookScreen();
-		me.state.set(me.state.NOTEBOOK, game.notebook);
-		
-		var SPEECH = me.state.USER + 1;
+		var SPEECH = me.state.USER;
 		game.speech = new game.SpeechScreen();
 		me.state.set(me.state.SPEECH, game.speech);
 		
-		/*var INSTRUCTIONS = me.state.USER + 2;
 		game.instructions = new game.InstructionsScreen();
-		me.state.set(me.state.INSTRUCTIONS, game.instructions);*/
+		me.state.set(me.state.SCORE, game.instructions);
 		
-		game.end = new game.EndScreen();
-		me.state.set(me.state.GAME_END, game.end);
 		
 		me.pool.register("player", game.Player);
 		me.pool.register("item", game.Item);
 		me.pool.register("npc", game.QuestNPC);
 		me.pool.register("door", game.Door);
 		me.pool.register("scenery", game.Scenery);
+		me.pool.register("eventTile", game.EventTile);
 
 		me.input.bindKey(me.input.KEY.W, "Up");
 		me.input.bindKey(me.input.KEY.A, "Left");
@@ -86,6 +84,8 @@ var game = {
 		
 		me.input.bindKey(me.input.KEY.X, "mouse/touch");
 		me.input.bindPointer(me.input.KEY.X);
-		me.state.change(me.state.PLAY);
+		me.state.change(me.state.MENU);
+		this.laweimusic_bgm = me.audio.playTrack("Laweimusic_bgm", true);
+		//this.crowd_sfx = me.audio.playTrack("crowd_sfx", true);;
 	}
 };

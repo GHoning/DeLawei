@@ -99,7 +99,7 @@
   </object>
   <object name="item" x="1664" y="1344" width="64" height="64">
    <properties>
-    <property name="image" value="notenschrift"/>
+    <property name="image" value="notenschrift1"/>
     <property name="mapPosX" value="26"/>
     <property name="mapPosY" value="21"/>
     <property name="spriteheight" value="1"/>

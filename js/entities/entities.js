@@ -14,6 +14,21 @@ game.Item = me.ObjectEntity.extend({
 			console.log("item created");
 		}
 	});
+
+/**
+ *  EventTile
+ */
+game.EventTile = me.ObjectEntity.extend({
+		init : function (x, y, settings) {
+			this.parent(x, y, settings);
+			this.settings = settings;
+			this.mapPosX = settings.mapPosX;
+			this.mapPosY = settings.mapPosY;
+			this.npc = settings.npc;
+			this.type = settings.type;
+			this.gravity =  false;
+		}
+	});
 	
 /**
  *  DoorObject. Specifics are filled in using tiled.
@@ -42,15 +57,12 @@ game.Door = me.ObjectEntity.extend({
 			this.type = settings.type;
 			
 			this.gravity = false;
-			console.log("door created");
 		}
 	});
 	
 /**
  *	Scenery Object 
  */
-
- //TODO add to collision map and zSorting :D
 game.Scenery = me.ObjectEntity.extend({
 	init : function (x, y, settings) {
 		this.parent(x, y, settings);
@@ -65,7 +77,6 @@ game.Scenery = me.ObjectEntity.extend({
 		this.renderable.addAnimation("anim", [0, 1]);
 		this.renderable.setCurrentAnimation("anim");
 		this.renderable.setAnimationFrame(settings.n);
-		
 		console.log("Scenery Created");
 	},
 	
@@ -126,16 +137,16 @@ game.QuestNPC = me.ObjectEntity.extend({
 				case "right":
 					this.renderable.setAnimationFrame(2);
 					this.lookDown = false;
-					this.lookUp = false;
+					this.lookUp = true;
 					this.lookLeft = false;
-					this.lookRight = true;
+					this.lookRight = false;
 					break;
 				case "up":
 					this.renderable.setAnimationFrame(3);
 					this.lookDown = false;
-					this.lookUp = true;
+					this.lookUp = false;
 					this.lookLeft = false;
-					this.lookRight = false;
+					this.lookRight = true;
 					break;
 			}	
 		},

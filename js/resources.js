@@ -31,13 +31,33 @@ game.resources = [
 		type : "image",
 		src : "data/img/sprite/TimAsset.png"
 	}, {
-		name : "notenschrift",
+		name : "notenschrift1",
 		type : "image",
-		src : "data/img/sprite/notenschrift.png"
+		src : "data/img/sprite/notenschrift1.png"
+	}, {
+		name : "notenschrift2",
+		type : "image",
+		src : "data/img/sprite/notenschrift2.png"
+	}, {
+		name : "notenschrift3",
+		type : "image",
+		src : "data/img/sprite/notenschrift3.png"
+	}, {
+		name : "notenschrift4",
+		type : "image",
+		src : "data/img/sprite/notenschrift4.png"
+	}, {
+		name : "notenschrift5",
+		type : "image",
+		src : "data/img/sprite/notenschrift5.png"
 	}, {
 		name : "note",
 		type : "image",
 		src : "data/img/sprite/note.png"
+	}, {
+		name : "randoms",
+		type : "image",
+		src : "data/img/sprite/RandomGuys.png"
 	},
 		
 	/*
@@ -142,50 +162,18 @@ game.resources = [
 	 * Buttons.
 	 */
 	 
-	{
-		name : "inventoryButton",
-		type : "image",
-		src : "data/img/button/ToInventory.png"
-	}, {
-		name : "gameButton",
-		type : "image",
-		src : "data/img/button/ToGame.png"
-	}, {
+	  {
 		name : "playButton",
 		type : "image",
 		src : "data/img/button/Start.png"
-	}, {
-		name : "creditsButton",
-		type : "image",
-		src : "data/img/button/ToCredits.png"
-	}, {
-		name : "menuButton",
-		type : "image",
-		src : "data/img/button/ToMenu.png"
-	}, {
-		name : "instructionsButton",
-		type : "image",
-		src : "data/img/button/ToInstructies.png"
-	}, {
-		name : "questButton",
-		type : "image",
-		src : "data/img/button/ToQuestlog.png"
-	}, {
+	},{
 		name : "nextButton",
 		type : "image",
-		src : "data/img/button/btn_toNexttext.png"
-	}, {
-		name : "muteIcon",
-		type : "image",
-		src : "data/img/button/btn_mute.png"
-	}, {
-		name : "unmuteIcon",
-		type : "image",
-		src : "data/img/button/btn_unmute.png"
+		src : "data/img/button/Buttonvolgende.png"
 	}, {
 		name : "replaybutton",
 		type : "image",
-		src : "data/img/button/btn_replay.png"
+		src : "data/img/button/replay.png"
 	},
 	
 	/*
@@ -228,6 +216,18 @@ game.resources = [
 		name : "endbackground",
 		type : "image",
 		src : "data/img/backgrounds/Endscreen.png"
+	}, {
+		name : "endbackgroundTheater",
+		type : "image",
+		src : "data/img/backgrounds/EndScreenTheater.png"
+	}, {
+		name : "startbackground",
+		type : "image",
+		src : "data/img/backgrounds/Startscherm.png"
+	}, {
+		name : "interfaceWW",
+		type : "image",
+		src : "data/img/backgrounds/InterfaceWachtwoord.png"
 	},
 	
 	
@@ -244,9 +244,25 @@ game.resources = [
 		type : "image",
 		src : "data/img/sprite/note_inv.png"
 	}, {
-		name : "notenschrift_inv",
+		name : "notenschrift1_inv",
 		type : "image",
-		src : "data/img/sprite/notenschrift_inv.png"
+		src : "data/img/sprite/notenschrift1_inv.png"
+	}, {
+		name : "notenschrift2_inv",
+		type : "image",
+		src : "data/img/sprite/notenschrift2_inv.png"
+	}, {
+		name : "notenschrift3_inv",
+		type : "image",
+		src : "data/img/sprite/notenschrift3_inv.png"
+	}, {
+		name : "notenschrift4_inv",
+		type : "image",
+		src : "data/img/sprite/notenschrift4_inv.png"
+	}, {
+		name : "notenschrift5_inv",
+		type : "image",
+		src : "data/img/sprite/notenschrift5_inv.png"
 	}, {
 		name : "zakmes_inv",
 		type : "image",
@@ -259,6 +275,22 @@ game.resources = [
 		name : "brief_showItem",
 		type : "image",
 		src : "data/img/sprite/TajiriBrief.png"
+	}, {
+		name : "notenschrift1_showItem",
+		type : "image",
+		src : "data/img/sprite/Hint1.png"
+	}, {
+		name : "notenschrift2_showItem",
+		type : "image",
+		src : "data/img/sprite/Hint2.png"
+	}, {
+		name : "notenschrift3_showItem",
+		type : "image",
+		src : "data/img/sprite/Hint3.png"
+	}, {
+		name : "notenschrift4_showItem",
+		type : "image",
+		src : "data/img/sprite/Hint4.png"
 	},
 
 	/* Atlases
@@ -273,23 +305,23 @@ game.resources = [
 	 */
 
 	{
-		name : "Entree",
+		name : "entree",
 		type : "tmx",
 		src : "data/map/Entree.tmx"
 	}, {
-		name : "Gang",
+		name : "gang",
 		type : "tmx",
 		src : "data/map/Gang.tmx"
 	}, {
-		name : "Foyer",
+		name : "foyer",
 		type : "tmx",
 		src : "data/map/Foyer.tmx"
 	}, {
-		name : "Theater",
+		name : "theater",
 		type : "tmx",
 		src : "data/map/Theater.tmx"
 	}, {
-		name : "Kleedkamer",
+		name : "kleedkamer",
 		type : "tmx",
 		src : "data/map/Kleedkamer.tmx"
 	},

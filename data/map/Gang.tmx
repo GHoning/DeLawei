@@ -101,7 +101,7 @@
   </object>
   <object name="item" x="577" y="512" width="64" height="64">
    <properties>
-    <property name="image" value="notenschrift"/>
+    <property name="image" value="notenschrift5"/>
     <property name="mapPosX" value="9"/>
     <property name="mapPosY" value="8"/>
     <property name="spriteheight" value="1"/>

@@ -87,6 +87,20 @@ function Collision(collisionMap) {
 			}
 		}
 	}
+	
+	this.addEventTilesToCollision = function () {
+		var eventTiles = me.game.world.getChildByName("eventTile");
+		
+		if(eventTiles.length > 0) {
+			for (var i = 0; i < eventTiles.length; i++) {
+				this.collisionMap[eventTiles[i].mapPosX][eventTiles[i].mapPosY] = {
+					name : eventTiles[i].name,
+					npc : eventTiles[i].npc,
+					type : eventTiles[i].type
+				};
+			}
+		}
+	}
 
 	//collision with npc none with the rest.
 	this.isWalkable = function (x, y) {
@@ -189,4 +203,5 @@ function Collision(collisionMap) {
 	this.addItemsToCollision();
 	this.addDoorsToCollision();
 	this.addSceneryToCollision();
+	this.addEventTilesToCollision();
 }

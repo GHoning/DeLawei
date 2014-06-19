@@ -119,11 +119,11 @@
     <property name="type" value="none"/>
    </properties>
   </object>
-  <object name="npc" x="861" y="345" width="64" height="64">
+  <object name="npc" x="865" y="413" width="64" height="64">
    <properties>
     <property name="image" value="kim"/>
     <property name="mapPosX" value="14"/>
-    <property name="mapPosY" value="6"/>
+    <property name="mapPosY" value="7"/>
     <property name="spriteheight" value="256"/>
     <property name="spritewidth" value="128"/>
     <property name="type" value="solid"/>
@@ -131,7 +131,7 @@
   </object>
   <object name="item" x="896" y="640" width="64" height="64">
    <properties>
-    <property name="image" value="notenschrift"/>
+    <property name="image" value="notenschrift4"/>
     <property name="mapPosX" value="14"/>
     <property name="mapPosY" value="10"/>
     <property name="spriteheight" value="1"/>

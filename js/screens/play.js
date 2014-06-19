@@ -11,24 +11,14 @@ game.PlayScreen = me.ScreenObject.extend({
 			this.placePlayer(game.data.playerPos);
 			this.itemOnReset();
 			
+			
 			if(game.data.questStateMachine.getStatus() == "brief"){
 				try {
 					game.play.HUD.addChild(new game.HUD.Inventory.ShowItem((constants.SCREENWIDTH / 2) - 256, 20, {image: "brief_showItem", spriteWidth: 512, spriteHeight: 608}));
 				} catch(err) {
 					console.log(err.message);
 				}
-				
 			}
-			
-			console.log("reset play.js");
-			
-			/*if(me.audio.getCurrentTrack() != "laweimusic_bgm") {
-				me.audio.play("laweimusic_bgm", true);
-			}
-			
-			if(me.audio.getCurrentTrack() != "crowd_sfx") {
-				me.audio.play("crowd_sfx", true);
-			}*/
 		},
 
 		addHUD : function () {
@@ -87,7 +77,6 @@ game.PlayScreen = me.ScreenObject.extend({
 
 		loadLevel : function (level, x, y, mapX, mapY) {
 			me.levelDirector.loadLevel(level);
-			
 			var player = me.game.world.getChildByName("player");
 			player[0].mapPos.x = mapX;
 			player[0].mapPos.y = mapY;
@@ -95,12 +84,9 @@ game.PlayScreen = me.ScreenObject.extend({
 			player[0].pos.y = y;
 			this.itemOnReset();
 			this.addHUD();
-			console.log("load level");
 			this.collision = new Collision(me.game.currentLevel.getLayerByName(constants.ISOCOLL_LAYER).layerData);
-			console.log(me.levelDirector.getCurrentLevelId());
 			
 			if(me.levelDirector.getCurrentLevelId() == "theater" && game.data.questStateMachine.getIndex(game.data.questStateMachine.getStatus()) > game.data.questStateMachine.indexes.get_note1) {
-				console.log("Hostage");
 				var sceneries = me.game.world.getChildByName("scenery");
 					//add Notenschrift 1
 				for(var i = 0; i < sceneries.length; i++) {
@@ -110,6 +96,6 @@ game.PlayScreen = me.ScreenObject.extend({
 				}
 			}
 			
-			
+			game.data.spokenRandy = false;
 		}
 	});

@@ -9,11 +9,9 @@ game.HUD.Container = me.ObjectContainer.extend({
 
 		init : function () {
 			this.parent();
-			//this.isPersistent = true;
 			this.collidable = false;
 			this.z = Infinity;
 			this.name = "HUD";
-			this.addMuteButton();
 			this.inventory;
 			this.addInventory();
 			this.addIntroduction();

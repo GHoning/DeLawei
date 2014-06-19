@@ -6,7 +6,7 @@ game.UIButton = me.ObjectEntity.extend({
 		this.parent(x, y, settings);
 		this.keyLock = false;
 		this.floating = true;
-		this.imgButton = new me.AnimationSheet(0, 0, me.loader.getImage(settings.image), settings.spriteWidth, settings.spriteHeight);
+		this.imgButton = new me.AnimationSheet(0, 0, me.loader.getImage(settings.image)/*, settings.spriteWidth, settings.spriteHeight*/);
 		//add Shape in MelonJS 1.0.0 for the collision box
 		this.rect = new me.Rect(this.pos, settings.spriteWidth, settings.spriteHeight);
 		this.addShape(this.rect);
@@ -48,10 +48,9 @@ game.UIText = me.Renderable.extend({
 		//TODO make var for setting length of sentences
 		this.parent(new me.Vector2d(x,y), 10, 10);
 		this.font = new me.Font("Arail", 24, "#000000");
-		
-		this.text = text;
+
 		this.floating = true;
-		this.text = this.wordWrap(this.text, constants.TEXTWIDTH);
+		this.text = this.wordWrap(text, constants.TEXTWIDTH);
 	},
 	
 	update : function () {
@@ -70,16 +69,17 @@ game.UIText = me.Renderable.extend({
 		var done = false;
 		var res = '';
 		
+		if(str.length < maxWidth) {return str};
+		
 		do {
 			found = false;
 			
-			for (i = maxWidth -1; i >= 0; i--) {
+			for (i = maxWidth - 1; i >= 0; i--) {
 				if(this.testWhite(str.charAt(i))) {
 					res = res + [str.slice(0, i), newLineStr].join('');
 					str = str.slice(i + 1);
 					found = true;
 					break;
-					
 				}
 			}
 			
@@ -90,11 +90,11 @@ game.UIText = me.Renderable.extend({
 			
 			if(str.length < maxWidth)
 				done = true;
+			
+			
 		} while (!done);
 		
 		return res + str;
-		
-		console.log(res);
 	},
 	
 	replaceText : function (txt) {
